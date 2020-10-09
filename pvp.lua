@@ -1,10 +1,9 @@
-module("pvp", package.seeall)
-
+local pvp = {}
 
 -- Outpost Combat Functionality.
 
 
-function set_target(self, target)
+function pvp.setTarget(self, target)
 	op.target = target:title()
 
 	e:echo("Targeting: " .. op.target)
@@ -38,7 +37,7 @@ function set_target(self, target)
 end
 
 
- function succumb()
+ function pvp.succumb()
  	if bals:has("equilibrium") and bals:has("balance") then
  		send("moondance succumb "..op.target)
  	else
@@ -46,7 +45,7 @@ end
  	end
  end
 
-function bluemoon()
+function pvp.bluemoon()
  	if bals:has("equilibrium") and bals:has("balance") then
  		send("moondance bluemoon "..op.target)
  	else
@@ -54,7 +53,7 @@ function bluemoon()
  	end
  end
 
-function waning()
+function pvp.waning()
 	if bals:has("equilibrium") and bals:has("balance") then
  		send("moondance waning "..op.target)
  	else
@@ -62,8 +61,9 @@ function waning()
  	end
  end
 
-
-
- function chooseNextAttack(self, target, hp, mp, ego, action)
+ function pvp.chooseNextAttack(self, target, hp, mp, ego, action)
  	
  end
+
+
+ return pvp

@@ -1,9 +1,8 @@
-module("pve", package.seeall)
-
+local pve = {}
 
 -- Outpost PvE Functionality.
 
-mobs_by_area = {
+pve.mobsByArea = {
 	["the Serenwilde Forest"] = {
 		"an ethereal opossum",
 		"an ethereal white peacock",
@@ -15,11 +14,10 @@ mobs_by_area = {
 	}
 }
 
-
-function get_mob_table()
+function pve.getMobTable()
 	local mobiles = {}
 	local area = gmcp.Room.Info.area
-	local mobs = pve.mobs_by_area[area]
+	local mobs = self.mobsByArea[area]
 
 	for k, v in pairs(op.roomitems) do
 		if table.contains(mobs, v.name) then
@@ -32,6 +30,9 @@ function get_mob_table()
 end
 
 
-function bash()
+function pve.bash()
 	-- Handle individual class-based bashing attack via gmcp.Char.Skills.
 end
+
+
+return pve

@@ -13,7 +13,7 @@ function LoadModules()
 	local homedir = getMudletHomeDir()
 	local luadir = string.format("%s/%s", homedir, [[?.lua]])
 	local initdir = string.format("%s/%s", homedir, [[?/init.lua]])
-	local sysdir = string.format("%s/%s", getMudletHomeDir().."/Outpost", [[?.lua]])
+	local sysdir = string.format("%s/%s", getMudletHomeDir().."/Outpost/Outpost-master", [[?.lua]])
         
 	package.path = string.format("%s;%s;%s;%s", path, luadir, initdir, sysdir)
 	package.cpath = string.format("%s;%s;%s;%s", cpath, luadir, initdir, sysdir)

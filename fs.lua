@@ -1,38 +1,40 @@
-module("fs", package.seeall)
-
+local fs = {}
 
 -- Outpost Failsafe Timer Functionality.
 
 
-limiters = {}
+fs.limiters = {}
 
-function on(self, key, time)	
+function fs.on(self, key, time)	
 	local delay = time or 0.5
 	if affs:has("aeon") then
 		delay = delay + 1.5
 	end
 
-	limiters[key] = {
+	self.limiters[key] = {
 		start = getEpoch(),
 		delay = delay
 	}
 end
 
 
-function off(self, key)
-	limiters[key] = nil
+function fs.off(self, key)
+	self.limiters[key] = nil
 end
 
 
-function check(self, key)
-	local limiter = limiters[key]
+function fs.check(self, key)
+	local limiter = self.limiters[key]
 	if limiter == nil then return true end
 
 	local tDelta = getEpoch() - limiter.start
 	if tDelta > limiter.delay then
-		limiters[key] = nil
+		self.limiters[key] = nil
 		return true
 	end
 
 	return false
 end
+
+
+return fs
