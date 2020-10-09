@@ -1,29 +1,27 @@
-module("GMCP", package.seeall)
-
+local GMCP = {}
 
 -- Outpost GMCP Handling.
 
-
-items = {}
+GMCP.items = {}
 
 
 -- Keep our connection alive.
 
-function KeepAlive()
+function GMCP.KeepAlive()
 	sendGMCP("Core.KeepAlive")
 	if op.keepalive then
 		killTimer(op.keepalive)
 	end
-	op.keepalive = tempTimer(60, [[GMCP:KeepAlive()]])
+	op.keepalive = tempTimer(60, [[GMCP.KeepAlive()]])
 end
 
-KeepAlive()
+GMCP.KeepAlive()
 
 
 
 -- Character vitals handling.
 
-function ParseVitals()
+function GMCP.ParseVitals()
 	if not gmcp
 		or not gmcp.Char
 		or not gmcp.Char.Vitals
@@ -157,7 +155,7 @@ local wounds = {
 end
 
 
-function get_skillsets()
+function GMCP.getSkillsets()
 	op.skills = {}
 	for _, set in ipairs(gmcp.Char.Skills.Groups) do
 		local skills = string.format("Char.Skills.Get %s", yajl.to_string({ group = set.name }))
@@ -167,7 +165,7 @@ function get_skillsets()
 end
 
 
-function populate_skill_tree()
+function GMCP.populateSkillTree()
 	local group = gmcp.Char.Skills.List.group
 	local list = gmcp.Char.Skills.List.list
 	local newlist = {}
@@ -183,7 +181,7 @@ function populate_skill_tree()
 end
 
 
-function items:Add(event)
+function GMCP.items:Add(event)
    local location = gmcp.Char.Items.Add.location
    if location ~= "inv" and location ~= "room" then
       location = location:match("%d+$")
@@ -204,7 +202,7 @@ function items:Add(event)
    return "outpost gmcp items add", location
 end
 
-function items:Remove()
+function GMCP.items:Remove()
    local location = gmcp.Char.Items.Remove.location
    if location ~= "inv" and location ~= "room" then
       location = location:match("%d+$")
@@ -224,7 +222,7 @@ function items:Remove()
 end
 
 
-function items:List()
+function GMCP.items:List()
    local location = gmcp.Char.Items.List.location
    if location ~= "inv" and location ~= "room" then
       location = location:match("%d+$")
@@ -245,7 +243,7 @@ function items:List()
 end
 
 
-function items:Update()
+function GMCP.items:Update()
    local location = gmcp.Char.Items.Update.location
    if location ~= "inv" and location ~= "room" then
       location = location:match("%d+$")
@@ -275,14 +273,14 @@ function items:Update()
    return "outpost gmcp items update", location
 end
 
-function items:StatusVars()
+function GMCP.items:StatusVars()
    self.inv_items = {}
    self.room_items = {}
    sendGMCP("Char.Items.Inv")
    send("ql", false)
 end
 
-function items_event(self, event)
+function GMCP.items_event(self, event)
 	local event = event:match("%w+$")
 	local func = loadstring("return GMCP.items:"..event.."()")
 	local x, y = func()
@@ -290,3 +288,6 @@ function items_event(self, event)
 	op.roomitems = GMCP.items.room_items
 	if x then raiseEvent(x, y) end
 end
+
+
+return GMCP

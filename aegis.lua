@@ -1,9 +1,11 @@
-module("aegis", package.seeall)
+local aegis = {}
 
 -- Outpost Healing Skillset Functionality.
 
 
-affmap = {
+aegis.affs = {}
+
+aegis.affmap = {
 		["suffering from a collapsed lung."] = {aff = "collapsedlung", aura = "regenerate chest"},
 		["cursed with the healthleech."] = {aff = "healthleech", aura = "auric"},
 		--  ["a $(level$) aura."] = {aff = "warpedaura", aura = ""},
@@ -73,7 +75,7 @@ affmap = {
 	}
 
 
-a, r = {}, {
+aegis.a, aegis.r = {}, {
 	auric = {"aeon", "achromaticaura", "healthleech", "powerspikes", "manabarbs", "egovice", "powersap", "illuminated"},
 	choleric = {"vomiting", "asthma", "pox", "sickening", "dysentery", "scabies", "paralysis"},
 	fractures = {"concussion", "fracturedleftarm", "fracturedrightarm", "fracturedskull", "brokenjaw", "brokenrightwrist", "brokenleftwrist", "brokenchest", "brokennose", "crushedrightfoot", "crushedleftfoot", "crushedwindpipe", "snappedrib"},
@@ -86,34 +88,34 @@ a, r = {}, {
 }
 
 
-for aura, afft in pairs(r) do
+for aura, afft in pairs(aegis.r) do
   for _, aff in pairs(afft) do
     if type(aff) == "string" then
-      a[aff] = aura
+      aegis.a[aff] = aura
     elseif type(aff) == "table" then
-      a[next(aff)] = {aura = aura, side = select(2, next(aff))}
+      aegis.a[next(aff)] = {aura = aura, side = select(2, next(aff))}
     end
 
   end
 end
 
 
-function getaff(self, diag_line)
-	return affmap[diag_line].aff, affmap[diag_line].aura
+function aegis.getAff(self, diag_line)
+	return self.affmap[diag_line].aff, self.affmap[diag_line].aura
 end
 
 
-function getaura(self, aff)
-  return t[aff]
+function aegis.getAura(self, aff)
+  return aegis.t[aff]
 end
 
 
-function has(self, name, aff)
+function aegis.hasAff(self, name, aff)
 	return op.succor[name].aff == true and true or false
 end
 
 
-function getSuccorAffs(name)
+function aegis.getSuccorAffs(name)
 	local affs = {}
 	for _, v in ipairs(op.succor[name]) do
 		if v ~= "blind"
@@ -126,8 +128,8 @@ function getSuccorAffs(name)
 	return affs
 end
 
-function getCureByAff(aff)
-	for k, v in pairs(affmap) do
+function aegis.getCureByAff(aff)
+	for k, v in pairs(aegis.affmap) do
 		if v.aff == aff then
 			return v.aura
 		end
@@ -135,25 +137,25 @@ function getCureByAff(aff)
 end
 
 
-function cure(self, name)
+function aegis.cure(self, name)
 	local superurgent = {"aeon", "anorexia", "asthma", "crushedwindpipe", "ectoplasm", "slickness", "slitthroat", "throatlock"}
 
 	assert(op.succor[name])
 
-	local affs = getSuccorAffs(name)
+	local affs = self.getSuccorAffs(name)
 	local urgent = next(table.n_intersection(superurgent, affs)) or nil
 
 	if urgent then
-		qm.balqueue:add("cure "..name.." "..getCureByAff(urgent))
+		qm.balqueue:add("cure "..name.." "..self.getCureByAff(urgent))
 	else
 		if next(affs) then
-			qm.balqueue:add("cure "..name.." "..getCureByAff(affs))
+			qm.balqueue:add("cure "..name.." "..self.getCureByAff(affs))
 		end
 	end
 end
 
 
-function stop(self, name)
+function aegis.stop(self, name)
 	if name then
 		e:echo("Stopped healing %s.", name)
 	else 
@@ -165,10 +167,13 @@ function stop(self, name)
 end
 
 
-function succor(self, aff, bleedamt, attr)
+function aegis.succor(self, aff, bleedamt, attr)
   assert(aff)
   if bleedamt and tonumber(bleedamt) < 200 then return end
-  affs[#affs+1] = aff
-  affs[op.succortarget] = {}
+  self.affs[#self.affs+1] = aff
+  self.affs[op.succortarget] = {}
   bleedamt = bleedamt
 end
+
+
+return aegis

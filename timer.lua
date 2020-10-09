@@ -1,16 +1,16 @@
-module("timer", package.seeall)
+local timer = {}
 
 -- Outpost timing framework.
 
 
-set = {}
+timer.set = {}
 
-function start(self, key)
-	set[key] = optime()
+function timer.start(self, key)
+	self.set[key] = timer.optime()
 end
 
 
-function optime()
+function timer.optime()
 	local t = getTime()
 	return t.msec
 		+ t.sec * 1000
@@ -19,24 +19,23 @@ function optime()
 end
 
 
-function stop(self, key, rt)
-	if set[key] == nil then
+function timer.stop(self, key, rt)
+	if self.set[key] == nil then
 		return numeric and 0 or "ERR"
 	end
 
-	local time = optime()
+	local time = timer.optime()
 	local diff = time - set[key]
 
 	if rt then
-		return tdiff(set[key], time)
+		return self.tdiff(set[key], time)
 	end
 
 	return diff
 end
 
 
-function tdiff(start, stop, rt)
-
+function timer.tdiff(start, stop, rt)
 	local s  = stop
 	local ss = string.format("%02d", math.fmod(s, 60))
 	local mm = string.format("%02d", math.fmod((s / 60 ), 60))
@@ -51,3 +50,6 @@ function tdiff(start, stop, rt)
 
 	return out:gsub(".$", "")
 end
+
+
+return timer
