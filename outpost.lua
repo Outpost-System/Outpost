@@ -13,7 +13,7 @@ function LoadModules()
 	local homedir = getMudletHomeDir()
 	local luadir = string.format("%s/%s", homedir, [[?.lua]])
 	local initdir = string.format("%s/%s", homedir, [[?/init.lua]])
-	local sysdir = string.format("%s/%s", getMudletHomeDir().."/Outpost/Outpost-master", [[?.lua]])
+	local sysdir = string.format("%s/%s", "/home/synectic/src/outpost", [[?.lua]])
         
 	package.path = string.format("%s;%s;%s;%s", path, luadir, initdir, sysdir)
 	package.cpath = string.format("%s;%s;%s;%s", cpath, luadir, initdir, sysdir)
@@ -21,19 +21,19 @@ function LoadModules()
 	local m = SYSROOT_DEFINED and { 
 		"aegis",
 		"affs", 
-		"bals", 
-		"bash",
+		--"bals", 
+		--"bash",
 		"beast", 
 		"core", 
-		"dbg",
+		--"dbg",
 		"fs", 
 		"genrun", 
 		"GMCP", 
 		"pve", 
 		"pvp", 
-		"qm", 
+		--"qm", 
 		"timer", 
-		"ui" 
+		--"ui" 
 	} or nil
 
 	for _, n in ipairs(m) do

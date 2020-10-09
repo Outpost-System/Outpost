@@ -5,31 +5,31 @@ local fs = {}
 
 fs.limiters = {}
 
-function fs.on(self, key, time)	
+function fs.on(key, time)	
 	local delay = time or 0.5
 	if affs:has("aeon") then
 		delay = delay + 1.5
 	end
 
-	self.limiters[key] = {
+	fs.limiters[key] = {
 		start = getEpoch(),
 		delay = delay
 	}
 end
 
 
-function fs.off(self, key)
-	self.limiters[key] = nil
+function fs.off(key)
+	fs.limiters[key] = nil
 end
 
 
-function fs.check(self, key)
-	local limiter = self.limiters[key]
+function fs.check(key)
+	local limiter = fs.limiters[key]
 	if limiter == nil then return true end
 
 	local tDelta = getEpoch() - limiter.start
 	if tDelta > limiter.delay then
-		self.limiters[key] = nil
+		fs.limiters[key] = nil
 		return true
 	end
 
