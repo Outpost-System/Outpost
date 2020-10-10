@@ -63,9 +63,12 @@ local defs = {
 }
 
 local bals = {
+	"allheale",
 	"balance",
 	"beastbal",
 	"dust",
+	"eflowbal",
+	"enigmaticflow",
 	"equilibrium",
 	"head",
 	"healing",
@@ -78,24 +81,28 @@ local bals = {
 	"psisuper",
 	"right_arm",
 	"right_leg",
+	"scroll,"
 	"slush",
 	"steam",
-	"sparkleberry",
+	"sparkleberry"
 }
 
 local stats = {
 	"age",
 	"bank",
 	"city",
+	"class",
 	"explorerrank",
 	"fullname",
 	"family",
+	"gender",
 	"gold",
 	"guild",
 	"level",
 	"mount",
 	"order",
 	"race",
+	"true_race",
 	"unread_msgs",
 	"unread_news",
 	"xprank"
@@ -111,18 +118,23 @@ local wounds = {
 	"leftlegwounds"
 }
 
-
+	op.bals.last = {}
+	op.stats.last = {}
 	op.vitals.last = {}
 
-	for _, key in ipairs(vitals) do
-		op.vitals.last[key] = op.vitals[key]
-	end
-	
-	op.bals.last = {}
 
 	for _, key in ipairs(bals) do
 		op.bals.last[key] = op.bals[key]
 	end
+
+	for _, key in ipairs(stats) do
+		op.stats.last[key] = op.stats[key]
+	end
+
+	for _, key in ipairs(vitals) do
+		op.vitals.last[key] = op.vitals[key]
+	end
+
 
 	for _, key in ipairs(bals) do
 		op.bals[key] = gmcp.Char.Vitals[key] == "1" and true or false
@@ -134,6 +146,13 @@ local wounds = {
 			timer.set[key] = nil
 		elseif op.bals[key] == false and op.bals.last[key] == true then
 			timer:start(key)
+		end
+	end
+
+
+	for _, key in ipairs(stats) do
+		if gmcp.Char.Status[key] then
+			op.stats[key] = gmcp.Char.Stats[key]
 		end
 	end
 
