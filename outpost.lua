@@ -1,7 +1,7 @@
 module("outpost", package.seeall)
 
 
--- Outpost Combat System - 'Quixote' - Moondancer (Lusternia).
+-- Outpost Combat System - (Lusternia).
 -- Project Start Date: 20th September 2020.
 
 -- Core System Module
@@ -21,7 +21,7 @@ function LoadModules()
 	local m = SYSROOT_DEFINED and { 
 		"aegis",
 		"affs", 
-		--"bals", 
+		"bals", 
 		--"bash",
 		"beast", 
 		"core", 

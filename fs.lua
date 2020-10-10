@@ -7,9 +7,11 @@ fs.limiters = {}
 
 function fs.on(key, time)	
 	local delay = time or 0.5
-	if affs:has("aeon") then
-		delay = delay + 1.5
-	end
+	-- Put check in here for affs only. Aeon only affects curing now.
+	--if affs:has("aeon")
+	--then
+	--	delay = delay + 1.5
+	--end
 
 	fs.limiters[key] = {
 		start = getEpoch(),

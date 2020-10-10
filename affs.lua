@@ -6,12 +6,12 @@ local affs = {}
 affs.current = {}
 
 function affs.add()
-local aff = "none" 
-if not gmcp.Char.Afflictions.Add then return end
+	local aff = "none" 
+	if not gmcp.Char.Afflictions.Add then return end
 
-aff = gmcp.Char.Afflictions.Add.name
+	aff = gmcp.Char.Afflictions.Add.name
 
-if aff == "sprawled" then aff = "prone" end
+	if aff == "sprawled" then aff = "prone" end
 
 	affs.current[aff] = {
 		when = getEpoch(),
@@ -36,7 +36,7 @@ function affs.cured()
 	raiseEvent("outpost cured aff", gmcp.Char.Afflictions.Remove[1])
 end
 
-function has(self, aff)
+function affs.has(self, aff)
 	return affs.current[aff] and true or false
 end
 
