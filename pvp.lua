@@ -14,7 +14,7 @@ function pvp.setTarget(self, target)
 		send("enemy " .. op.target)
 	end
 
-	if ndb.isenemy(target) or op.target == "Lisuarte" then
+	if ndb.isenemy(target) or op.arena_target then
 		qm.balqueue:add("order entourage kill "..target)
 		qm.balqueue:add("order "..op.fae.leprechaun.." follow "..target)
 		send("\n")
@@ -27,13 +27,13 @@ function pvp.setTarget(self, target)
 	if op.mark_target then killTrigger(op.mark_target) end
 	op.mark_target = tempTrigger(op.target, [[selectString("]] .. op.target .. [[", 1) bg("firebrick") fg("white") resetFormat()]])
 
-	--[[if op.leadermode then
+	if op.leadermode then
 		op.to_channel("Target: " .. op.target)
 		op.to_channel("Target: " .. op.target)
 		op.to_channel("Target: " .. op.target)
 	else
 		op.to_channel("Targeting: " .. op.target)
-	end]]
+	end
 end
 
 
