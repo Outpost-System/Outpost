@@ -141,7 +141,7 @@ local wounds = {
 		op.bals[key] = gmcp.Char.Vitals[key] == "1" and true or false
 
 		if op.bals[key] == true and op.bals.last[key] == false then
-			if op.limiters[key] ~= nil then 
+			if fs.limiters[key] ~= nil then 
 				fs:off(key)
 			end
 			timer.set[key] = nil

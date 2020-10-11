@@ -26,6 +26,7 @@ function LoadModules()
 		"beast", 
 		"core", 
 		--"dbg",
+		"EMCO",
 		"fs", 
 		"genrun", 
 		"GMCP", 
