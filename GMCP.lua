@@ -3,7 +3,8 @@ local GMCP = {}
 -- Outpost GMCP Handling.
 
 GMCP.items = {}
-
+GMCP.items.inv_items = {}
+GMCP.items.room_items = {}
 
 -- Keep our connection alive.
 
@@ -81,7 +82,7 @@ local bals = {
 	"psisuper",
 	"right_arm",
 	"right_leg",
-	"scroll,"
+	"scroll",
 	"slush",
 	"steam",
 	"sparkleberry"
@@ -152,7 +153,7 @@ local wounds = {
 
 	for _, key in ipairs(stats) do
 		if gmcp.Char.Status[key] then
-			op.stats[key] = gmcp.Char.Stats[key]
+			op.stats[key] = gmcp.Char.Status[key]
 		end
 	end
 
@@ -174,7 +175,7 @@ local wounds = {
 end
 
 
-function GMCP.getSkillsets()
+function GMCP.GetSkillsets()
 	op.skills = {}
 	for _, set in ipairs(gmcp.Char.Skills.Groups) do
 		local skills = string.format("Char.Skills.Get %s", yajl.to_string({ group = set.name }))
@@ -184,7 +185,7 @@ function GMCP.getSkillsets()
 end
 
 
-function GMCP.populateSkillTree()
+function GMCP.PopulateSkillTree()
 	local group = gmcp.Char.Skills.List.group
 	local list = gmcp.Char.Skills.List.list
 	local newlist = {}
@@ -200,7 +201,7 @@ function GMCP.populateSkillTree()
 end
 
 
-function GMCP.items:Add(event)
+function GMCP.items:Add()
    local location = gmcp.Char.Items.Add.location
    if location ~= "inv" and location ~= "room" then
       location = location:match("%d+$")
@@ -293,14 +294,15 @@ function GMCP.items:Update()
 end
 
 function GMCP.items:StatusVars()
-   self.inv_items = {}
-   self.room_items = {}
+   GMCP.items.inv_items = {}
+   GMCP.items.room_items = {}
    sendGMCP("Char.Items.Inv")
    send("ql", false)
 end
 
-function GMCP.items_event(self, event)
+function GMCP.ItemsEvent(self, event)
 	local event = event:match("%w+$")
+	display(event)
 	local func = loadstring("return GMCP.items:"..event.."()")
 	local x, y = func()
 	op.invitems = GMCP.items.inv_items

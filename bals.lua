@@ -13,3 +13,9 @@ end
 function bals.has()
     return bals.query() == 'both' and true or false
 end
+
+
+return bals
+
+
+
