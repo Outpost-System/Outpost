@@ -34,7 +34,7 @@ function LoadModules()
 		"pvp", 
 		--"qm", 
 		"timer", 
-		--"ui" 
+		"ui" 
 	} or nil
 
 	for _, n in ipairs(m) do

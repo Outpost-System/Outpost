@@ -5,7 +5,8 @@
 --@classmod EMCO
 --@author Damian Monogue <demonnic@gmail.com>
 --@copyright 2020 Damian Monogue
---@license MIT, see LICENSE.lua
+--@license MIT, see LICENSE
+
 local EMCO = Geyser.Container:new({
   name = "TabbedConsoleClass",
 })
@@ -314,11 +315,11 @@ function EMCO:new(cons, container)
     me.scrollbars = false
   end
   me.blinkTime = cons.blinkTime or 3
-  me.fontSize = cons.fontSize or 9
+  me.fontSize = cons.fontSize or 12
   me.activeTabCSS = cons.activeTabCSS or ""
   me.inactiveTabCSS = cons.inactiveTabCSS or ""
-  me.activeTabFGColor = cons.activeTabFGColor or "purple"
-  me.inactiveTabFGColor = cons.inactiveTabFGColor or "white"
+  me.activeTabFGColor = cons.activeTabFGColor or "black"
+  me.inactiveTabFGColor = cons.inactiveTabFGColor or "black"
   me.activeTabBGColor = cons.activeTabBGColor or "<0,180,0>"
   me.inactiveTabBGColor = cons.inactiveTabBGColor or "<60,60,60>"
   me.consoleColor = cons.consoleColor or "black"
