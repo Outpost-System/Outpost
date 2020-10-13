@@ -40,7 +40,8 @@ ui.map_border = Geyser.Label:new({
     x = 0, y = 0,
     width = "100%", height = "50%",
     fgColor = "black",
-    color = "sea_green"
+    color = "sea_green",
+    clickthrough = true
 }, ui.right)
 
 ui.chat_border = Geyser.Label:new({
@@ -48,7 +49,8 @@ ui.chat_border = Geyser.Label:new({
     x = 0, y = "50%",
     width = "100%", height = "50%",
     fgColor = "black",
-    color = "sea_green"
+    color = "sea_green",
+    clickthrough = true
 }, ui.right)
 
 ui.whohere_border = Geyser.Label:new({
@@ -56,7 +58,8 @@ ui.whohere_border = Geyser.Label:new({
     x = 0, y = 0,
     width = "100%", height = "30%",
     fgColor = "black",
-    color = "sea_green"
+    color = "sea_green",
+    clickthrough = true
 }, ui.left)
 
 ui.afflictions_border = Geyser.Label:new({
@@ -64,7 +67,8 @@ ui.afflictions_border = Geyser.Label:new({
     x = 0, y = "30%",
     width = "100%", height = "30%",
     fgColor = "black",
-    color = "sea_green"
+    color = "sea_green",
+    clickthrough = true
 }, ui.left)
 
 ui.roomitems_border = Geyser.Label:new({
@@ -72,7 +76,8 @@ ui.roomitems_border = Geyser.Label:new({
     x = 0, y = "60%",
     width = "100%", height = "40%",
     fgColor = "black",
-    color = "sea_green"
+    color = "sea_green",
+    clickthrough = true
 }, ui.left)
 
 ui.chardetails_border = Geyser.Label:new({
@@ -80,7 +85,8 @@ ui.chardetails_border = Geyser.Label:new({
     x = 0, y = 0,
     width = "100%", height = "100%",
     fgColor = "black",
-    color = "royal_blue"
+    color = "royal_blue",
+    clickthrough = true
 }, ui.top)
 
 ui.gauge_border = Geyser.Label:new({
@@ -88,7 +94,8 @@ ui.gauge_border = Geyser.Label:new({
     x = 0, y = 0,
     width = "100%", height = "100%",
     fgColor = "black",
-    color = "black"
+    color = "black",
+    clickthrough = true
 }, ui.bottom)
 
 
@@ -100,6 +107,7 @@ ui.map_window = Geyser.Mapper:new({
     x = "1%", y = "1%",
     width = "98%",
     height = "48%",
+    clickthrough = true
   }, ui.right)
 
 ui.whohere_label = Geyser.Label:new({
@@ -107,7 +115,8 @@ ui.whohere_label = Geyser.Label:new({
     x = "1%", y = "3%",
     width = "98%", height = "26%",
     fgColor = "black",
-    color = "black"
+    color = "black",
+    clickthrough = true
   }, ui.left)
 
 ui.afflictions_label = Geyser.Label:new({
@@ -115,7 +124,8 @@ ui.afflictions_label = Geyser.Label:new({
     x = "1%", y = "33%",
     width = "98%", height = "26%",
     fgColor = "black",
-    color = "black"
+    color = "black",
+    clickthrough = true
   }, ui.left)
 
 ui.roomitems_label = Geyser.Label:new({
@@ -123,7 +133,8 @@ ui.roomitems_label = Geyser.Label:new({
     x = "1%", y = "63%",
     width = "98%", height = "36%",
     fgColor = "black",
-    color = "black"
+    color = "black",
+    clickthrough = true
   }, ui.left)
 
 ui.chardetails_label = Geyser.Label:new({
@@ -131,7 +142,8 @@ ui.chardetails_label = Geyser.Label:new({
     x = "1%", y = "1%",
     width = "98%", height = "98%",
     fgColor = "black",
-    color = "black"
+    color = "black",
+    clickthrough = true
   }, ui.top)
 
 ui.hpgauge = Geyser.Gauge:new({
@@ -194,7 +206,7 @@ ui.chardetails_border:setStyleSheet([[
     background-color: rgb(153,255,153,255); border: 1px solid black; border-radius: 10px
 ]])
 
-ui.hpgauge.front:setStyleSheet([[background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #3880a7, stop: 1 #7dbfe2);
+ui.hpgauge.front:setStyleSheet([[background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #CD4E2F, stop: 1 #DE9B8A);
     border-top: 1px black solid;
     border-left: 1px black solid;
     border-bottom: 1px black solid;
@@ -224,7 +236,7 @@ ui.mpgauge.back:setStyleSheet([[background-color: QLinearGradient( x1: 0, y1: 0,
     border-radius: 3;
   ]])
 
-ui.egogauge.front:setStyleSheet([[background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #3880a7, stop: 1 #7dbfe2);
+ui.egogauge.front:setStyleSheet([[background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #70C95F, stop: 1 #A4EC96);
     border-top: 1px black solid;
     border-left: 1px black solid;
     border-bottom: 1px black solid;

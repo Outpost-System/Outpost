@@ -1,8 +1,11 @@
 local GMCP = {}
 
+
 -- Outpost GMCP Handling.
 
+
 GMCP.items = {}
+GMCP.people = {}
 GMCP.items.inv_items = {}
 GMCP.items.room_items = {}
 
@@ -169,11 +172,14 @@ local wounds = {
 			health = math.floor((gmcp.Char.Vitals.hp / gmcp.Char.Vitals.maxhp) * 100),
 			mana = math.floor((gmcp.Char.Vitals.mp / gmcp.Char.Vitals.maxmp) * 100),
 			ego = math.floor((gmcp.Char.Vitals.ego / gmcp.Char.Vitals.maxego) * 100),
-			power = math.floor((gmcp.Char.Vitals.pow / gmcp.Char.Vitals.maxpow) * 100)
+			power = math.floor((gmcp.Char.Vitals.pow / gmcp.Char.Vitals.maxpow) * 100) -- Do we really need to create a percentage for power?
 		}
 	}
 end
 
+
+
+-- Populates op.skills with the relevant skillsets
 
 function GMCP.GetSkillsets()
 	op.skills = {}
@@ -200,6 +206,9 @@ function GMCP.PopulateSkillTree()
 	end
 end
 
+
+
+-- Handles all charitems events: room and inv. Populates op.roomitems and op.invitems
 
 function GMCP.items:Add()
    local location = gmcp.Char.Items.Add.location
@@ -297,7 +306,7 @@ function GMCP.items:StatusVars()
    GMCP.items.inv_items = {}
    GMCP.items.room_items = {}
    sendGMCP("Char.Items.Inv")
-   send("ql", false)
+   send("\n", false)
 end
 
 function GMCP.ItemsEvent(self, event)
@@ -311,11 +320,12 @@ function GMCP.ItemsEvent(self, event)
 end
 
 
--- GMCP.Comm Handling
 
-function GMCP.chatCapture()
+-- GMCP.Comm Handling - Let's shove our communications into the interface
+
+function GMCP.ChatCapture()
 	local ch = gmcp.Comm.Channel.Text.channel
-	if not GMCP.chat_channels then GMCP:checkChannels() end
+	if not GMCP.chat_channels then GMCP:CheckChannels() end
 	GMCP.chat_channels.last = "Misc"
 
 	for c, t in pairs(GMCP.chat_channels.types) do
@@ -328,12 +338,12 @@ function GMCP.chatCapture()
 	local text = ansi2decho(gmcp.Comm.Channel.Text.text)
 	text = text:gsub("^\"", "")
 
-	chat_window:decho(GMCP.chat_channels.last, text)
+	ui.chat_window:decho(GMCP.chat_channels.last, text)
 end
 
-function GMCP.checkChannels()
-	GMCP.chat_channels = GMCP.chat_channels or {}
-	GMCP.chat_channels.last = GMCP.chat_channels.last or ""
+function GMCP.CheckChannels()
+	GMCP.chat_channels = {}
+	GMCP.chat_channels.last = ""
 	GMCP.chat_channels.types = {
 		["newbie"] = "Misc",
 		["market"] = "Misc",
@@ -352,17 +362,15 @@ function GMCP.checkChannels()
 	}
 end
 
-registerAnonymousEventHandler("gmcp.Comm.Channel.Text", "GMCP.chatCapture")
+registerAnonymousEventHandler("gmcp.Comm.Channel.Text", "GMCP.ChatCapture")
 
 
 
--- GMCP Room Players
+-- GMCP Room Players - Be mindful of Highmagic users and the Shadow Shroud! There's no gmcp.Room.Players event for these people
 
 function GMCP.UpdatePeople()
 	GMCP.people = {}
-
 	for key, name in pairs(gmcp.Room.Players) do
-		display(key)
     	if gmcp.Room.Players[key].name ~= gmcp.Char.Status.name then
 			GMCP.people[gmcp.Room.Players[key].name] = gmcp.Room.Players[key].fullname
     	end
