@@ -24,6 +24,7 @@ function LoadModules()
 		"bals", 
 		--"bash",
 		"beast", 
+		"chyron",
 		"core", 
 		--"dbg",
 		"EMCO",
@@ -51,7 +52,7 @@ function LoadModules()
 		
 		_G[n] = c
 
-		echo("\nModule '"..n.."' loaded.")
+		e:echo("Module '"..n.."' loaded.")
 	end
 
 	package.path = path

@@ -311,4 +311,81 @@ function GMCP.ItemsEvent(self, event)
 end
 
 
+-- GMCP.Comm Handling
+
+function GMCP.chatCapture()
+	local ch = gmcp.Comm.Channel.Text.channel
+	if not GMCP.chat_channels then GMCP:checkChannels() end
+	GMCP.chat_channels.last = "Misc"
+
+	for c, t in pairs(GMCP.chat_channels.types) do
+		if ch:find(c) then
+			GMCP.chat_channels.last = t
+			break
+		end
+	end
+
+	local text = ansi2decho(gmcp.Comm.Channel.Text.text)
+	text = text:gsub("^\"", "")
+
+	chat_window:decho(GMCP.chat_channels.last, text)
+end
+
+function GMCP.checkChannels()
+	GMCP.chat_channels = GMCP.chat_channels or {}
+	GMCP.chat_channels.last = GMCP.chat_channels.last or ""
+	GMCP.chat_channels.types = {
+		["newbie"] = "Misc",
+		["market"] = "Misc",
+		["ct"] = "Org",
+		["gt"] = "Org",
+		["cgt"] = "Org",
+		["gnt"] = "Org",
+		["clt"] = "Clans",
+		["sqt"] = "Combat",
+    	["coven"] = "Combat",
+		["tell"] = "Tells",
+		["market"] = "Misc",
+		["says"] = "Says",
+		["ot"] = "Misc",
+		["ft"] = "Family",
+	}
+end
+
+registerAnonymousEventHandler("gmcp.Comm.Channel.Text", "GMCP.chatCapture")
+
+
+
+-- GMCP Room Players
+
+function GMCP.UpdatePeople()
+	GMCP.people = {}
+
+	for key, name in pairs(gmcp.Room.Players) do
+		display(key)
+    	if gmcp.Room.Players[key].name ~= gmcp.Char.Status.name then
+			GMCP.people[gmcp.Room.Players[key].name] = gmcp.Room.Players[key].fullname
+    	end
+	end
+end
+
+function GMCP.AddPerson()
+	GMCP.people[gmcp.Room.AddPlayer.name] = gmcp.Room.AddPlayer.fullname
+	ui.UpdateRoom()
+end
+
+function GMCP.RemovePerson()
+  GMCP.people[gmcp.Room.RemovePlayer] = nil
+  ui.UpdateRoom()
+end
+
+
+-- Event Handlers
+
+registerAnonymousEventHandler("gmcp.Room.Players", "GMCP.UpdatePeople")
+registerAnonymousEventHandler("gmcp.Room.AddPlayer", "GMCP.AddPerson")
+registerAnonymousEventHandler("gmcp.Room.RemovePlayer", "GMCP.RemovePerson")
+
+
+
 return GMCP

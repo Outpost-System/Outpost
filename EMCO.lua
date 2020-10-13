@@ -6,9 +6,9 @@
 --@author Damian Monogue <demonnic@gmail.com>
 --@copyright 2020 Damian Monogue
 --@license MIT, see LICENSE
-
 local EMCO = Geyser.Container:new({
   name = "TabbedConsoleClass",
+  timestampExceptions = {},
 })
 
 -- patch Geyser.MiniConsole if it does not have its own display method defined
@@ -239,6 +239,36 @@ end
 --     <td class="tg-even">Number of pixels to put between the top edge of the miniconsole container, and the miniconsole? This is in addition to gap</td>
 --     <td class="tg-even">0</td>
 --   </tr>
+--   <tr>
+--     <td class="tg-odd">timestampExceptions</td>
+--     <td class="tg-odd">Table of tabnames which should not get timestamps even if timestamps are turned on</td>
+--     <td class="tg-odd">{}</td>
+--   </tr>
+--   <tr>
+--     <td class="tg-even">tabFontSize</td>
+--     <td class="tg-even">Font size for the tabs</td>
+--     <td class="tg-even">8</td>
+--   </tr>
+--   <tr>
+--     <td class="tg-odd">tabBold</td>
+--     <td class="tg-odd">Should the tab text be bold? Boolean value</td>
+--     <td class="tg-odd">false</td>
+--   </tr>
+--   <tr>
+--     <td class="tg-even">tabItalics</td>
+--     <td class="tg-even">Should the tab text be italicized?</td>
+--     <td class="tg-even">false</td>
+--   </tr>
+--   <tr>
+--     <td class="tg-odd">tabUnderline</td>
+--     <td class="tg-odd">Should the tab text be underlined?</td>
+--     <td class="tg-odd">false</td>
+--   </tr>
+--   <tr>
+--     <td class="tg-even">tabAlignment</td>
+--     <td class="tg-even">Valid alignments are 'c', 'center', 'l', 'left', 'r', 'right', or '' to not include the alignment as part of the echo (to allow the stylesheet to handle it)</td>
+--     <td class="tg-even">'c'</td>
+--   </tr>
 -- </tbody>
 -- </table>
 -- @tparam GeyserObject container The container to use as the parent for the EMCO
@@ -314,8 +344,13 @@ function EMCO:new(cons, container)
   else
     me.scrollbars = false
   end
+  me.tabUnderline = me:fuzzyBoolean(cons.tabUnderline) and true or false
+  me.tabBold = me:fuzzyBoolean(cons.tabBold) and true or false
+  me.tabItalics = me:fuzzyBoolean(cons.tabItalics) and true or false
+  me.tabFontSize = cons.tabFontSize or 10
+  me.tabAlignment = cons.tabAlignment or "c"
   me.blinkTime = cons.blinkTime or 3
-  me.fontSize = cons.fontSize or 12
+  me.fontSize = cons.fontSize or 9
   me.activeTabCSS = cons.activeTabCSS or ""
   me.inactiveTabCSS = cons.inactiveTabCSS or ""
   me.activeTabFGColor = cons.activeTabFGColor or "black"
@@ -530,7 +565,7 @@ function EMCO:switchTab(tabName)
     self.mc[oldTab]:hide()
     self.tabs[oldTab]:setStyleSheet(self.inactiveTabCSS)
     self.tabs[oldTab]:setColor(self.inactiveTabBGColor)
-    self.tabs[oldTab]:echo(oldTab, self.inactiveTabFGColor, "c")
+    self.tabs[oldTab]:echo(oldTab, self.inactiveTabFGColor)
     if self.blink then
       if self.allTab and tabName == self.allTabName then
         self.tabsToBlink = {}
@@ -541,7 +576,7 @@ function EMCO:switchTab(tabName)
   end
   self.tabs[tabName]:setStyleSheet(self.activeTabCSS)
   self.tabs[tabName]:setColor(self.activeTabBGColor)
-  self.tabs[tabName]:echo(tabName, self.activeTabFGColor, "c")
+  self.tabs[tabName]:echo(tabName, self.activeTabFGColor)
   if oldTab and self.mc[oldTab] then
     self.mc[oldTab]:hide()
   end
@@ -556,7 +591,12 @@ function EMCO:createComponentsForTab(tabName)
   if self.tabFont then
     tab:setFont(self.tabFont)
   end
-  tab:echo(tabName, self.inactiveTabFGColor, 'c')
+  tab:echo(tabName, self.inactiveTabFGColor)
+  tab:setAlignment(self.tabAlignment)
+  tab:setFontSize(self.tabFontSize)
+  tab:setItalics(self.tabItalics)
+  tab:setBold(self.tabBold)
+  tab:setUnderline(self.tabUnderline)
   -- use the inactive CSS. It's "" if unset, which is ugly, but
   tab:setStyleSheet(self.inactiveTabCSS)
   -- set the BGColor if set. if the CSS is set it overrides the setColor, but if it's "" then the setColor actually covers that.
@@ -751,6 +791,72 @@ function EMCO:setSingleWindowFont(tabName, font)
     debugc(err)
   end
   self.mc[tabName]:setFont(font)
+end
+
+--- sets the font size for all tabs
+--- @tparam number fontSize the font size to use for the tabs
+function EMCO:setTabFontSize(fontSize)
+  self.tabFontSize = fontSize
+  for _, tab in pairs(self.tabs) do
+    tab:setFontSize(fontSize)
+  end
+end
+
+--- Sets the alignment for all the tabs
+-- @param alignment Valid alignments are 'c', 'center', 'l', 'left', 'r', 'right', or '' to not include the alignment as part of the echo
+function EMCO:setTabAlignment(alignment)
+  self.tabAlignment = alignment
+  for _, tab in pairs(self.tabs) do
+    tab:setAlignment(self.tabAlignment)
+  end
+end
+
+--- enables underline on all tabs
+function EMCO:enableTabUnderline()
+  self.tabUnderline = true
+  for _, tab in pairs(self.tabs) do
+    tab:setUnderline(self.tabUnderline)
+  end
+end
+
+--- disables underline on all tabs
+function EMCO:disableTabUnderline()
+  self.tabUnderline = false
+  for _, tab in pairs(self.tabs) do
+    tab:setUnderline(self.tabUnderline)
+  end
+end
+
+--- enables italics on all tabs
+function EMCO:enableTabItalics()
+  self.tabItalics = true
+  for _, tab in pairs(self.tabs) do
+    tab:setItalics(self.tabItalics)
+  end
+end
+
+--- enables italics on all tabs
+function EMCO:disableTabItalics()
+  self.tabItalics = false
+  for _, tab in pairs(self.tabs) do
+    tab:setItalics(self.tabItalics)
+  end
+end
+
+--- enables bold on all tabs
+function EMCO:enableTabBold()
+  self.tabBold = true
+  for _, tab in pairs(self.tabs) do
+    tab:setBold(self.tabBold)
+  end
+end
+
+--- disables bold on all tabs
+function EMCO:disableTabBold()
+  self.tabBold = false
+  for _, tab in pairs(self.tabs) do
+    tab:setBold(self.tabBold)
+  end
 end
 
 --- enables custom colors for the timestamp, if displayed
@@ -1199,8 +1305,10 @@ function EMCO:xEcho(tabName, message, xtype, excludeAll)
     end
     local timestamp = getTime(true, self.timestampFormat)
     local fullTimestamp = string.format("%s%s<r> ", colorString, timestamp)
-    console:decho(fullTimestamp)
-    if allTab and tabName ~= self.allTabName then
+    if not table.contains(self.timestampExceptions, tabName) then
+      console:decho(fullTimestamp)
+    end
+    if allTab and tabName ~= self.allTabName and not table.contains(self.timestampExceptions, self.allTabName) then
       allTab:decho(fullTimestamp)
     end
   end
@@ -1316,8 +1424,10 @@ function EMCO:xLink(tabName, linkType, text, commands, hints, useCurrentFormat, 
     end
     local timestamp = getTime(true, self.timestampFormat)
     local fullTimestamp = string.format("%s%s<r> ", colorString, timestamp)
-    console:decho(fullTimestamp)
-    if allTab then
+    if not table.contains(self.timestampExceptions, tabName) then
+      console:decho(fullTimestamp)
+    end
+    if allTab and tabName ~= self.allTabName and not table.contains(self.timestampExceptions, self.allTabName) then
       allTab:decho(fullTimestamp)
     end
   end
@@ -1427,14 +1537,7 @@ end
 -- @tparam string tabName the name of the tab to add to the exclusion list
 function EMCO:addAllTabExclusion(tabName)
   local funcName = "EMCO:addAllTabExclusion(tabName)"
-  local ae = self.ae
-  local tabNameType = type(tabName)
-  local validTabName = table.contains(self.consoles, tabName)
-  if tabNameType ~= "string" then
-    ae(funcName, "tabName as string expected, got " .. tabNameType)
-  elseif not validTabName then
-    ae(funcName, string.format("tabName %s does not exist in this EMCO. valid tabs: " .. table.concat(self.consoles, ",")))
-  end
+  self:validTabNameOrError(tabName, funcName)
   if not table.contains(self.allTabExclusions, tabName) then table.insert(self.allTabExclusions, tabName) end
 end
 
@@ -1442,6 +1545,12 @@ end
 -- @tparam string tabName the name of the tab to remove from the exclusion list
 function EMCO:removeAllTabExclusion(tabName)
   local funcName = "EMCO:removeAllTabExclusion(tabName)"
+  self:validTabNameOrError(tabName, funcName)
+  local index = table.index_of(self.allTabExclusions, tabName)
+  if index then table.remove(self.allTabExclusions, index) end
+end
+
+function EMCO:validTabNameOrError(tabName, funcName)
   local ae = self.ae
   local tabNameType = type(tabName)
   local validTabName = table.contains(self.consoles, tabName)
@@ -1450,8 +1559,19 @@ function EMCO:removeAllTabExclusion(tabName)
   elseif not validTabName then
     ae(funcName, string.format("tabName %s does not exist in this EMCO. valid tabs: " .. table.concat(self.consoles, ",")))
   end
-  local index = table.index_of(self.allTabExclusions, tabName)
-  if index then table.remove(self.allTabExclusions, index) end
+end
+
+function EMCO:addTimestampException(tabName)
+  local funcName = "EMCO:addTimestampException(tabName)"
+  self:validTabNameOrError(tabName, funcName)
+  if not table.contains(self.timestampExceptions, tabName) then table.insert(self.timestampExceptions, tabName) end
+end
+
+function EMCO:removeTimestampException(tabName)
+  local funcName = "EMCO:removeTimestampTabException(tabName)"
+  self:validTabNameOrError(tabName, funcName)
+  local index = table.index_of(self.timestampExceptions, tabName)
+  if index then table.remove(self.timestampExceptions, index) end
 end
 
 --- Enable placing a blank line between all messages.
@@ -1539,6 +1659,7 @@ function EMCO:save()
     gap = self.gap,
     consoles = self.consoles,
     allTabExclusions = self.allTabExclusions,
+    timestampExceptions = self.timestampExceptions,
     tabHeight = self.tabHeight,
     autoWrap = self.autoWrap,
     wrapAt = self.wrapAt,
@@ -1550,6 +1671,11 @@ function EMCO:save()
     y = self.y,
     height = self.height,
     width = self.width,
+    tabFontSize = self.tabFontSize,
+    tabBold = self.tabBold,
+    tabItalics = self.tabItalics,
+    tabUnderline = self.tabUnderline,
+    tabAlignment = self.tabAlignment,
   }
   local dirname = getMudletHomeDir().."/EMCO/"
   local filename = dirname .. self.name .. ".lua"
@@ -1596,12 +1722,18 @@ function EMCO:load()
   self.gap = configTable.gap
   self.consoles = configTable.consoles
   self.allTabExclusions = configTable.allTabExclusions
+  self.timestampExceptions = configTable.timestampExceptions
   self.tabHeight = configTable.tabHeight
   self.wrapAt = configTable.wrapAt
   self.leftMargin = configTable.leftMargin
   self.rightMargin = configTable.rightMargin
   self.bottomMargin = configTable.bottomMargin
   self.topMargin = configTable.topMargin
+  self.tabFontSize = configTable.tabFontSize
+  self.tabBold = configTable.tabBold
+  self.tabItalics = configTable.tabItalics
+  self.tabUnderline = configTable.tabUnderline
+  self.tabAlignment = configTable.tabAlignment
   self:move(configTable.x, configTable.y)
   self:resize(configTable.width, configTable.height)
   self:reset()
