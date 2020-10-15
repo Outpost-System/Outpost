@@ -3,6 +3,11 @@ local ui = {}
 -- Outpost User Interface 
 
 
+ui.event_labels = {}
+ui.displayed_labels = {}
+ui.label_queue = {}
+
+
 -- Define our containers and set properties
 
 ui.top = Adjustable.Container:new({name = "Character Details", y="0%", height = "6%", autoLoad = false})
@@ -229,7 +234,7 @@ ui.mpgauge.front:setStyleSheet([[background-color: QLinearGradient( x1: 0, y1: 0
     padding: 1;
   ]])
 
-ui.mpgauge.back:setStyleSheet([[background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #292335, stop: 1 #564c69);
+ui.mpgauge.back:setStyleSheet([[background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #232f35, stop: 1 #4b5e68);
     border-width: 1px;
     border-color: black;
     border-style: solid;
@@ -318,6 +323,186 @@ ui.ticker:setDelimiter("---")
 ui.ticker:enableAutoWidth()
 ui.ticker:setDisplayWidth(76)
 ui.ticker:setMessage("Outpost System - Put something cool here.")
+
+
+
+-- You said you wanted custom highlighting? You got it!
+
+function ui.header(self, title, extra)
+    local replen = 60 - (13 + title:len())
+    cecho("\n<sienna>+<burlywood>----- <sienna>[<slate_grey> "..title:title().." <sienna>] "..string.rep("<burlywood>-", replen).." <sienna>(<burlywood> "..getTime(true, "hh:mma - dd/MM/yyyy").." <sienna>) <burlywood>-----<sienna>+\n\n")
+end
+
+
+function ui.footer()
+    cecho("\n<sienna>+<burlywood>"..string.rep("-", 60).."<sienna> [<slate_grey> outpost-"..op.version.." <sienna>]<burlywood> "..string.rep("-", 11).."<sienna>+\n")
+end
+
+
+function ui.combatEcho(self, text, colour, width)
+    if not text then
+        text = tostring(text)
+        if not text then
+            debugc("Invalid argument #1 to combat_echo(): String expected.")
+            return
+        end
+    end
+
+    gaglp()
+
+    text = string.gsub(text, "%a", "%1 "):sub(1, -2)
+    text = "+    +    +    " .. text:upper() .. "    +    +    +"
+    
+    local width = width or 100
+    
+    if #text + 4 > width then
+        width = #text + 4
+    end
+
+    local lindent = math.floor(((width - #text) / 2) - 1)
+    local rindent = math.ceil(((width - #text) / 2) - 1)
+
+    local colours = {
+        red     = "<black:red>",
+        blue    = "<navajo_white:midnight_blue>",
+        green   = "<navajo_white:dark_green>",
+        yellow  = "<black:gold>",
+        purple  = "<navajo_white:DarkViolet>",
+        orange  = "<black:dark_orange>",
+    }
+
+    local selection = colours[colour] or colours["yellow"]
+
+    cecho("\n" .. selection .. "+" .. string.rep("-", (width - 2)) .. "+")
+    cecho("\n" .. selection .. "|" .. string.rep(" ", lindent) .. text .. string.rep(" ", rindent) .. "|")
+    cecho("\n" .. selection .. "+" .. string.rep("-", (width - 2)) .. "+")
+end
+
+
+function ui.oecho(self, txt, colour, pleft)
+    local colour = colour or "orange"
+    local pleft = pleft or 70
+    local pright = 80 - pleft
+    local left = create_line_gradient(true, pleft - string.len(txt)) .. "[ "
+    local middle = "<" .. colour .. ">" .. txt
+    local right = " |caaaaaa]" .. create_line_gradient(false, pright)
+    hecho("\n" .. left)
+    cecho(middle)
+    hecho(right)
+end
+
+
+function ui.createLineGradient(left, width)
+    local hex = left and "1" or "a"
+    local width = width or 10
+    local gradient = ""
+    local length = 0
+     
+    while length < width do
+        gradient = gradient .. "|c" .. string.rep(hex, 6) .. "-"
+        if left and hex == "9" then
+            hex = "a"
+        elseif left and hex ~= "a" then
+            hex = tostring(tonumber(hex) + 1)
+        elseif not left and width - length < 10 and hex == "a" then
+            hex = "9"
+        elseif not left and width - length < 10 and hex ~= "1" then
+            hex = tostring(tonumber(hex) - 1)
+        end
+
+        length = length + 1
+    end
+     
+    return gradient
+end
+
+
+function ui.eventLabel(self, text, duration)
+    local width, height = getMainWindowSize()
+    local strlen = text:len()
+    local label = utils.randomstring(8, "%l%d")
+
+    ui.event_labels[label] = {label = label, text = text, duration = (duration or 5)}
+    createLabel(label, 0, 0, 0, 0, 1)
+    setLabelStyleSheet(label, [[
+        background-color: gray;
+        border-radius: 16px;
+        border-width: 8px;
+        border-style: solid;
+        border-color: rgb(50, 0, 75);
+        text-align: center;
+    ]])
+               
+    resizeWindow(label, strLen * 25, 70)
+    local tab_len, offset = utils.counttable(ui.event_labels), 100
+    local top_pos = (height / 2.0) - (tab_len * 75)
+    if top_pos > 0 then
+        moveWindow(label, (width - (strLen * 25)) / 3, top_pos)
+    end
+
+    echo(label, [[<p style="font-size:24px; font-family: 'Zekton Regular';"><b><center><font color="brown">]] .. text .. [[</font></center></b></p>]])
+        
+    if top_pos > 0 then
+        showWindow(label)
+        table.insert(ui.displayed_labels, label)
+    else
+        hideWindow(label)
+        table.insert(ui.label_queue, label)
+    end
+
+    resetFormat()
+end
+
+
+function ui.eventLabelLoop()
+    if not ui.event_labels then return end
+    local to_hide = {}
+    local need_redraw = false
+
+    for index, label in pairs(ui.displayed_labels) do
+        ui.event_labels[label].duration = ui.event_labels[label].duration - 0.5
+        if ui.event_labels[label].duration <= 0 then
+            to_hide[label] = true
+            need_redraw = true
+        end
+    end
+
+    for i = 1, #(ui.displayed_labels) do
+        if not ui.displayed_labels[i] then 
+            break 
+        end
+            
+        if to_hide[ui.displayed_labels[i]] then
+            hideWindow(ui.displayed_labels[i])
+            ui.event_labels[ui.displayed_labels[i]] = nil
+            table.remove(ui.displayed_labels, i)
+            i = i - 1
+        end
+    end
+        
+    local width, height = getMainWindowSize()
+    if need_redraw or (#(ui.displayed_labels) == 0 and #(ui.label_queue) > 0) then
+        local brk = false
+        local iter = 1
+        while not brk do
+            local top_pos = (height / 2.0) - ((iter) * 75)
+            if ui.displayed_labels[iter] then
+                local label = ui.displayed_labels[iter]
+                moveWindow(label, (width - (#(ui.event_labels[label].text) * 25)) / 3, top_pos)
+            elseif top_pos >= 0 and #(ui.label_queue) > 0 then
+                local label = table.remove(ui.label_queue, 1)
+                table.insert(ui.displayed_labels, label)
+                moveWindow(label, (width - (#(ui.event_labels[label].text) * 25)) / 3, top_pos)
+                showWindow(label)
+            else
+                brk = true
+                break;
+            end
+                        
+            iter = iter + 1
+        end
+    end
+end
 
 
 

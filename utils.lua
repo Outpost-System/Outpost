@@ -113,9 +113,9 @@ function utils.deepCopy(self, orig)
     if orig_type == 'table' then
         copy = {}
         for orig_key, orig_value in next, orig, nil do
-            copy[deepcopy(orig_key)] = deepcopy(orig_value)
+            copy[utils.deepCopy(orig_key)] = utils.deepCopy(orig_value)
         end
-        setmetatable(copy, deepcopy(getmetatable(orig)))
+        setmetatable(copy, utils.deepCopy(getmetatable(orig)))
     else
         copy = orig
     end
@@ -124,7 +124,7 @@ end
 
 
 function utils.mergeTable(self, table1, table2)
-	local results = copytable(table1)
+	local results = utils.copyTable(table1)
 	for k, v in pairs(table2) do
 		table.insert(results, v)
 	end

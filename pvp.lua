@@ -32,7 +32,9 @@ function pvp.setTarget(self, target)
 		op.to_channel("Target: " .. op.target)
 		op.to_channel("Target: " .. op.target)
 	else
-		op.to_channel("Targeting: " .. op.target)
+		if op.announce_target then
+			op.to_channel("Targeting: " .. op.target)
+		end
 	end
 end
 

@@ -5,7 +5,7 @@ local GMCP = {}
 
 
 GMCP.items = {}
-GMCP.people = {}
+GMCP.players = {}
 GMCP.items.inv_items = {}
 GMCP.items.room_items = {}
 
@@ -175,6 +175,12 @@ local wounds = {
 			power = math.floor((gmcp.Char.Vitals.pow / gmcp.Char.Vitals.maxpow) * 100) -- Do we really need to create a percentage for power?
 		}
 	}
+
+
+	ui.hpgauge:setValue(op.vitals.levels.ratios.health, 100)
+	ui.mpgauge:setValue(op.vitals.levels.ratios.mana, 100)
+	ui.egogauge:setValue(op.vitals.levels.ratios.ego, 100)
+	ui.powergauge:setValue(op.vitals.levels.ratios.power, 100)
 end
 
 
@@ -366,33 +372,33 @@ registerAnonymousEventHandler("gmcp.Comm.Channel.Text", "GMCP.ChatCapture")
 
 
 
--- GMCP Room Players - Be mindful of Highmagic users and the Shadow Shroud! There's no gmcp.Room.Players event for these people
+-- GMCP Room Players - Be mindful of Highmagic users and the Shadow Shroud! There's no gmcp.Room.Players event for these players
 
-function GMCP.UpdatePeople()
-	GMCP.people = {}
+function GMCP.UpdatePlayers()
+	GMCP.players = {}
 	for key, name in pairs(gmcp.Room.Players) do
     	if gmcp.Room.Players[key].name ~= gmcp.Char.Status.name then
-			GMCP.people[gmcp.Room.Players[key].name] = gmcp.Room.Players[key].fullname
+			GMCP.players[gmcp.Room.Players[key].name] = gmcp.Room.Players[key].fullname
     	end
 	end
 end
 
-function GMCP.AddPerson()
-	GMCP.people[gmcp.Room.AddPlayer.name] = gmcp.Room.AddPlayer.fullname
-	ui.UpdateRoom()
+function GMCP.AddPlayer()
+	GMCP.players[gmcp.Room.AddPlayer.name] = gmcp.Room.AddPlayer.fullname
+	ui.UpdateRoomPlayers()
 end
 
-function GMCP.RemovePerson()
-  GMCP.people[gmcp.Room.RemovePlayer] = nil
-  ui.UpdateRoom()
+function GMCP.RemovePlayer()
+  GMCP.players[gmcp.Room.RemovePlayer] = nil
+  ui.UpdateRoomPlayers()
 end
 
 
 -- Event Handlers
 
-registerAnonymousEventHandler("gmcp.Room.Players", "GMCP.UpdatePeople")
-registerAnonymousEventHandler("gmcp.Room.AddPlayer", "GMCP.AddPerson")
-registerAnonymousEventHandler("gmcp.Room.RemovePlayer", "GMCP.RemovePerson")
+registerAnonymousEventHandler("gmcp.Room.Players", "GMCP.UpdatePlayers")
+registerAnonymousEventHandler("gmcp.Room.AddPlayer", "GMCP.AddPlayer")
+registerAnonymousEventHandler("gmcp.Room.RemovePlayer", "GMCP.RemovePlayer")
 
 
 

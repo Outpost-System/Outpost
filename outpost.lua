@@ -33,7 +33,7 @@ function LoadModules()
 		"GMCP", 
 		"pve", 
 		"pvp", 
-		--"qm", 
+		"qm", 
 		"timer", 
 		"ui",
 		"utils"
