@@ -1,6 +1,10 @@
 local qm = {}
 
 
+-- Original code from Mudlet forums user 'Oneymus'
+-- https://forums.mudlet.org/viewtopic.php?f=6&t=2128
+
+
 -- Outpost command queue.
 
 
