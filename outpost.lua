@@ -26,6 +26,7 @@ function LoadModules()
 		"beast", 
 		"chyron", 
 		--"dbg",
+		"defs",
 		"EMCO",
 		"fs", 
 		"genrun", 

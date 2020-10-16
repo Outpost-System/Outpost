@@ -215,6 +215,51 @@ function utils.concatAnd(self, t)
 end
 
 
+function utils.truncate(txt, length)
+	if not type(txt) == "string" or #txt <= length then return txt end
+
+	return string.sub(txt, 1, length-3) .. "..."
+end
+
+
+function utils.pairsByKeys(t, f)
+	local a = {}
+	for n in pairs(t) do 
+		table.insert (a, n) 
+	end
+
+	table.sort (a, f)
+
+	local i = 0
+	return function ()
+		i = i + 1
+		return a[i], t[a[i]]
+	end
+end
+
+
+function utils.loadTable(t, dFunc)
+	if not op.config[t] then
+		local file_loc = getMudletHomeDir().. "/op.config."..t..".lua"
+
+		op.config[t] = {}
+
+		if io.exists(file_loc) then 	
+			table.load(file_loc, op.config[t])
+		end
+
+	end	
+
+	if dFunc then
+		dFunc()
+	end
+end
+
+function utils.saveTable(t)
+	local file_loc = getMudletHomeDir().."/op.config." .. t .. ".lua"
+
+	table.save(file_loc, op.config[t])
+end
 
 
 return utils
