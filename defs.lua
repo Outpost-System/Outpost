@@ -9,7 +9,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     mercy = {
         raise = "rub mercy",
@@ -17,7 +18,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     perfection = {
         raise = "rub perfection",
@@ -25,7 +27,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     kingdom = {
         raise = "rub kingdom",
@@ -33,7 +36,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     waterwalk = {
         raise = "rub waterwalk",
@@ -41,7 +45,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     waterbreathe = {
         raise = "rub waterbreathe",
@@ -49,7 +54,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     levitation = {
         raise = "rub levitate",
@@ -57,7 +63,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     nimbus = {
         raise = "rub nimbus",
@@ -65,7 +72,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     acquisitio = {
         raise = "rub acquisitio",
@@ -73,7 +81,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     avarice = {
         raise = "blow avaricehorn",
@@ -81,7 +90,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     truetime = {
         raise = "wind truetime",
@@ -89,7 +99,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     goldenbox = {
         raise = "crank goldenbox",
@@ -97,7 +108,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     emeraldbox = {
         raise = "crank emeraldbox",
@@ -105,7 +117,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     azurebox = {
         raise = "crank azurebox",
@@ -113,7 +126,8 @@ defs.enchantments = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     protection = {
         raise = "read protection",
@@ -121,7 +135,8 @@ defs.enchantments = {
         required = {"op.bals.scroll"},
         consumed = {"op.bals.scroll"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
 }
 
@@ -132,7 +147,8 @@ defs.consumable = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     greentea = {
         raise = "sip greentea",
@@ -140,7 +156,8 @@ defs.consumable = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     oolongtea = {
         raise = "sip oolongtea",
@@ -148,7 +165,8 @@ defs.consumable = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     whitetea = {
         raise = "sip whitetea",
@@ -156,7 +174,8 @@ defs.consumable = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     greentea = {
         raise = "sip greentea",
@@ -164,7 +183,8 @@ defs.consumable = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     amberbeer = {
         raise = "sip amberbeer",
@@ -172,7 +192,8 @@ defs.consumable = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     darkbeer = {
         raise = "sip darkbeer",
@@ -180,7 +201,8 @@ defs.consumable = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     kafe = {
         raise = "eat kafe",
@@ -188,7 +210,8 @@ defs.consumable = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     lovepotion = {
         raise = "sip love",
@@ -196,7 +219,8 @@ defs.consumable = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     moonwater = {
         raise = "sip moonwater",
@@ -204,7 +228,8 @@ defs.consumable = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     quicksilver = {
         raise = "sip quicksilver",
@@ -212,7 +237,8 @@ defs.consumable = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
 }
 
@@ -223,7 +249,8 @@ defs.combat = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.balance"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
 }
 
@@ -234,7 +261,8 @@ defs.discernment = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     thirdeye = {
         raise = "thirdeye",
@@ -242,7 +270,8 @@ defs.discernment = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     sixthsense = {
         raise = "sixthsense",
@@ -250,7 +279,8 @@ defs.discernment = {
         required = "op.bals.dust",
         consumed = "op.bals.dust",
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     deathsight = {
         raise = "deathsight on",
@@ -258,7 +288,8 @@ defs.discernment = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     lipread = {
         raise = "lipread",
@@ -266,7 +297,8 @@ defs.discernment = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     powermask = {
         raise = "powermask",
@@ -275,7 +307,8 @@ defs.discernment = {
         consumed = {"op.bals.equilibrium"},
         power = 10,
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     aethersight = {
         raise = "aethersight on",
@@ -284,7 +317,8 @@ defs.discernment = {
         consumed = {"op.bals.equilibrium"},
         power = 3,
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
 }
 
@@ -295,7 +329,8 @@ defs.lowmagic = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     red = {
         raise = "invoke red",
@@ -303,7 +338,8 @@ defs.lowmagic = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     orange = {
         raise = "invoke orange",
@@ -312,7 +348,8 @@ defs.lowmagic = {
         consumed = {"op.bals.equilibrium"},
         power = 1,
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     yellow = {
         raise = "invoke yellow",
@@ -321,7 +358,8 @@ defs.lowmagic = {
         consumed = {"op.bals.equilibrium"},
         power = 3,
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     blue = {
         raise = "invoke blue",
@@ -329,7 +367,8 @@ defs.lowmagic = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     autumn = {
         raise = "invoke autumn",
@@ -337,7 +376,8 @@ defs.lowmagic = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     serpent = {
         raise = "invoke serpent",
@@ -346,7 +386,8 @@ defs.lowmagic = {
         consumed = {"op.bals.equilibrium"},
         power = 10,
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
 }
 
@@ -357,7 +398,8 @@ defs.discipline = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     truehearing = {
         raise = "truehearing",
@@ -365,7 +407,8 @@ defs.discipline = {
         required = "op.bals.steam",
         consumed = "op.bals.steam",
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     obliviousness = {
         raise = "obliviousness on",
@@ -373,7 +416,8 @@ defs.discipline = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     metawake = {
         raise = "metawake on",
@@ -381,7 +425,8 @@ defs.discipline = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     breathing = {
         raise = "hold breath",
@@ -389,7 +434,8 @@ defs.discipline = {
         required = {},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     selfishness = {
         raise = "selfishness",
@@ -397,7 +443,8 @@ defs.discipline = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
 }
 
@@ -409,7 +456,8 @@ defs.environment = {
         consumed = {"op.bals.balance"},
         power = 10,
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
 }
 
@@ -420,7 +468,8 @@ defs.influence = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
 }
 
@@ -431,7 +480,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     lawyerly = {
         raise = "attitude lawyerly",
@@ -439,7 +489,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     saintly = {
         raise = "attitude saintly",
@@ -447,7 +498,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     zealotry = {
         raise = "attitude zealotry",
@@ -455,7 +507,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     bully = {
         raise = "perform bully",
@@ -463,7 +516,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     sycophant = {
         raise = "perform sycophant",
@@ -471,7 +525,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     drunkard = {
         raise = "perform drunkard",
@@ -479,7 +534,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     bureaucrat = {
         raise = "perform bureaucrat",
@@ -487,7 +543,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     sober = {
         raise = "perform sober",
@@ -495,7 +552,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     gorgeous = {
         raise = "perform gorgeous",
@@ -503,7 +561,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     wounded = {
         raise = "perform wounded",
@@ -511,7 +570,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     vagabond = {
         raise = "perform vagabond",
@@ -519,7 +579,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     diplomat = {
         raise = "perform diplomat",
@@ -527,7 +588,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     review = {
         raise = "review on",
@@ -535,7 +597,8 @@ defs.dramatics = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
 }
 
@@ -546,7 +609,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     night = {
         raise = "spiritbond night",
@@ -554,7 +618,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     skunk = {
         raise = "spiritbond skunk",
@@ -562,7 +627,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     sun = {
         raise = "spiritbond sun",
@@ -570,7 +636,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
 	rock = {
 		raise = "spiritbond rock",
@@ -578,7 +645,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     moon = {
         raise = "spiritbond moon",
@@ -586,7 +654,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     crow = {
         raise = "spiritbond crow",
@@ -594,7 +663,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     tree = {
         raise = "spiritbond tree",
@@ -602,7 +672,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     groundhog = {
         raise = "spiritbond groundhog",
@@ -610,7 +681,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     trout = {
         raise = "spiritbond trout",
@@ -618,7 +690,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     wolf = {
         raise = "spiritbond wolf",
@@ -626,7 +699,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     bear = {
         raise = "spiritbond bear",
@@ -634,7 +708,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     stag = {
         raise = "spiritbond stag",
@@ -642,7 +717,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     monkey = {
         raise = "spiritbond monkey",
@@ -650,7 +726,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     horse = {
         raise = "spiritbond horse",
@@ -658,7 +735,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     river = {
         raise = "spiritbond river",
@@ -666,7 +744,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     snake = {
         raise = "spiritbond snake",
@@ -674,7 +753,8 @@ defs.totems = {
         required = {"op.bals.balance", "op.bals.equilibrium"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     },
     nature = {
         raise = "spiritbond nature",
@@ -683,7 +763,8 @@ defs.totems = {
         consumed = {"op.bals.equilibrium"},
         power = 5,
         defup = false,
-        keepup = false
+        keepup = false,
+		state = "down"
     }}
 
 defs.moon = {
@@ -693,7 +774,8 @@ defs.moon = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	waxing = {
 		raise = "moondance waxing",
@@ -701,7 +783,8 @@ defs.moon = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	shine = {
 		raise = "moondance shine",
@@ -710,7 +793,8 @@ defs.moon = {
 		consumed = {"op.bals.equilibrium"},
 		power = 4,
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	full = {
 		raise = "moondance full",
@@ -719,7 +803,8 @@ defs.moon = {
 		consumed = {"op.bals.equilibrium"},
 		power = 4,
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	}}
         
 defs.stag = {
@@ -729,7 +814,8 @@ defs.stag = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	greenman = {
 		raise = "paint face greenman",
@@ -737,7 +823,8 @@ defs.stag = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.balance"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	trueheart = {
 		raise = "paint face trueheart",
@@ -745,7 +832,8 @@ defs.stag = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.balance"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	bolting = {
 		raise = "bolting on",
@@ -753,7 +841,8 @@ defs.stag = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	lightning = {
 		raise = "paint face lightning",
@@ -761,7 +850,8 @@ defs.stag = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.balance"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	swiftstripes = {
 		raise = "paint face swiftstripes",
@@ -769,7 +859,8 @@ defs.stag = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.balance"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	stagform = {
 		raise = "stagform",
@@ -778,7 +869,8 @@ defs.stag = {
 		consumed = {"op.bals.equilibrium"},
 		power = 10,
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 }
         
@@ -789,7 +881,8 @@ defs.nature = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	blend = {
 		raise = "nature blend on",
@@ -797,7 +890,8 @@ defs.nature = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	rooting = {
 		raise = "nature rooting",
@@ -805,7 +899,8 @@ defs.nature = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 	torc = {
 		raise = "nature torc",
@@ -813,7 +908,8 @@ defs.nature = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 }
         
@@ -824,7 +920,8 @@ defs.druidry = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 }
 
@@ -835,7 +932,8 @@ defs.dreamweaving = {
 		required = {"op.bals.balance", "op.bals.equilibrium"},
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
-		keepup = false
+		keepup = false,
+		state = "down"
 	},
 }
         
