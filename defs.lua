@@ -512,6 +512,7 @@ defs.druidry = {
         required = { "balance", "equilibrium" }
     },
 }
+
 defs.dreamweaving = {
     control = {
         raise = "dreamweave control",
@@ -520,115 +521,188 @@ defs.dreamweaving = {
     },
 }
 
-
-
 defs.totems = {
     squirrel = {
         raise = "spiritbond squirrel",
         lower = "spiritrelease squirrel",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     night = {
         raise = "spiritbond night",
         lower = "spiritrelease night",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     skunk = {
         raise = "spiritbond skunk",
         lower = "spiritrelease skunk",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     sun = {
         raise = "spiritbond sun",
         lower = "spiritrelease sun",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     rock = {
         raise = "spiritbond rock",
         lower = "spiritrelease rock",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     moon = {
         raise = "spiritbond moon",
         lower = "spiritrelease moon",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     crow = {
         raise = "spiritbond crow",
         lower = "spiritrelease crow",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     tree = {
         raise = "spiritbond tree",
         lower = "spiritrelease tree",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     groundhog = {
         raise = "spiritbond groundhog",
         lower = "spiritrelease groundhog",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     trout = {
         raise = "spiritbond trout",
         lower = "spiritrelease trout",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     wolf = {
         raise = "spiritbond wolf",
         lower = "spiritrelease wolf",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     bear = {
         raise = "spiritbond bear",
         lower = "spiritrelease bear",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     stag = {
         raise = "spiritbond stag",
         lower = "spiritrelease stag",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     monkey = {
         raise = "spiritbond monkey",
         lower = "spiritrelease monkey",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     horse = {
         raise = "spiritbond horse",
         lower = "spiritrelease horse",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     river = {
         raise = "spiritbond river",
         lower = "spiritrelease river",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     snake = {
         raise = "spiritbond snake",
         lower = "spiritrelease snake",
         required = { "op.bals.balance", "op.bals.equilibrium" },
-        consumed = { "op.bals.equilibrium" }
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
     },
     nature = {
         raise = "spiritbond nature",
         lower = "spiritrelease nature",
         required = { "op.bals.balance", "op.bals.equilibrium" },
         consumed = { "op.bals.equilibrium" },
-        power = 5
+        power = 5,
+        defup = false,
+        keepup = false
     }
+}
+
+defs.moon = {
+    aura = {
+        raise = "moondance aura",
+        lower = "",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
+    },
+    waxing = {
+        raise = "moondance waxing",
+        lower = "",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" },
+        defup = false,
+        keepup = false
+    },
+    shine = {
+        raise = "moondance shine",
+        lower = "",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" },
+        power = 4,
+        defup = false,
+        keepup = false
+    },
+    full = {
+        raise = "moondance full",
+        lower = "",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" },
+        power = 4,
+        defup = false,
+        keepup = false
+    }
+
+}
