@@ -5,7 +5,7 @@ local fs = {}
 
 fs.limiters = {}
 
-function fs.on(key, time)	
+function fs.on(self, key, time)	
 	local delay = time or 0.5
 	-- Put check in here for affs only. Aeon only affects curing now.
 	--if affs:has("aeon")
@@ -20,12 +20,12 @@ function fs.on(key, time)
 end
 
 
-function fs.off(key)
+function fs.off(self, key)
 	fs.limiters[key] = nil
 end
 
 
-function fs.check(key)
+function fs.check(self, key)
 	local limiter = fs.limiters[key]
 	if limiter == nil then return true end
 

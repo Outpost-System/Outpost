@@ -9,7 +9,7 @@ local qm = {}
 
 
 qm.Check = function ()
-    if utils.countTable(qm.balqueue.queue) >=1 then
+    if utils.countTable(balqueue.queue) >=1 then
         if bals:has("balance")
         and bals:has("equilibrium") then
             balqueue:act()
