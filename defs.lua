@@ -937,3 +937,24 @@ defs.dreamweaving = {
 	},
 }
         
+
+
+-- Helper functions
+
+-- defs:defup() expects an indexed table of defences.
+
+function defup(args)
+	assert((type(args) == "table" and args[1]), "Incorrect type to 'defup()' - Indexed table expected, received "..type(args) or "nil")
+
+	for _, skillset_keys in pairs(defs) do
+		for skill, skill_keys in pairs(skillset_keys) do
+			if table.contains(args, skill) then
+				balqueue:add(skill_keys.raise, skill_keys.required, skill_keys.consumed)
+			end
+		end
+	end
+end
+
+
+
+return defs

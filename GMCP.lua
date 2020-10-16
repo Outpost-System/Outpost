@@ -385,12 +385,12 @@ end
 
 function GMCP.AddPlayer()
 	GMCP.players[gmcp.Room.AddPlayer.name] = gmcp.Room.AddPlayer.fullname
-	ui.UpdateRoomPlayers()
+	--ui.UpdateRoomPlayers()
 end
 
 function GMCP.RemovePlayer()
   GMCP.players[gmcp.Room.RemovePlayer] = nil
-  ui.UpdateRoomPlayers()
+  --ui.UpdateRoomPlayers()
 end
 
 
