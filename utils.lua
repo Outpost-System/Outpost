@@ -133,7 +133,7 @@ function utils.mergeTable(self, table1, table2)
 end
 
 
-function utils.countTable(self, tbl)
+function utils.countTable(tbl)
     local count = 0
     for _ in pairs(tbl) do
         count = count + 1

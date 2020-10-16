@@ -520,3 +520,115 @@ defs.dreamweaving = {
     },
 }
 
+
+
+defs.totems = {
+    squirrel = {
+        raise = "spiritbond squirrel",
+        lower = "spiritrelease squirrel",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    night = {
+        raise = "spiritbond night",
+        lower = "spiritrelease night",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    skunk = {
+        raise = "spiritbond skunk",
+        lower = "spiritrelease skunk",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    sun = {
+        raise = "spiritbond sun",
+        lower = "spiritrelease sun",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    rock = {
+        raise = "spiritbond rock",
+        lower = "spiritrelease rock",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    moon = {
+        raise = "spiritbond moon",
+        lower = "spiritrelease moon",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    crow = {
+        raise = "spiritbond crow",
+        lower = "spiritrelease crow",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    tree = {
+        raise = "spiritbond tree",
+        lower = "spiritrelease tree",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    groundhog = {
+        raise = "spiritbond groundhog",
+        lower = "spiritrelease groundhog",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    trout = {
+        raise = "spiritbond trout",
+        lower = "spiritrelease trout",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    wolf = {
+        raise = "spiritbond wolf",
+        lower = "spiritrelease wolf",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    bear = {
+        raise = "spiritbond bear",
+        lower = "spiritrelease bear",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    stag = {
+        raise = "spiritbond stag",
+        lower = "spiritrelease stag",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    monkey = {
+        raise = "spiritbond monkey",
+        lower = "spiritrelease monkey",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    horse = {
+        raise = "spiritbond horse",
+        lower = "spiritrelease horse",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    river = {
+        raise = "spiritbond river",
+        lower = "spiritrelease river",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    snake = {
+        raise = "spiritbond snake",
+        lower = "spiritrelease snake",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" }
+    },
+    nature = {
+        raise = "spiritbond nature",
+        lower = "spiritrelease nature",
+        required = { "op.bals.balance", "op.bals.equilibrium" },
+        consumed = { "op.bals.equilibrium" },
+        power = 5
+    }

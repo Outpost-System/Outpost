@@ -9,6 +9,7 @@ local qm = {}
 
 
 qm.Check = function ()
+    if not next(balqueue.queue) then return end
     if utils.countTable(balqueue.queue) >=1 then
         if bals:has("balance")
         and bals:has("equilibrium") then
@@ -136,19 +137,21 @@ qm.Queue = {
                 end
 
                 if will_action and fs:check('queue') then
-                    fs:on('queue', 0.5)
+                    fs:on('queue', 0.02)
                     local code = action.code
                     if type( code ) == "table" then
                         for _,each_code in pairs( code ) do
                             if type( each_code ) == "function" then
                                 each_code()
                             elseif type( each_code ) == "string" then
+                                if next(each_code) then e:debug("Sending ("..each_code..") via the do queue") end
                                 send( each_code )
                             end
                         end
                     elseif type( code ) == "function" then
                         code()
                     elseif type( code ) == "string" then
+                        e:debug("Sending ("..code..") via the do queue")
                         send( code )
                     end
 
@@ -241,5 +244,6 @@ qm.Queue = {
 }
 
 
+_G.balqueue = qm.Queue:new({"op.bals.balance", "op.bals.equilibrium"})
 
 return qm

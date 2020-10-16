@@ -111,13 +111,13 @@ end
 
 
 function aegis.hasAff(self, name, aff)
-	return op.succor[name].aff == true and true or false
+	return op.succor[name].afflictions[aff] and true or false
 end
 
 
 function aegis.getSuccorAffs(name)
 	local affs = {}
-	for _, v in ipairs(op.succor[name]) do
+	for _, v in ipairs(op.succor[name].afflictions) do
 		if v ~= "blind"
     	and v ~= "deaf"
     	and v ~= "an insomniac" then
