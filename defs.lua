@@ -2,6 +2,28 @@ local defs = {}
 
 -- Outpost defence handling
 
+-- Helper functions
+
+-- defs:defup() expects an indexed table of defences.
+
+function defs.defup(args)
+	assert((type(args) == "table" and args[1]), "Incorrect type to 'defup()' - Indexed table expected, received "..type(args) or "nil")
+--display(args)
+	for _, skillset_keys in pairs(defs.tree) do
+		--display(skillset_keys)
+		for skill, skill_keys in pairs(skillset_keys) do
+			if table.contains(args, skill) then
+				--display(skill_keys)
+				--skillset_keys()
+				balqueue:add(skill_keys.raise, skill_keys.required, skill_keys.consumed)
+			end
+		end
+	end
+end
+
+
+-- Defence trees
+
 defs.tree = {}
 
 defs.tree.enchantments = {
@@ -938,27 +960,6 @@ defs.tree.dreamweaving = {
 		state = "down"
 	},
 }
-        
-
-
--- Helper functions
-
--- defs:defup() expects an indexed table of defences.
-
-function defs.defup(args)
-	assert((type(args) == "table" and args[1]), "Incorrect type to 'defup()' - Indexed table expected, received "..type(args) or "nil")
---display(args)
-	for _, skillset_keys in pairs(defs.tree) do
-		--display(skillset_keys)
-		for skill, skill_keys in pairs(skillset_keys) do
-			if table.contains(args, skill) then
-				--display(skill_keys)
-				--skillset_keys()
-				balqueue:add(skill_keys.raise, skill_keys.required, skill_keys.consumed)
-			end
-		end
-	end
-end
 
 
 
