@@ -1070,6 +1070,20 @@ function ndb.gotnamelist(_, checkall)
     end
 end
 
+function ndb.isally(name)
+  local p = ndb.getname(name)
+  if not p then
+    return false
+  end
+  local org = p.org
+  if (org and org ~= "" and ndb.conf.orgpolitics[org] == "ally") then
+    return true
+  else
+    return false
+  end
+end
+
+
 registerAnonymousEventHandler("sysLoadEvent", "ndb.loadhighlights")
 registerAnonymousEventHandler("sysLoadEvent", "ndb.setupconfigs")
 registerAnonymousEventHandler("NameDB got enemy list", "ndb.gotenemylist")
