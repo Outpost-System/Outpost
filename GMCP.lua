@@ -383,21 +383,21 @@ registerAnonymousEventHandler("gmcp.Comm.Channel.Text", "GMCP.ChatCapture")
 -- GMCP Room Players - Be mindful of Highmagic users and the Shadow Shroud! There's no gmcp.Room.Players event for these players
 
 function GMCP.UpdatePlayers()
-	GMCP.players = {}
+	op.players = {}
 	for key, name in pairs(gmcp.Room.Players) do
     	if gmcp.Room.Players[key].name ~= gmcp.Char.Status.name then
-			GMCP.players[gmcp.Room.Players[key].name] = gmcp.Room.Players[key].fullname
+			op.players[gmcp.Room.Players[key].name] = gmcp.Room.Players[key].fullname
     	end
 	end
 end
 
 function GMCP.AddPlayer()
-	GMCP.players[gmcp.Room.AddPlayer.name] = gmcp.Room.AddPlayer.fullname
+	op.players[gmcp.Room.AddPlayer.name] = gmcp.Room.AddPlayer.fullname
 	--ui.UpdateRoomPlayers()
 end
 
 function GMCP.RemovePlayer()
-  GMCP.players[gmcp.Room.RemovePlayer] = nil
+  op.players[gmcp.Room.RemovePlayer] = nil
   --ui.UpdateRoomPlayers()
 end
 

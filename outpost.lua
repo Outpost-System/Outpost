@@ -33,6 +33,7 @@ function LoadModules()
 		"genrun", 
 		"GMCP",
 		"map",
+		"ndb",
 		"pve", 
 		"pvp", 
 		"qm", 
