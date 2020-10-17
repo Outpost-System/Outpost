@@ -63,6 +63,72 @@ function pvp.waning()
  	end
  end
 
+
+-- Hexes Control :)
+
+local function push (h, k, v)
+	assert(v ~= nil, "cannot push nil")
+	local t = h.nodes
+	local h = h.heap
+	local n = #h + 1
+	local p = (n - n % 2) / 2
+	h[n] = k
+	t[k] = v
+	while n > 1 and t[h[p]] > v do 
+		h[p], h[n] = h[n], h[p]
+		n = p
+		p = (n - n % 2) / 2
+	end
+end
+
+local function peek (h)
+	local t = h.nodes
+	local h = h.heap
+	local s = #h
+	assert(s > 0, "cannot pop from empty heap")
+	local e = h[1] 
+	local r = t[e]
+	return e, r
+end
+
+local function pop (h)
+	local t = h.nodes
+	local h = h.heap
+	local s = #h
+	assert(s > 0, "cannot pop from empty heap")
+	local e = h[1]
+  	local r = t[e]
+	local v = t[h[s]]
+	h[1] = h[s]
+	h[s] = nil 
+  	t[e] = nil
+  	s = s - 1
+  	local n = 1 
+  	local p = 2 * n
+	if s > p and t[h[p]] > t[h[p + 1]] then
+		p = 2 * n + 1
+	end
+	while s >= p and t[h[p]] < v do 
+		h[p], h[n] = h[n], h[p]
+		n = p
+		p = 2 * n
+		if s > p and t[h[p]] > t[h[p + 1]] then
+			p = 2 * n + 1
+		end
+	end
+	
+	return e, r
+end
+
+local function isempty (h) return h.heap[1] == nil end
+
+
+function pvp.hexesHeap()
+	return setmetatable({heap = {}, nodes = {}},
+		{__index = {push=push, peek=peek, pop=pop, isempty=isempty}})
+end
+
+
  function pvp.chooseNextAttack(self, target, hp, mp, ego, action)
  	
  end
