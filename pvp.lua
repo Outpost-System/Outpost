@@ -3,8 +3,9 @@ local pvp = {}
 -- Outpost Combat Functionality.
 
 
-function pvp.setTarget(self, target)
-	op.target = target:title()
+function pvp.setTarget(target_array)
+	op.targets = target_array
+	op.target = target_array[1]:title()
 
 	e:echo("Targeting: " .. op.target)
 
@@ -37,7 +38,7 @@ function pvp.setTarget(self, target)
 		op.to_channel("Target: " .. op.target)
 	else
 		if op.announce_target then
-			op.to_channel("Targeting: " .. op.target)
+			op.to_channel("Targeting prios set: Next target: " .. op.target)
 		end
 	end
 end

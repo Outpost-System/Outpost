@@ -325,7 +325,6 @@ end
 
 function GMCP.ItemsEvent(self, event)
 	local event = event:match("%w+$")
-	display(event)
 	local func = loadstring("return GMCP.items:"..event.."()")
 	local x, y = func()
 	op.invitems = GMCP.items.inv_items

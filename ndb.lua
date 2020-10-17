@@ -4,6 +4,8 @@ local ndb = {}
 
 -- Credit for most of this code goes to Vadi@Mudlet. Thanks :)
 
+ndb.conf = {}
+ndb.conf.orgpolitics = {}
 ndb.version = "0.2.0"
 ndb.valid = {}
 
@@ -90,7 +92,6 @@ function ndb.downloaddone(_, filepath)
         enemy = 1
     end
     local person = {{name = t.name, fullname = t.fullname, level = t.level, faction = t.faction:title(), org = t.city:title(), guild = t.guild:title(), divine = div, orgenemy = enemy}}
-    
     -- Fix for Celestians
     if person[1].org == "Celest" then
         person[1].org = "New Celest"
@@ -1087,5 +1088,10 @@ end
 registerAnonymousEventHandler("sysLoadEvent", "ndb.loadhighlights")
 registerAnonymousEventHandler("sysLoadEvent", "ndb.setupconfigs")
 registerAnonymousEventHandler("NameDB got enemy list", "ndb.gotenemylist")
+registerAnonymousEventHandler("NameDB download done", "ndb.addhighlightname")
+registerAnonymousEventHandler("NameDB got name list", "ndb.gotnamelist")
+registerAnonymousEventHandler("sysDownloadDone", "ndb.downloaddone")
+registerAnonymousEventHandler("sysDownloadError", "ndb.downloaderror")
+
 
 return ndb
