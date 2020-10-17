@@ -2,7 +2,9 @@ local defs = {}
 
 -- Outpost defence handling
 
-defs.enchantments = {
+defs.tree = {}
+
+defs.tree.enchantments = {
     beauty = {
         raise = "rub beauty",
         lower = "",
@@ -140,7 +142,7 @@ defs.enchantments = {
     },
 }
 
-defs.consumable = {
+defs.tree.consumable = {
     blacktea = {
         raise = "sip blacktea",
         lower = "",
@@ -242,7 +244,7 @@ defs.consumable = {
     },
 }
 
-defs.combat = {
+defs.tree.combat = {
     keeneye = {
         raise = "keeneye on",
         lower = "keeneye off",
@@ -254,7 +256,7 @@ defs.combat = {
     },
 }
 
-defs.discernment = {
+defs.tree.discernment = {
     nightsight = {
         raise = "nightsight",
         lower = "",
@@ -322,7 +324,7 @@ defs.discernment = {
     },
 }
 
-defs.lowmagic = {
+defs.tree.lowmagic = {
     circle = {
         raise = "invoke circle",
         lower = "",
@@ -391,7 +393,7 @@ defs.lowmagic = {
     },
 }
 
-defs.discipline = {
+defs.tree.discipline = {
     insomnia = {
         raise = "insomnia",
         lower = "relax insomnia",
@@ -448,7 +450,7 @@ defs.discipline = {
     },
 }
 
-defs.environment = {
+defs.tree.environment = {
     attunement = {
         raise = "attune",
         lower = "attune release",
@@ -461,7 +463,7 @@ defs.environment = {
     },
 }
 
-defs.influence = {
+defs.tree.influence = {
     charismaticaura = {
         raise = "charismaticaura on",
         lower = "charismaticaura off",
@@ -473,7 +475,7 @@ defs.influence = {
     },
 }
 
-defs.dramatics = {
+defs.tree.dramatics = {
     performance = {
         raise = "performance on",
         lower = "performance off",
@@ -602,7 +604,7 @@ defs.dramatics = {
     },
 }
 
-defs.totems = {
+defs.tree.totems = {
     squirrel = {
         raise = "spiritbond squirrel",
         lower = "spiritrelease squirrel",
@@ -767,7 +769,7 @@ defs.totems = {
 		state = "down"
     }}
 
-defs.moon = {
+defs.tree.moon = {
 	aura = {
 		raise = "moondance aura",
 		lower = "",
@@ -807,7 +809,7 @@ defs.moon = {
 		state = "down"
 	}}
         
-defs.stag = {
+defs.tree.stag = {
 	staghide = {
 		raise = "staghide",
 		lower = "",
@@ -874,7 +876,7 @@ defs.stag = {
 	},
 }
         
-defs.nature = {
+defs.tree.nature = {
 	barkskin = {
 		raise = "nature barkskin",
 		lower = "",
@@ -913,7 +915,7 @@ defs.nature = {
 	},
 }
         
-defs.druidry = {
+defs.tree.druidry = {
 	treebourne = {
 		raise = "forestcast treebourne",
 		lower = "",
@@ -925,7 +927,7 @@ defs.druidry = {
 	},
 }
 
-defs.dreamweaving = {
+defs.tree.dreamweaving = {
 	control = {
 		raise = "dreamweave control",
 		lower = "",
@@ -943,15 +945,15 @@ defs.dreamweaving = {
 
 -- defs:defup() expects an indexed table of defences.
 
-function defs.defup(self, args)
+function defs.defup(args)
 	assert((type(args) == "table" and args[1]), "Incorrect type to 'defup()' - Indexed table expected, received "..type(args) or "nil")
 --display(args)
-	for _, skillset_keys in pairs(defs) do
-		display(skillset_keys)
+	for _, skillset_keys in pairs(defs.tree) do
+		--display(skillset_keys)
 		for skill, skill_keys in pairs(skillset_keys) do
 			if table.contains(args, skill) then
 				--display(skill_keys)
-				skillset_keys()
+				--skillset_keys()
 				balqueue:add(skill_keys.raise, skill_keys.required, skill_keys.consumed)
 			end
 		end

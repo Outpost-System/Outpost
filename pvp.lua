@@ -15,9 +15,13 @@ function pvp.setTarget(self, target)
 	end
 
 	if ndb.isenemy(target) or op.arena_target then
-		qm.balqueue:add("order entourage kill "..target)
-		qm.balqueue:add("order "..op.fae.leprechaun.." follow "..target)
-		send("\n")
+		if GMCP.HasSkill("leprechaun") then
+			qm.balqueue:add("order entourage kill "..target)
+			qm.balqueue:add("order "..op.fae.leprechaun.." follow "..target)
+			send("\n")
+		else
+			-- Handle other skillset preliminaries here
+		end
 	else
 		qm.balqueue:add("faecall")
 		qm.balqueue:add("order entourage passive")

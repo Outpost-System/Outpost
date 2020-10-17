@@ -24,6 +24,7 @@ function LoadModules()
 		"bals", 
 		--"bash",
 		"beast", 
+		"can",
 		"chyron", 
 		--"dbg",
 		"defs",

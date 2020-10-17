@@ -213,6 +213,14 @@ function GMCP.PopulateSkillTree()
 end
 
 
+function GMCP.HasSkill(skill)
+	for _, skillset in pairs(op.skills) do
+		if table.contains(skillset, skill) then
+			return true
+		end
+	end
+end
+
 
 -- Handles all charitems events: room and inv. Populates op.roomitems and op.invitems
 
