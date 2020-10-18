@@ -946,17 +946,111 @@ defs.tree.druidry = {
 }
 
 defs.tree.dreamweaving = {
-	control = {
-		raise = "dreamweave control",
-		lower = "",
-		required = {"op.bals.balance", "op.bals.equilibrium"},
-		consumed = {"op.bals.equilibrium"},
-		defup = false,
-		keepup = false,
-		state = "down"
-	},
+    control = {
+        raise = "dreamweave control",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = "down"
+    },
 }
 
+defs.tree.healing = {
+    sensory = {
+        raise = "radiate sensory",
+        lower = "cut aura me sensory",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = "down"
+    },
+
+    fractures = {
+        raise = "radiate fractures",
+        lower = "cut aura me fractures",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = "down"
+    },
+    auric = {
+        raise = "radiate auric",
+        lower = "cut aura me auric",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = "down"
+    },
+    choleric = {
+        raise = "radiate choleric",
+        lower = "cut aura me choleric",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = "down"
+    },
+    mania = {
+        raise = "radiate mania",
+        lower = "cut aura me mania",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = "down"
+    },
+    neurosis = {
+        raise = "radiate neurosis",
+        lower = "cut aura me neurosis",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = "down"
+    },
+    phlegmatic = {
+        raise = "radiate phlegmatic",
+        lower = "cut aura me phlegmatic",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = "down"
+    },
+    regenerate = {
+        raise = "radiate regenerate",
+        lower = "cut aura me regenerate",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = "down"
+    },
+    sanguine = {
+        raise = "radiate sanguine",
+        lower = "cut aura me sanguine",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = "down"
+    },
+    vitality = {
+        raise = "radiate vitality",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = "down",
+        power = 5
+    },
+}
 
 
 return defs

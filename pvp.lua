@@ -5,8 +5,7 @@ local pvp = {}
 
 function pvp.setTarget(target_array)
 	op.targets = target_array
-	op.target = target_array[1]:title()
-
+	op.target = target_array[1]
 	e:echo("Targeting: " .. op.target)
 
 	if op.target ~= "Nothing" then
@@ -15,18 +14,20 @@ function pvp.setTarget(target_array)
 		send("enemy " .. op.target)
 	end
 
-	if ndb.isenemy(target) or op.arena_target then
+	if ndb.isenemy(op.target) or op.arena_target then
 		if GMCP.HasSkill("leprechaun") then
-			qm.balqueue:add("order entourage kill "..target)
-			qm.balqueue:add("order "..op.fae.leprechaun.." follow "..target)
-			send("\n")
+			qm.balqueue:add("order entourage kill "..op.target)
+			qm.balqueue:add("order "..op.fae.leprechaun.." follow "..op.target)
+			qm.Check()
 		else
 			-- Handle other skillset preliminaries here
 		end
 	else
-		qm.balqueue:add("faecall")
-		qm.balqueue:add("order entourage passive")
-		send("\n")
+		if GMCP.HasSkill("leprechaun") then
+			balqueue:add("faecall")
+			balqueue:add("order entourage passive")
+			qm.Check()
+		end
 	end
 
 	if op.mark_target then killTrigger(op.mark_target) end
