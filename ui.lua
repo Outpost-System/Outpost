@@ -379,13 +379,14 @@ function ui.combatEcho(self, text, colour, width)
 end
 
 
-function ui.oecho(self, txt, colour, pleft)
+function ui.oecho(txt, colour, pleft)
+    deleteLine()
     local colour = colour or "orange"
-    local pleft = pleft or 70
-    local pright = 80 - pleft
-    local left = create_line_gradient(true, pleft - string.len(txt)) .. "[ "
+    local pleft = pleft or 90
+    local pright = 100 - pleft
+    local left = ui.createLineGradient(true, pleft - string.len(txt)) .. "[ "
     local middle = "<" .. colour .. ">" .. txt
-    local right = " |caaaaaa]" .. create_line_gradient(false, pright)
+    local right = " |caaaaaa]" .. ui.createLineGradient(false, pright)
     hecho("\n" .. left)
     cecho(middle)
     hecho(right)

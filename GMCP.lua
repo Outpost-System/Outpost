@@ -213,6 +213,14 @@ function GMCP.PopulateSkillTree()
 end
 
 
+function GMCP.HasSkill(skill)
+	for _, skillset in pairs(op.skills) do
+		if table.contains(skillset, skill) then
+			return true
+		end
+	end
+end
+
 
 -- Handles all charitems events: room and inv. Populates op.roomitems and op.invitems
 
@@ -317,7 +325,6 @@ end
 
 function GMCP.ItemsEvent(self, event)
 	local event = event:match("%w+$")
-	display(event)
 	local func = loadstring("return GMCP.items:"..event.."()")
 	local x, y = func()
 	op.invitems = GMCP.items.inv_items
@@ -375,22 +382,22 @@ registerAnonymousEventHandler("gmcp.Comm.Channel.Text", "GMCP.ChatCapture")
 -- GMCP Room Players - Be mindful of Highmagic users and the Shadow Shroud! There's no gmcp.Room.Players event for these players
 
 function GMCP.UpdatePlayers()
-	GMCP.players = {}
+	op.players = {}
 	for key, name in pairs(gmcp.Room.Players) do
     	if gmcp.Room.Players[key].name ~= gmcp.Char.Status.name then
-			GMCP.players[gmcp.Room.Players[key].name] = gmcp.Room.Players[key].fullname
+			op.players[gmcp.Room.Players[key].name] = gmcp.Room.Players[key].fullname
     	end
 	end
 end
 
 function GMCP.AddPlayer()
-	GMCP.players[gmcp.Room.AddPlayer.name] = gmcp.Room.AddPlayer.fullname
-	ui.UpdateRoomPlayers()
+	op.players[gmcp.Room.AddPlayer.name] = gmcp.Room.AddPlayer.fullname
+	--ui.UpdateRoomPlayers()
 end
 
 function GMCP.RemovePlayer()
-  GMCP.players[gmcp.Room.RemovePlayer] = nil
-  ui.UpdateRoomPlayers()
+  op.players[gmcp.Room.RemovePlayer] = nil
+  --ui.UpdateRoomPlayers()
 end
 
 

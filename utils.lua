@@ -202,8 +202,8 @@ function utils.asciiToNum(self, c)
 end
 
 
-function utils.concatAnd(self, t)
-	assert(type(t) == "table", "concand: argument must be a table")
+function utils.concatAnd(t)
+	assert(type(t) == "table", "utils.concatAnd(): argument must be a table")
 
 	if #t == 0 then
 		return ""
