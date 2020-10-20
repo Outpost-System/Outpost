@@ -100,8 +100,8 @@ for aura, afft in pairs(aegis.r) do
 end
 
 
-function aegis.getAff(self, diag_line)
-	return self.affmap[diag_line].aff, self.affmap[diag_line].aura
+function aegis.getAff(diag_line)
+	return aegis.affmap[diag_line].aff, aegis.affmap[diag_line].aura
 end
 
 
@@ -120,7 +120,9 @@ function aegis.getSuccorAffs(name)
 	for _, v in ipairs(op.succor[name].afflictions) do
 		if v ~= "blind"
     	and v ~= "deaf"
-    	and v ~= "an insomniac" then
+    	and v ~= "an insomniac"
+      and v ~= "unable to be masochistic"
+      and v ~= "sprawled on the ground" then
 			affs[#affs+1] = v
     	end
 	end

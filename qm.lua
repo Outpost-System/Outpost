@@ -244,6 +244,6 @@ qm.Queue = {
 }
 
 
-_G.balqueue = qm.Queue:new({"op.bals.balance", "op.bals.equilibrium"})
+_G.balqueue = qm.Queue:new({"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"})
 
 return qm

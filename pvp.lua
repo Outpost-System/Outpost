@@ -5,7 +5,7 @@ local pvp = {}
 
 function pvp.setTarget(target_array)
 	op.targets = target_array
-	op.target = target_array[1]
+	op.target = target_array[1]:title()
 	e:echo("Targeting: " .. op.target)
 
 	if op.target ~= "Nothing" then
