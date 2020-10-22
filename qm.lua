@@ -245,5 +245,13 @@ qm.Queue = {
 
 
 _G.balqueue = qm.Queue:new({"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"})
+_G.beastqueue = qm.Queue:new({"op.bals.beast"})
+_G.pookaqueue = qm.Queue:new({"op.bals.pooka"})
+_G.beastqueue = qm.Queue:new({"op.bals.beast"})
+_G.nihitailqueue = qm.Queue:new({"op.bals.nihitail"})
+_G.timeslipqueue = qm.Queue:new({"op.bals.timeslip"})
+_G.hexesqueue = qm.Queue:new({"op.bals.hexes"})
+_G.orgpotionqueue = qm.Queue:new({"op.bals.orgpotion"})
+
 
 return qm

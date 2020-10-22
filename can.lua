@@ -4,5 +4,5 @@ local can = {}
 
 
 function can.full()
-
+	return true
 end
