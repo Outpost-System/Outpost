@@ -42,6 +42,13 @@ ui.left:show()
 ui.right:show()
 
 
+function ui.showContainers()
+    ui.top:show()
+    ui.bottom:show()
+    ui.left:show()
+    ui.right:show()
+end
+
 
 -- First we create our border labels. These are 1% bigger than all elements so as to contain a border-image.
 
