@@ -44,7 +44,7 @@ function genrun.autowalker:init(rooms)
     rooms = {}
   end
   if type(rooms) ~= "table" then
-    genrun.echo("You tried to initialize the autowalker with an argument, and it was not a table of room ID numbers. Try again")
+    e:echo("You tried to initialize the autowalker with an argument, and it was not a table of room ID numbers. Try again")
     return
   end
 
