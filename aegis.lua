@@ -105,12 +105,12 @@ function aegis.getAff(diag_line)
 end
 
 
-function aegis.getAura(self, aff)
+function aegis.getAura(aff)
   return aegis.t[aff]
 end
 
 
-function aegis.hasAff(self, name, aff)
+function aegis.hasAff(name, aff)
 	return op.succor[name].afflictions[aff] and true or false
 end
 
@@ -139,7 +139,7 @@ function aegis.getCureByAff(aff)
 end
 
 
-function aegis.cure(self, name)
+function aegis.cure(name)
 	local superurgent = {"aeon", "anorexia", "asthma", "crushedwindpipe", "ectoplasm", "slickness", "slitthroat", "throatlock"}
 
 	assert(op.succor[name])
@@ -157,7 +157,7 @@ function aegis.cure(self, name)
 end
 
 
-function aegis.stop(self, name)
+function aegis.stop(name)
 	if name then
 		e:echo("Stopped healing %s.", name)
 	else 
@@ -169,7 +169,7 @@ function aegis.stop(self, name)
 end
 
 
-function aegis.succor(self, aff, bleedamt, attr)
+function aegis.succor(aff, bleedamt, attr)
   assert(aff)
   if bleedamt and tonumber(bleedamt) < 200 then return end
   self.affs[#self.affs+1] = aff
