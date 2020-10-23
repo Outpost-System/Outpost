@@ -36,6 +36,11 @@ ui.bottom:lockContainer("full")
 ui.left:lockContainer("full")
 ui.right:lockContainer("full")
 
+ui.top:show()
+ui.bottom:show()
+ui.left:show()
+ui.right:show()
+
 
 
 -- First we create our border labels. These are 1% bigger than all elements so as to contain a border-image.
