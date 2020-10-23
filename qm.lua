@@ -22,7 +22,7 @@ end
 qm.Utility = {}
 
 function qm.Utility.getField(field)
-    local value = op
+    local value = _G
     for key in field:gfind("[%w_]+") do
         value = value[key]
     end
