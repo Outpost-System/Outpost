@@ -22,7 +22,7 @@ end
 qm.Utility = {}
 
 function qm.Utility.getField(field)
-    local value = _G
+    local value = op
     for key in field:gfind("[%w_]+") do
         value = value[key]
     end
@@ -244,14 +244,14 @@ qm.Queue = {
 }
 
 
-_G.balqueue = qm.Queue:new({"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"})
-_G.beastqueue = qm.Queue:new({"op.bals.beast"})
-_G.pookaqueue = qm.Queue:new({"op.bals.pooka"})
-_G.healingqueue = qm.Queue:new({"op.bals.heal"})
-_G.nihitailqueue = qm.Queue:new({"op.bals.nihitail"})
-_G.timeslipqueue = qm.Queue:new({"op.bals.timeslip"})
-_G.hexesqueue = qm.Queue:new({"op.bals.hexes"})
-_G.orgpotionqueue = qm.Queue:new({"op.bals.orgpotion"})
+op.balqueue = qm.Queue:new({"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"})
+op.beastqueue = qm.Queue:new({"op.bals.beast"})
+op.pookaqueue = qm.Queue:new({"op.bals.pooka"})
+op.healingqueue = qm.Queue:new({"op.bals.heal"})
+op.nihitailqueue = qm.Queue:new({"op.bals.nihitail"})
+op.timeslipqueue = qm.Queue:new({"op.bals.timeslip"})
+op.hexesqueue = qm.Queue:new({"op.bals.hexes"})
+op.orgpotionqueue = qm.Queue:new({"op.bals.orgpotion"})
 
 
 return qm
