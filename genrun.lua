@@ -2,157 +2,144 @@ local genrun = {}
 
 -- Outpost Bashing Module. Enjoy :)
 
-genrun.config = {}
+--[===[
+The MIT License (MIT)
 
-function genrun.init(self, rs)
-	if rs and type(rs) ~= "boolean" then
-		e.error("genrun:init() error. Supplied argument must be a boolean.")
-		return
-	end
+Copyright (c) 2020 Damian Monogue
 
-	timer:start("genrun plot time")
-	e:echo("Genrunner plotting: " .. getRoomAreaName(getRoomArea(mmp.currentroom)) .. "...")
-	
-	local r = getAreaRooms(getRoomArea(mmp.currentroom))
-	
-	genrun.rooms = {}
-	genrun.reverse_path = {}
-	
-	for _, vnum in ipairs(r) do
-		if getPath(mmp.currentroom, vnum) then
-			genrun.rooms[vnum] = {}
-			local exits = getRoomExits(vnum)
-			for direction, to_room in pairs(exits) do
-				genrun.rooms[vnum][to_room] = {
-					dir = direction,
-				}
-			end
-		end
-	end
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-	genrun.rooms[mmp.currentroom] = {}
-	
-	local exits = getRoomExits(mmp.currentroom)
-	
-	for direction, to_room in pairs(exits) do
-		genrun.rooms[mmp.currentroom][to_room] = {
-			dir = direction,
-		}
-	end
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-	genrun.rooms_left_to_touch = {}
-	genrun.starting_room = mmp.currentroom
-	
-	for vnum, exits in pairs(self.rooms) do
-		if vnum ~= starting_room then
-			genrun.rooms_left_to_touch[vnum] = true
-		end
-	end
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+--]===]
 
-	e:echo("Parsed " .. counttable(genrun.rooms_left_to_touch) .. " rooms. (Took " .. timer:stop("genrun plot time") .. ")\n")
-
-	local area = gmcp.Room.Info.area
-	local mobs = pve.mobs_by_area[area]
-
-	e:echo("Detected for this run:\n")
-	e:echo(concand(mobs)..".\n")
-
-	e:echo("All set! Type 'op genrun go' to start.")
-	genrun.config.return_to_start = rs
-
-	genrun.highlight_rooms()
-
-	op.genrunning = true
-
-	raiseEvent("outpost genrun start")
+genrun.autowalker = {}
+genrun.autowalker.config = {}
+if genrun.autowalker.enabled == nil then
+  genrun.autowalker.enabled = false
 end
 
+-- Set to false if you don't want to go back to the room you start the walker in when it's done
+genrun.autowalker.config.returnToStart = true
 
-function genrun.walk()
-	for links_to, room_info in pairs(genrun.rooms[mmp.currentroom]) do
-		if genrun.rooms_left_to_touch[links_to] then
-			walking_to = links_to
-			table.insert(genrun.reverse_path, mmp.currentroom)
-			return mmp.gotoRoom(walking_to)
-		end
-	end
-	
-	genrun.backtrack()
+function genrun.findAndRemove(targetTable, item)
+  table.remove(targetTable, table.index_of(targetTable, item))
 end
 
+function genrun.autowalker:init(rooms)
+  if rooms == nil then
+    rooms = {}
+  end
+  if type(rooms) ~= "table" then
+    genrun.echo("You tried to initialize the autowalker with an argument, and it was not a table of room ID numbers. Try again")
+    return
+  end
 
-function genrun.backtrack()
-	genrun.backtracking = true
-	if #genrun.reverse_path > 0 then
-		genrun.walking_to = table.remove(genrun.reverse_path)
-		return mmp.gotoRoom(genrun.walking_to)
-	else
-		e:echo("Hunting for this area has been completed.")
-		raiseEvent("outpost genrun completed")
-	end
+  if genrun.autowalker.enabled then
+    return
+  end
+  genrun.autowalker.enabled = true
+  local currentRoom = mmp.currentroom
+  genrun.autowalker.currentRoom = currentRoom
+  genrun.autowalker.startingRoom = currentRoom
+  local area = getRoomArea(currentRoom)
+  genrun.autowalker.area = area
+  if #rooms ~= 0 then
+    area = getRoomArea(rooms[1])
+    genrun.autowalker.area = area
+    if table.contains(rooms, currentRoom) then
+      genrun.findAndRemove(rooms, currentRoom)
+    end
+    genrun.autowalker.remainingRooms = table.deepcopy(rooms)
+  else
+    local areaRooms = getAreaRooms(area)
+    genrun.findAndRemove(areaRooms, currentRoom)
+    genrun.autowalker.remainingRooms = table.deepcopy(areaRooms)
+  end
+  genrun.autowalker:registerEventHandlers()
+  raiseEvent("outpost genrun arrived")
 end
 
-
-function genrun.stop()
-	mmp.stop()
-	genrun.walking = false
-	genrun.rooms = {}
-	genrun.walking_to = 0
-	genrun.backtracking = false
-	raiseEvent("outpost genrun stop")
-	if genrun.config.return_to_start then
-		e:echo("Returning you to your starting room!")
-		op.genrunning = true
-		mmp.gotoRoom(genrun.starting_room)
-	end
+function genrun.autowalker:stop()
+  if not genrun.autowalker.enabled then
+    return
+  end
+  genrun.autowalker.currentRoom = nil
+  genrun.autowalker.remainingRooms = nil
+  genrun.autowalker.enabled = false
+  genrun.autowalker:removeEventHandlers()
+  if genrun.autowalker.config.returnToStart then
+    mmp.gotoRoom(genrun.autowalker.startingRoom)
+  end
 end
 
-
-function genrun.continue()
-	genrun.walking = true
-	for k, v in pairs(op.roomitems) do
-		local items_to_pickup = { "essence" }
-		for _, i in ipairs(items_to_pickup) do
-			if v.name:find(i) then
-				send("get " .. i)
-			end
-		end
-	end
-  
-	genrun.walk()
+function genrun.autowalker:move()
+  if not genrun.autowalker.enabled then
+    return
+  end
+  genrun.autowalker.nextRoom = genrun.autowalker:closestRoom()
+  if genrun.autowalker.nextRoom ~= "" then
+    mmp.gotoRoom(genrun.autowalker.nextRoom)
+  else
+    raiseEvent("outpost genrun stop")
+  end
 end
 
-
-function genrun.arrived()
-	if op.genrunning then
-		local vnum = gmcp.Room.Info.num
-		
-		genrun.unHighlightRoom(mmp.currentroom) 
-
-		if vnum ~= genrun.walking_to then
-			return
-		end
-	
-		if genrun.backtracking then
-			genrun.backtracking = false
-		else
-			genrun.rooms_left_to_touch[vnum] = nil
-		end
-
-		pve:getMobTable()
-		raiseEvent("outpost genrun arrived")
-		genrun.walking = false
-	end
+function genrun.autowalker:arrived()
+  if tonumber(mmp.currentroom) == tonumber(genrun.autowalker.nextRoom) then
+    genrun.autowalker.currentRoom = mmp.currentroom
+    genrun.findAndRemove(genrun.autowalker.remainingRooms, mmp.currentroom)
+    raiseEvent("outpost genrun arrived")
+  else
+    debugc("genrun: Somehow, the mudlet mapper says we have arrived but it is not to the room we said to go to.")
+  end
 end
 
+function genrun.autowalker:failedPath()
+  genrun.findAndRemove(genrun.autowalker.remainingRooms, genrun.autowalker.nextRoom)
+  genrun.autowalker.currentRoom = mmp.currentroom
+  raiseEvent("outpost genrun move")
+end
 
-function genrun.highlightRooms()
-	local r = getAreaRooms(getRoomArea(mmp.currentroom))
-	for _, v in ipairs(r) do
-		local r,g,b = unpack(color_table.red)
-		local br,bg,bb = unpack(color_table.blue)
-		highlightRoom(v, r, g, b, br, bg, bb, 1, 255, 255)
-	end
+function genrun.autowalker:removeEventHandlers()
+  for _, handlerID in pairs(genrun.autowalker.eventHandlers) do
+    killAnonymousEventHandler(handlerID)
+  end
+end
+
+function genrun.autowalker:registerEventHandlers()
+  genrun.autowalker.eventHandlers = genrun.autowalker.eventHandlers or {}
+  genrun.autowalker:removeEventHandlers()
+  genrun.autowalker.eventHandlers.move = registerAnonymousEventHandler("outpost genrun move", genrun.autowalker.move)
+  genrun.autowalker.eventHandlers.stop = registerAnonymousEventHandler("outpost genrun stop", genrun.autowalker.stop)
+  genrun.autowalker.eventHandlers.arrived = registerAnonymousEventHandler("mmapper arrived", genrun.autowalker.arrived)
+  genrun.autowalker.eventHandlers.failedPath = registerAnonymousEventHandler("mmapper failed path", genrun.autowalker.failedPath)
+end
+
+function genrun.autowalker:closestRoom()
+  local roomID = ""
+  local distance = 99999
+  for _, v in ipairs(genrun.autowalker.remainingRooms) do
+    getPath(genrun.autowalker.currentRoom, v)
+    if table.size(speedWalkDir) < distance then
+      distance = table.size(speedWalkDir)
+      roomID = v
+    end
+  end
+  return roomID
 end
 
 
