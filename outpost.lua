@@ -67,4 +67,14 @@ function LoadModules()
 	raiseEvent("outpost done loading")
 end
 
+
+-- Check for package installation via sysInstallPackage
+
+function outpost.outpostInstalled(_, fn)
+	if fn == "outpost-test" then
+		LoadModules()
+	end
+end
+
+
 LoadModules()

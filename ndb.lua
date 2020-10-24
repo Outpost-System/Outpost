@@ -43,7 +43,7 @@ function ndb.init()
     local c = #(db:fetch(ndb.db.people, db:eq(ndb.db.people.org, "Celest")))
     if c ~= 0 then
         -- wait for ndb.fixed_set to be loaded
-        tempTimer(0, [[ndb.fixed_set(ndb.db.people.org, "New Celest", db:eq(ndb.db.people.org, "Celest")); ndb.echo("Migrated ]]..c..[[ Celestians into New Celest as they should be.")]])
+        tempTimer(0, [[ndb.fixed_set(ndb.db.people.org, "New Celest", db:eq(ndb.db.people.org, "Celest")); e:echo("Migrated ]]..c..[[ Celestians into New Celest as they should be.")]])
     end
 end
 
@@ -65,7 +65,7 @@ function ndb.download(name)
     
     if not lfs.attributes(path) then
         lfs.mkdir(path)
-        ndb.echo("Made folder")
+        e:echo("Made folder")
     else
         ndb.decho("Downloading " .. name)
         downloadFile(path .. "/" .. name .. ".json", "http://api.lusternia.com/characters/" .. name .. ".json")
@@ -120,15 +120,6 @@ function ndb.downloaderror(_, filepath)
     end
 end
 
-function ndb.echo(text)
-    cecho("\n<white>[<RoyalBlue>ndb<white>]: <white>" .. text)
-    echo("\n")
-end
-
-function ndb.echo2(text)
-    cecho("\n<white>[<RoyalBlue>ndb<white>]: <white>" .. text)
-end
-
 function ndb.decho(text)
     if not ndb.conf or not ndb.conf.debug or ndb.conf.debug == 0 then return end
     cecho("\n<white>[<red>ndb debug<white>]: <white>" .. text)
@@ -148,7 +139,7 @@ function ndb.loadconfigs()
         table.load(path, ndb.conf)
     end
     
-    ndb.echo("Configs loaded")
+    e:echo("Configs loaded")
     
     -- set defaults if necessary
     ndb.conf.defaultcolor = ndb.conf.defaultcolor or "gray" -- default colors for highlighting
@@ -181,9 +172,9 @@ function ndb.loadconfigs()
     ndb.conf.italicizeorgenemies = ndb.conf.italicizeorgenemies or false
     
     -- org
-    ndb.conf.orgpolitics = ndb.conf.orgpolitics or {}
+    ndb.conf.orgpolitics = {}
     for _, org in pairs(ndb.valid.orgs) do
-        ndb.conf.orgpolitics[org] = ndb.conf.orgpolitics[org] or "neutral"
+        ndb.conf.orgpolitics[org] = "neutral"
         
         org = org:lower():gsub(" ", "")
         ndb.conf[org.."color"] = ndb.conf[org.."color"] or ndb.conf.defaultcolor
@@ -197,13 +188,13 @@ end
 function ndb.saveconfigs()
     local path = getMudletHomeDir() .. "/ndb/conf"
     table.save(path, ndb.conf)
-    ndb.echo("Configs saved")
+    e:echo("Configs saved")
 end
 
 function ndb.showconfigs()
-    ndb.echo("Standalone NameDB version " .. ndb.version)
-    ndb.echo("Currently highlighting " .. table.size(ndb.highlightIds) .. " names in the database")
-    ndb.echo2("Click on underlined to change, ")
+    e:echo("Outpost character database")
+    e:shortecho("Currently highlighting " .. table.size(ndb.highlightIds) .. " names in the database")
+    e:shortecho("Click on underlined to change, ")
     fg("white")
     setUnderline(true)
     echoLink("view color list", "showColors()", "Click here to view the list of possible colors you can choose", true)
@@ -211,7 +202,7 @@ function ndb.showconfigs()
     echo(":\n\n")
     
     local function showdivine()
-        ndb.echo("Divine:")
+        e:shortecho("Divine:")
         fg("white")
         echo("  ")
         
@@ -272,7 +263,7 @@ function ndb.showconfigs()
     end
     
     local function showorgenemies()
-        ndb.echo("Org enemies:")
+        e:echo("Org enemies:")
         fg("white")
         echo("  ")
         
@@ -333,7 +324,7 @@ function ndb.showconfigs()
     end
     
     local function showmembers()
-        ndb.echo("Org members:")
+        e:echo("Org members:")
         -- orgs
         for _, org in ipairs(ndb.valid.orgs) do
             local status = ndb.conf.orgpolitics[org]
@@ -485,7 +476,7 @@ function ndb.showconfigs()
     
     function showhome()
         if ndb.conf.home and table.contains(ndb.valid.orgs, ndb.conf.home) then return end
-        ndb.echo2("You currently have not set your home. Use '")
+        e:echo2("You currently have not set your home. Use '")
         fg("white")
         setUnderline(true)
         echoLink("ndbc home <org>",
@@ -514,7 +505,7 @@ end
 function ndb.setconfig(config, option)
     
     if not ndb.conf_dict[config] and not ndb.conf_dict[config] == false then
-        ndb.echo("Do not know about this option.")
+        e:echo("Do not know about this option.")
         return
     end
     
@@ -542,9 +533,9 @@ function ndb.setconfig(config, option)
             ndb.conf[config] = option
             ndb.conf_dict[config].onset()
         else
-            ndb.echo("<red>" .. option .. " <white>is not a valid color to set <orange>" .. config .. " <white>to.")
+            e:echo("<red>" .. option .. " <white>is not a valid color to set <orange>" .. config .. " <white>to.")
         end
-        if not option then ndb.echo("What do you want to set " .. config .. " to? Please use <orange>'ndbc " .. config .. " <option>' <white>to answer.") return end
+        if not option then e:echo("What do you want to set " .. config .. " to? Please use <orange>'ndbc " .. config .. " <option>' <white>to answer.") return end
     elseif ndb.conf_dict[config].type == "org" then
         local matchedorg = 0
         for _, org in pairs(ndb.valid.orgs) do
@@ -557,7 +548,7 @@ function ndb.setconfig(config, option)
             end
         end
         if matchedorg == 0 then
-            ndb.echo("<red>" .. option .. " <white>is not a valid organisation to set <orange>" .. config .. " <white>to.")
+            e:echo("<red>" .. option .. " <white>is not a valid organisation to set <orange>" .. config .. " <white>to.")
         end
     end
 end
@@ -567,109 +558,109 @@ function ndb.setupconfigs()
     
     ndb.addconfig("home", {
         type = "org",
-        onset = function () ndb.echo("Set your home to " .. ndb.conf["home"]) end,
+        onset = function () e:echo("Set your home to " .. ndb.conf["home"]) end,
     })
 
     ndb.addconfig("highlightdivine", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> highlight Divine.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> highlight Divine.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> highlight Divine.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> highlight Divine.") end,
     })
     ndb.addconfig("bolddivine", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> bold Divine.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> bold Divine.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> bold Divine.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> bold Divine.") end,
     })
     ndb.addconfig("underlinedivine", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> underline Divine.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> underline Divine.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> underline Divine.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> underline Divine.") end,
     })
     ndb.addconfig("italicizedivine", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> italicize Divine.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> italicize Divine.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> italicize Divine.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> italicize Divine.") end,
     })
     ndb.addconfig("divinecolor", {
         type = "color",
-        onset = function() ndb.loadhighlights() ndb.echo("Highlighting Divine in <" .. ndb.conf["divinecolor"] .. ">" .. ndb.conf["divinecolor"] .. "<white> now.") end,
+        onset = function() ndb.loadhighlights() e:echo("Highlighting Divine in <" .. ndb.conf["divinecolor"] .. ">" .. ndb.conf["divinecolor"] .. "<white> now.") end,
     })
     
     ndb.addconfig("highlightorgenemies", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> highlight enemies of your org.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> highlight Divine.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> highlight enemies of your org.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> highlight Divine.") end,
     })
     ndb.addconfig("boldorgenemies", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> bold enemies of your org.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> bold enemies of your org.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> bold enemies of your org.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> bold enemies of your org.") end,
     })
     ndb.addconfig("underlineorgenemies", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> underline enemies of your org.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> underline enemies of your org.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> underline enemies of your org.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> underline enemies of your org.") end,
     })
     ndb.addconfig("italicizeorgenemies", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> italicize enemies of your org.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> italicize enemies of your org.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> italicize enemies of your org.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> italicize enemies of your org.") end,
     })
     ndb.addconfig("orgenemycolor", {
         type = "color",
-        onset = function() ndb.loadhighlights() ndb.echo("Highlighting enemies of your org in <" .. ndb.conf["orgenemycolor"] .. ">" .. ndb.conf["orgenemycolor"] .. "<white> now.") end,
+        onset = function() ndb.loadhighlights() e:echo("Highlighting enemies of your org in <" .. ndb.conf["orgenemycolor"] .. ">" .. ndb.conf["orgenemycolor"] .. "<white> now.") end,
     })
     
     ndb.addconfig("highlightrogues", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> highlight rogues.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> highlight rogues.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> highlight rogues.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> highlight rogues.") end,
     })
     ndb.addconfig("boldrogues", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> bold rogues.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> bold rogues.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> bold rogues.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> bold rogues.") end,
     })
     ndb.addconfig("underlinerogues", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> underline rogues.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> underline rogues.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> underline rogues.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> underline rogues.") end,
     })
     ndb.addconfig("italicizerogues", {
         type = "boolean",
-        onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white> italicize rogues.") end,
-        ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white> italicize rogues.") end,
+        onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white> italicize rogues.") end,
+        ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white> italicize rogues.") end,
     })
     ndb.addconfig("roguescolor", {
         type = "color",
-        onset = function() ndb.loadhighlights() ndb.echo("Highlighting rogues in <" .. ndb.conf["roguescolor"] .. ">" .. ndb.conf["roguescolor"] .. "<white> now.") end,
+        onset = function() ndb.loadhighlights() e:echo("Highlighting rogues in <" .. ndb.conf["roguescolor"] .. ">" .. ndb.conf["roguescolor"] .. "<white> now.") end,
     })
     
     for _, org in ipairs(ndb.valid.orgs) do
         local shortname = org:lower():gsub(" ", "")
         ndb.addconfig("highlight"..shortname, {
             type = "boolean",
-            onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white>highlight members of " .. org .. ".") end,
-            ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white>highlight members of " .. org .. ".") end,
+            onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white>highlight members of " .. org .. ".") end,
+            ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white>highlight members of " .. org .. ".") end,
         })
         ndb.addconfig("bold"..shortname, {
             type = "boolean",
-            onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white>bold members of " .. org .. ".") end,
-            ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white>bold members of " .. org .. ".") end,
+            onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white>bold members of " .. org .. ".") end,
+            ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white>bold members of " .. org .. ".") end,
         })
         ndb.addconfig("underline"..shortname, {
             type = "boolean",
-            onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white>underline members of " .. org .. ".") end,
-            ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white>underline members of " .. org .. ".") end,
+            onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white>underline members of " .. org .. ".") end,
+            ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white>underline members of " .. org .. ".") end,
         })
         ndb.addconfig("italicize"..shortname, {
             type = "boolean",
-            onenabled = function () ndb.loadhighlights() ndb.echo("<green>Will <white>italicize members of " .. org .. ".") end,
-            ondisabled = function () ndb.loadhighlights() ndb.echo("<red>Won't <white>italicize members of " .. org .. ".") end,
+            onenabled = function () ndb.loadhighlights() e:echo("<green>Will <white>italicize members of " .. org .. ".") end,
+            ondisabled = function () ndb.loadhighlights() e:echo("<red>Won't <white>italicize members of " .. org .. ".") end,
         })
         ndb.addconfig(shortname.."color", {
             type = "color",
-            onset = function () ndb.loadhighlights() ndb.echo("Highlighting members of " .. org .. " in <" .. ndb.conf[shortname.."color"] .. ">" .. ndb.conf[shortname.."color"] .. " <white>now.") end,
+            onset = function () ndb.loadhighlights() e:echo("Highlighting members of " .. org .. " in <" .. ndb.conf[shortname.."color"] .. ">" .. ndb.conf[shortname.."color"] .. " <white>now.") end,
         })
         
     end
@@ -902,7 +893,7 @@ function ndb.gotenemylist()
     db:merge_unique(ndb.db.people, tempnamelist)
     
     echo("\n")
-    ndb.echo(#tempnamelist .. " existing names have been marked as enemies.")
+    e:echo(#tempnamelist .. " existing names have been marked as enemies.")
 end
 
 -- This will attempt to download everyone in the enemy list. Can freeze Mudlet for a while.
@@ -925,8 +916,8 @@ function ndb.gotenemylist2()
     db:merge_unique(ndb.db.people, tempnamelist)
     
     echo("\n")
-    ndb.echo(namesadded .. " names being downloaded.")
-    ndb.echo(#tempnamelist .. " existing names have been marked as enemies.")
+    e:echo(namesadded .. " names being downloaded.")
+    e:echo(#tempnamelist .. " existing names have been marked as enemies.")
 end
 
 function ndb.singlehighlight(name, org, orgenemy, divine)
@@ -1064,10 +1055,10 @@ function ndb.gotnamelist(_, checkall)
     
     if namesadded > 0 and checkall == 0 then
         echo("\n")
-        ndb.echo(namesadded .. " new names being downloaded.")
+        e:echo(namesadded .. " new names being downloaded.")
     elseif namesadded > 0 then
         echo("\n")
-        ndb.echo(namesadded .. " total names being downloaded.")
+        e:echo(namesadded .. " total names being downloaded.")
     end
 end
 

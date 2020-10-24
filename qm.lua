@@ -9,8 +9,8 @@ local qm = {}
 
 
 qm.Check = function ()
-    if not next(balqueue.queue) then return end
-    if utils.countTable(balqueue.queue) >=1 then
+    if not next(op.balqueue.queue) then return end
+    if utils.countTable(op.balqueue.queue) >=1 then
         if bals:has("balance")
         and bals:has("equilibrium") then
             op.balqueue:act()
