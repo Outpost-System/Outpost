@@ -11,8 +11,7 @@ local qm = {}
 qm.Check = function ()
     if not next(op.balqueue.queue) then return end
     if utils.countTable(op.balqueue.queue) >=1 then
-        if bals:has("balance")
-        and bals:has("equilibrium") then
+        if bals:has() then
             op.balqueue:act()
         end
         --send("\n")
