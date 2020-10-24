@@ -23,11 +23,13 @@ end
 
 function defs.has(def)
     for _, v in spairs(defs.tree) do
-        for _, w in spairs(v) do
-            if l == def and w.state == "up" then
-                return true
-            else
-                return false
+        for l, w in spairs(v) do
+            if l == def then
+                if w.state == "up" then
+                    return true
+                else
+                    return false
+                end
             end
         end
     end
@@ -838,16 +840,17 @@ defs.tree.moon = {
 		keepup = false,
 		state = "down"
 	},
-	full = {
-		raise = "moondance full",
-		lower = "",
-		required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
-		consumed = {"op.bals.equilibrium"},
-		power = 4,
-		defup = false,
-		keepup = false,
-		state = "down"
-	}}
+    full = {
+        raise = "moondance full",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        power = 4,
+        defup = false,
+        keepup = false,
+        state = "down"
+    }}
+
         
 defs.tree.stag = {
 	staghide = {
