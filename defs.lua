@@ -48,6 +48,19 @@ end
 
 defs.tree = {}
 
+defs.tree.demipowers = {
+    judiciouspresence = {
+        raise = "manifest judicious presence",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {},
+        defup = false,
+        keepup = false,
+        state = false,
+        cost = 10000
+    }
+}
+
 defs.tree.enchantments = {
     beauty = {
         raise = "rub beauty",
