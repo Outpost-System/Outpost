@@ -4,7 +4,6 @@ local can = {}
 
 
 function can.full() -- Need to check these afflictions!
-	return not affs:has("disrupted")
 	and not affs:has("asleep")
 	and not affs:has("stun")
 	and not fs:check("full")
@@ -16,7 +15,6 @@ end
 
 function can.act()
 	return bals.has()
-	and not affs:has("disrupted")
 	and not affs:has("asleep")
 	and not affs:has("stun")
 	and not fs.check("act")
@@ -27,7 +25,6 @@ end
 
 function can.bash()
 	return bals.has()
-	and not affs:has("disrupted")
 	and not affs:has("asleep")
 	and not affs:has("stun")
 	and not fs.check("bash")
@@ -38,7 +35,6 @@ end
 
 function can.green()
 	return bals.has()
-	and not affs:has("disrupted")
 	and not affs:has("asleep")
 	and not affs:has("stun")
 	and not fs.check("green")
