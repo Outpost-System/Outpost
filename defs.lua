@@ -44,8 +44,6 @@ function defs.set(skillset, def, bool)
 end
 
 
-
-
 -- Defence trees
 
 defs.tree = {}
