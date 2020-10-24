@@ -47,9 +47,6 @@ end
 
  function pvp.succumb()
  	if bals:has("equilibrium") and bals:has("balance") then
- 		if gmcp.Char.Status.fullname == "Moontouched Quixote" then
- 			send("beast order breathe scrambledwave "..op.target)
- 		end
  		send("moondance succumb "..op.target)
  	else
  		e:warn("Hang on. Waiting on balance!")
@@ -58,6 +55,9 @@ end
 
 function pvp.bluemoon()
  	if bals:has("equilibrium") and bals:has("balance") then
+ 		 if gmcp.Char.Status.fullname == "Moontouched Quixote" then
+ 			send("beast order breathe scrambledwave "..op.target)
+ 		end
  		send("moondance bluemoon "..op.target)
  	else
  		e:warn("Hang on. Waiting on balance!")
