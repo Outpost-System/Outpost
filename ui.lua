@@ -44,7 +44,7 @@ function ui.showContainers()
     ui.right:show()
 end
 
-showContainers()
+ui.showContainers()
 
 
 
