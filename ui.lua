@@ -36,11 +36,6 @@ ui.bottom:lockContainer("full")
 ui.left:lockContainer("full")
 ui.right:lockContainer("full")
 
-ui.top:show()
-ui.bottom:show()
-ui.left:show()
-ui.right:show()
-
 
 function ui.showContainers()
     ui.top:show()
@@ -48,6 +43,9 @@ function ui.showContainers()
     ui.left:show()
     ui.right:show()
 end
+
+showContainers()
+
 
 
 -- First we create our border labels. These are 1% bigger than all elements so as to contain a border-image.
@@ -340,7 +338,7 @@ ui.ticker:setMessage("Outpost System - Put something cool here.")
 
 -- You said you wanted custom highlighting? You got it!
 
-function ui.header(self, title, extra)
+function ui.header(title, extra)
     local replen = 60 - (13 + title:len())
     cecho("\n<sienna>+<burlywood>----- <sienna>[<slate_grey> "..title:title().." <sienna>] "..string.rep("<burlywood>-", replen).." <sienna>(<burlywood> "..getTime(true, "hh:mma - dd/MM/yyyy").." <sienna>) <burlywood>-----<sienna>+\n\n")
 end
@@ -351,11 +349,11 @@ function ui.footer()
 end
 
 
-function ui.combatEcho(self, text, colour, width)
+function ui.combatEcho(text, colour, width)
     if not text then
         text = tostring(text)
         if not text then
-            debugc("Invalid argument #1 to combat_echo(): String expected.")
+            debugc("Invalid argument #1 to combat_echo(): String expected. Got "..type(text)..".")
             return
         end
     end
@@ -430,7 +428,7 @@ function ui.createLineGradient(left, width)
 end
 
 
-function ui.eventLabel(self, text, duration)
+function ui.eventLabel(text, duration)
     local width, height = getMainWindowSize()
     local strlen = text:len()
     local label = utils.randomstring(8, "%l%d")
