@@ -261,5 +261,16 @@ function utils.saveTable(t)
 	table.save(file_loc, op.config[t])
 end
 
+function utils.milliToHuman(milliseconds)
+  local totalseconds = math.floor(milliseconds / 1000)
+  milliseconds = milliseconds % 1000
+  local seconds = totalseconds % 60
+  local minutes = math.floor(totalseconds / 60)
+  local hours = math.floor(minutes / 60)
+  minutes = minutes % 60
+  return string.format("%02d:%02d:%02d:%03d", hours, minutes, seconds, milliseconds)  
+end
+
+
 
 return utils
