@@ -25,7 +25,7 @@ function defs.has(def)
     for _, v in spairs(defs.tree) do
         for l, w in spairs(v) do
             if l == def then
-                if w.state == "up" then
+                if w.state == true then
                     return true
                 else
                     return false
@@ -34,6 +34,16 @@ function defs.has(def)
         end
     end
 end
+
+
+-- defs.set() - Directly manipulate the state of a given defence.
+
+function defs.set(skillset, def, bool)
+    assert(skillset and def and bool and type(bool) == "boolean", "Incorrect usage of defs.set() - Skillset, defence and boolean required.")
+    defs.tree[skillset][def].state = bool
+end
+
+
 
 
 -- Defence trees
@@ -48,7 +58,7 @@ defs.tree.enchantments = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     mercy = {
         raise = "rub mercy",
@@ -57,7 +67,7 @@ defs.tree.enchantments = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     perfection = {
         raise = "rub perfection",
@@ -66,7 +76,7 @@ defs.tree.enchantments = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     kingdom = {
         raise = "rub kingdom",
@@ -75,7 +85,7 @@ defs.tree.enchantments = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     waterwalk = {
         raise = "rub waterwalk",
@@ -84,7 +94,7 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     waterbreathe = {
         raise = "rub waterbreathe",
@@ -93,7 +103,7 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     levitation = {
         raise = "rub levitate",
@@ -102,7 +112,7 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     nimbus = {
         raise = "rub nimbus",
@@ -111,7 +121,7 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     acquisitio = {
         raise = "rub acquisitio",
@@ -120,7 +130,7 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     avarice = {
         raise = "blow avaricehorn",
@@ -129,7 +139,7 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     truetime = {
         raise = "wind truetime",
@@ -138,7 +148,7 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     goldenbox = {
         raise = "crank goldenbox",
@@ -147,7 +157,7 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     emeraldbox = {
         raise = "crank emeraldbox",
@@ -156,7 +166,7 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     azurebox = {
         raise = "crank azurebox",
@@ -165,7 +175,7 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     protection = {
         raise = "read protection",
@@ -174,7 +184,7 @@ defs.tree.enchantments = {
         consumed = {"op.bals.scroll"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
 }
 
@@ -187,7 +197,7 @@ defs.tree.consumable = {
 		replace = {{"consumable","whitetea"},{"consumable","greentea"},{"consumable","oolongtea"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     greentea = {
         raise = "sip greentea",
@@ -197,7 +207,7 @@ defs.tree.consumable = {
 		replace = {{"consumable","whitetea"},{"consumable","blacktea"},{"consumable","oolongtea"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     oolongtea = {
         raise = "sip oolongtea",
@@ -207,7 +217,7 @@ defs.tree.consumable = {
 		replace = {{"consumable","whitetea"},{"consumable","greentea"},{"consumable","blacktea"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     whitetea = {
         raise = "sip whitetea",
@@ -217,7 +227,7 @@ defs.tree.consumable = {
 		replace = {{"consumable","blacktea"},{"consumable","greentea"},{"consumable","oolongtea"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     amberbeer = {
         raise = "sip amberbeer",
@@ -226,7 +236,7 @@ defs.tree.consumable = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     darkbeer = {
         raise = "sip darkbeer",
@@ -235,7 +245,7 @@ defs.tree.consumable = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     kafe = {
         raise = "eat kafe",
@@ -244,7 +254,7 @@ defs.tree.consumable = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     lovepotion = {
         raise = "sip love",
@@ -253,7 +263,7 @@ defs.tree.consumable = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     moonwater = {
         raise = "sip moonwater",
@@ -262,7 +272,7 @@ defs.tree.consumable = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     quicksilver = {
         raise = "sip quicksilver",
@@ -271,7 +281,7 @@ defs.tree.consumable = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
 }
 
@@ -283,7 +293,7 @@ defs.tree.combat = {
         consumed = {"op.bals.balance"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
 }
 
@@ -295,7 +305,7 @@ defs.tree.discernment = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     thirdeye = {
         raise = "thirdeye",
@@ -304,7 +314,7 @@ defs.tree.discernment = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     sixthsense = {
         raise = "sixthsense",
@@ -313,7 +323,7 @@ defs.tree.discernment = {
         consumed = "op.bals.dust",
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     deathsight = {
         raise = "deathsight on",
@@ -322,7 +332,7 @@ defs.tree.discernment = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     lipread = {
         raise = "lipread",
@@ -331,7 +341,7 @@ defs.tree.discernment = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     powermask = {
         raise = "powermask",
@@ -341,7 +351,7 @@ defs.tree.discernment = {
         power = 10,
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     aethersight = {
         raise = "aethersight on",
@@ -351,7 +361,7 @@ defs.tree.discernment = {
         power = 3,
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
 }
 
@@ -363,7 +373,7 @@ defs.tree.lowmagic = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     red = {
         raise = "invoke red",
@@ -372,7 +382,7 @@ defs.tree.lowmagic = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     orange = {
         raise = "invoke orange",
@@ -382,7 +392,7 @@ defs.tree.lowmagic = {
         power = 1,
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     yellow = {
         raise = "invoke yellow",
@@ -392,7 +402,7 @@ defs.tree.lowmagic = {
         power = 3,
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     blue = {
         raise = "invoke blue",
@@ -401,7 +411,7 @@ defs.tree.lowmagic = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     autumn = {
         raise = "invoke autumn",
@@ -410,7 +420,7 @@ defs.tree.lowmagic = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     serpent = {
         raise = "invoke serpent",
@@ -420,7 +430,7 @@ defs.tree.lowmagic = {
         power = 10,
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
 }
 
@@ -432,7 +442,7 @@ defs.tree.discipline = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     truehearing = {
         raise = "truehearing",
@@ -441,7 +451,7 @@ defs.tree.discipline = {
         consumed = "op.bals.steam",
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     obliviousness = {
         raise = "obliviousness on",
@@ -450,7 +460,7 @@ defs.tree.discipline = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     metawake = {
         raise = "metawake on",
@@ -459,7 +469,7 @@ defs.tree.discipline = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     breathing = {
         raise = "hold breath",
@@ -468,7 +478,7 @@ defs.tree.discipline = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     selfishness = {
         raise = "selfishness",
@@ -477,7 +487,7 @@ defs.tree.discipline = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
 }
 
@@ -490,7 +500,7 @@ defs.tree.environment = {
         power = 10,
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
 }
 
@@ -502,7 +512,7 @@ defs.tree.influence = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
 }
 
@@ -514,7 +524,7 @@ defs.tree.dramatics = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     lawyerly = {
         raise = "attitude lawyerly",
@@ -524,7 +534,7 @@ defs.tree.dramatics = {
 		replace = {{"dramatics","saintly"},{"dramatics","zealotry"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     saintly = {
         raise = "attitude saintly",
@@ -534,7 +544,7 @@ defs.tree.dramatics = {
 		replace = {{"dramatics","lawyerly"},{"dramatics","zealotry"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     zealotry = {
         raise = "attitude zealotry",
@@ -544,7 +554,7 @@ defs.tree.dramatics = {
 		replace = {{"dramatics","saintly"},{"dramatics","lawyerly"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     bully = {
         raise = "perform bully",
@@ -554,7 +564,7 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","sycophant"},{"dramatics","diplomat"},{"dramatics","bureaucrat"},{"dramatics","gorgeous"},{"dramatics","vagabond"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     sycophant = {
         raise = "perform sycophant",
@@ -564,7 +574,7 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","diplomat"},{"dramatics","bully"},{"dramatics","bureaucrat"},{"dramatics","gorgeous"},{"dramatics","vagabond"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     drunkard = {
         raise = "perform drunkard",
@@ -574,7 +584,7 @@ defs.tree.dramatics = {
 		replace = {{"dramatics","sober"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     bureaucrat = {
         raise = "perform bureaucrat",
@@ -584,7 +594,7 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","sycophant"},{"dramatics","bully"},{"dramatics","diplomat"},{"dramatics","gorgeous"},{"dramatics","vagabond"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     sober = {
         raise = "perform sober",
@@ -594,7 +604,7 @@ defs.tree.dramatics = {
 		replace = {{"dramatics","drunkard"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     gorgeous = {
         raise = "perform gorgeous",
@@ -604,7 +614,7 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","sycophant"},{"dramatics","bully"},{"dramatics","bureaucrat"},{"dramatics","diplomat"},{"dramatics","vagabond"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     wounded = {
         raise = "perform wounded",
@@ -613,7 +623,7 @@ defs.tree.dramatics = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     vagabond = {
         raise = "perform vagabond",
@@ -623,7 +633,7 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","sycophant"},{"dramatics","bully"},{"dramatics","bureaucrat"},{"dramatics","gorgeous"},{"dramatics","diplomat"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     diplomat = {
         raise = "perform diplomat",
@@ -633,7 +643,7 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","sycophant"},{"dramatics","bully"},{"dramatics","bureaucrat"},{"dramatics","gorgeous"},{"dramatics","vagabond"}},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     review = {
         raise = "review on",
@@ -642,7 +652,7 @@ defs.tree.dramatics = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
 }
 
@@ -654,7 +664,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     night = {
         raise = "spiritbond night",
@@ -663,7 +673,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     skunk = {
         raise = "spiritbond skunk",
@@ -672,7 +682,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     sun = {
         raise = "spiritbond sun",
@@ -681,7 +691,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
 	rock = {
 		raise = "spiritbond rock",
@@ -690,7 +700,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     moon = {
         raise = "spiritbond moon",
@@ -699,7 +709,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     crow = {
         raise = "spiritbond crow",
@@ -708,7 +718,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     tree = {
         raise = "spiritbond tree",
@@ -717,7 +727,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     groundhog = {
         raise = "spiritbond groundhog",
@@ -726,7 +736,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     trout = {
         raise = "spiritbond trout",
@@ -735,7 +745,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     wolf = {
         raise = "spiritbond wolf",
@@ -744,7 +754,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     bear = {
         raise = "spiritbond bear",
@@ -753,7 +763,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     stag = {
         raise = "spiritbond stag",
@@ -762,7 +772,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     monkey = {
         raise = "spiritbond monkey",
@@ -771,7 +781,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     horse = {
         raise = "spiritbond horse",
@@ -780,7 +790,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     river = {
         raise = "spiritbond river",
@@ -789,7 +799,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     snake = {
         raise = "spiritbond snake",
@@ -798,7 +808,7 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     },
     nature = {
         raise = "spiritbond nature",
@@ -808,7 +818,7 @@ defs.tree.totems = {
         power = 5,
         defup = false,
         keepup = false,
-		state = "down"
+		state = false
     }}
 
 defs.tree.moon = {
@@ -819,7 +829,7 @@ defs.tree.moon = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 	waxing = {
 		raise = "moondance waxing",
@@ -828,7 +838,7 @@ defs.tree.moon = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 	shine = {
 		raise = "moondance shine",
@@ -838,7 +848,7 @@ defs.tree.moon = {
 		power = 4,
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
     full = {
         raise = "moondance full",
@@ -848,7 +858,7 @@ defs.tree.moon = {
         power = 4,
         defup = false,
         keepup = false,
-        state = "down"
+        state = false
     }}
 
         
@@ -860,7 +870,7 @@ defs.tree.stag = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 	greenman = {
 		raise = "paint face greenman",
@@ -870,7 +880,7 @@ defs.tree.stag = {
 		exclude = {{"stag","trueheart"}},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 	trueheart = {
 		raise = "paint face trueheart",
@@ -880,7 +890,7 @@ defs.tree.stag = {
 		exclude = {{"stag","greenman"}},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 	bolting = {
 		raise = "bolting on",
@@ -889,7 +899,7 @@ defs.tree.stag = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 	lightning = {
 		raise = "paint face lightning",
@@ -899,7 +909,7 @@ defs.tree.stag = {
 		exclude = {{"stag","swiftstripes"}},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 	swiftstripes = {
 		raise = "paint face swiftstripes",
@@ -909,7 +919,7 @@ defs.tree.stag = {
 		exclude = {{"stag","lightning"}},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 	stagform = {
 		raise = "stagform",
@@ -919,7 +929,7 @@ defs.tree.stag = {
 		power = 10,
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 }
         
@@ -931,7 +941,7 @@ defs.tree.nature = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 	blend = {
 		raise = "nature blend on",
@@ -940,7 +950,7 @@ defs.tree.nature = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 	rooting = {
 		raise = "nature rooting",
@@ -949,7 +959,7 @@ defs.tree.nature = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 	torc = {
 		raise = "nature torc",
@@ -958,7 +968,7 @@ defs.tree.nature = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 }
         
@@ -970,7 +980,7 @@ defs.tree.druidry = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = "down"
+		state = false
 	},
 }
 
@@ -982,7 +992,7 @@ defs.tree.dreamweaving = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = "down"
+        state = false
     },
 }
 
@@ -994,7 +1004,7 @@ defs.tree.healing = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = "down"
+        state = false
     },
 
     fractures = {
@@ -1004,7 +1014,7 @@ defs.tree.healing = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = "down"
+        state = false
     },
     auric = {
         raise = "radiate auric",
@@ -1013,7 +1023,7 @@ defs.tree.healing = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = "down"
+        state = false
     },
     choleric = {
         raise = "radiate choleric",
@@ -1022,7 +1032,7 @@ defs.tree.healing = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = "down"
+        state = false
     },
     mania = {
         raise = "radiate mania",
@@ -1031,7 +1041,7 @@ defs.tree.healing = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = "down"
+        state = false
     },
     neurosis = {
         raise = "radiate neurosis",
@@ -1040,7 +1050,7 @@ defs.tree.healing = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = "down"
+        state = false
     },
     phlegmatic = {
         raise = "radiate phlegmatic",
@@ -1049,7 +1059,7 @@ defs.tree.healing = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = "down"
+        state = false
     },
     regenerate = {
         raise = "radiate regenerate",
@@ -1058,7 +1068,7 @@ defs.tree.healing = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = "down"
+        state = false
     },
     sanguine = {
         raise = "radiate sanguine",
@@ -1067,7 +1077,7 @@ defs.tree.healing = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = "down"
+        state = false
     },
     vitality = {
         raise = "radiate vitality",
@@ -1076,7 +1086,7 @@ defs.tree.healing = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = "down",
+        state = false,
         power = 5
     },
 }
