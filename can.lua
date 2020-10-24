@@ -17,6 +17,7 @@ function can.act()
 	return bals.has()
 	and not affs:has("asleep")
 	and not affs:has("stun")
+	and not affs:has("sprawled")
 	and not fs.check("act")
 	and not op.dead
 
@@ -27,6 +28,7 @@ function can.bash()
 	return bals.has()
 	and not affs:has("asleep")
 	and not affs:has("stun")
+	and not affs:has("sprawled")
 	and not fs.check("bash")
 	and not op.dead
 
