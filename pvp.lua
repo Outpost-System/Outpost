@@ -16,16 +16,16 @@ function pvp.setTarget(target_array)
 
 	if ndb.isenemy(op.target) or op.arena_target then
 		if GMCP.HasSkill("leprechaun") then
-			qm.balqueue:add("order entourage kill "..op.target)
-			qm.balqueue:add("order "..op.fae.leprechaun.." follow "..op.target)
+			op.balqueue:add("order entourage kill "..op.target)
+			op.balqueue:add("order "..op.fae.leprechaun.." follow "..op.target)
 			qm.Check()
 		else
 			-- Handle other skillset preliminaries here
 		end
 	else
 		if GMCP.HasSkill("leprechaun") then
-			balqueue:add("faecall")
-			balqueue:add("order entourage passive")
+			op.balqueue:add("faecall")
+			op.balqueue:add("order entourage passive")
 			qm.Check()
 		end
 	end

@@ -13,7 +13,7 @@ qm.Check = function ()
     if utils.countTable(balqueue.queue) >=1 then
         if bals:has("balance")
         and bals:has("equilibrium") then
-            balqueue:act()
+            op.balqueue:act()
         end
         --send("\n")
     end

@@ -148,10 +148,10 @@ function aegis.cure(name)
 	local urgent = next(table.n_intersection(superurgent, affs)) or nil
 
 	if urgent then
-		qm.balqueue:add("cure "..name.." "..self.getCureByAff(urgent))
+		op.balqueue:add("cure "..name.." "..self.getCureByAff(urgent))
 	else
 		if next(affs) then
-			qm.balqueue:add("cure "..name.." "..self.getCureByAff(affs))
+			op.balqueue:add("cure "..name.." "..self.getCureByAff(affs))
 		end
 	end
 end
@@ -165,7 +165,7 @@ function aegis.stop(name)
 	end
 	
 	name = nil
-	qm.balqueue:clear()
+	op.balqueue:clear()
 end
 
 
