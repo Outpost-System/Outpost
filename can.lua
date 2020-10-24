@@ -4,14 +4,9 @@ local can = {}
 
 
 function can.full() -- Need to check these afflictions!
-	return not affs:has("mucus")
-	and not affs:has("muddy")
+	return not affs:has("disrupted")
 	and not affs:has("asleep")
-	and not affs:has("disrupted")
 	and not affs:has("stun")
-	and not affs:has("crucified")
-	and not affs:has("muddy")
-	and not affs:has("paralysis")
 	and not fs:check("full")
 	and not op.dead
 	and op.vitals.pow >= 4
@@ -19,5 +14,47 @@ function can.full() -- Need to check these afflictions!
 	and true or false
 end
 
+function can.act()
+	return bals.has()
+	and not affs:has("disrupted")
+	and not affs:has("asleep")
+	and not affs:has("stun")
+	and not fs.check("act")
+	and not op.dead
+
+	and true or false
+end
+
+function can.bash()
+	return bals.has()
+	and not affs:has("disrupted")
+	and not affs:has("asleep")
+	and not affs:has("stun")
+	and not fs.check("bash")
+	and not op.dead
+
+	and true or false
+end
+
+function can.green()
+	return bals.has()
+	and not affs:has("disrupted")
+	and not affs:has("asleep")
+	and not affs:has("stun")
+	and not fs.check("green")
+	and not op.dead
+
+	and true or false
+end
+
+function can.allheale()
+	return op.bals.allheale
+	and not affs:has("asleep")
+	and not affs:has("stun")
+	and not fs.check("allheale")
+	and not op.dead
+
+	and true or false
+end
 
 return can
