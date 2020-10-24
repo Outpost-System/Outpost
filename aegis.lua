@@ -144,14 +144,14 @@ function aegis.cure(name)
 
 	assert(op.succor[name])
 
-	local affs = self.getSuccorAffs(name)
+	local affs = aegis.getSuccorAffs(name)
 	local urgent = next(table.n_intersection(superurgent, affs)) or nil
 
 	if urgent then
-		op.balqueue:add("cure "..name.." "..self.getCureByAff(urgent))
+		op.balqueue:add("cure "..name.." "..aegis.getCureByAff(urgent))
 	else
 		if next(affs) then
-			op.balqueue:add("cure "..name.." "..self.getCureByAff(affs))
+			op.balqueue:add("cure "..name.." "..aegis.getCureByAff(affs))
 		end
 	end
 end
@@ -172,8 +172,8 @@ end
 function aegis.succor(aff, bleedamt, attr)
   assert(aff)
   if bleedamt and tonumber(bleedamt) < 200 then return end
-  self.affs[#self.affs+1] = aff
-  self.affs[op.succortarget] = {}
+  aegis.affs[#aegis.affs+1] = aff
+  aegis.affs[op.succortarget] = {}
   bleedamt = bleedamt
 end
 

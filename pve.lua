@@ -17,7 +17,7 @@ pve.mobsByArea = {
 function pve.getMobTable()
 	local mobiles = {}
 	local area = gmcp.Room.Info.area
-	local mobs = self.mobsByArea[area]
+	local mobs = pve.mobsByArea[area]
 
 	for k, v in pairs(op.roomitems) do
 		if table.contains(mobs, v.name) then
