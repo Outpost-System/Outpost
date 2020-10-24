@@ -39,7 +39,7 @@ function pvp.setTarget(target_array)
 		op.to_channel("Target: " .. op.target)
 	else
 		if op.announce_target then
-			op.to_channel("Targeting prios set: Next target: " .. op.target)
+			op.to_channel("Targeting prios set. Next target: " .. op.target)
 		end
 	end
 end
@@ -138,7 +138,7 @@ function pvp.hexesHeap()
 end
 
 
- function pvp.chooseNextAttack(self, target, hp, mp, ego, action)
+ function pvp.chooseNextAttack(target, hp, mp, ego, action)
  	
  end
 
