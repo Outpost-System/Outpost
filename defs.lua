@@ -12,7 +12,7 @@ function defs.defup(args)
 	for _, skillset_keys in pairs(defs.tree) do
 		for skill, skill_keys in pairs(skillset_keys) do
 			if table.contains(args, skill) then
-				balqueue:add(skill_keys.raise, skill_keys.required, skill_keys.consumed)
+				op.balqueue:add(skill_keys.raise, skill_keys.required, skill_keys.consumed)
 			end
 		end
 	end
