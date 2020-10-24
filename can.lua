@@ -39,6 +39,7 @@ function can.green()
 	and not affs:has("stun")
 	and not fs.check("green")
 	and not op.dead
+	and op.vitals.pow >= 3
 
 	and true or false
 end
