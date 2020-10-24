@@ -28,7 +28,7 @@ function timer.stop(key, rt)
 	local diff = time - timer.set[key]
 
 	if rt then
-		return timer.test(timer.set[key], time)
+		return timer.tdiff(timer.set[key], time)
 	end
 
 	return diff
