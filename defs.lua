@@ -1089,5 +1089,15 @@ defs.tree.healing = {
     },
 }
 
-
+defs.tree.music = {
+    bardicpresence = {
+        raise = "bardicpresence",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    }
+}
 return defs
