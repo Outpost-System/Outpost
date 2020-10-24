@@ -42,6 +42,8 @@ function LoadModules()
 		"utils"
 	} or nil
 
+	if not m then e:error("Fatal error: SYSROOT_DEFINED is nil. You should never see this!") return end
+
 	for _, n in ipairs(m) do
 		_G[n] = nil
 		package.loaded[n] = nil
