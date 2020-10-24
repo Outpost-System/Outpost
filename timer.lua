@@ -5,8 +5,8 @@ local timer = {}
 
 timer.set = {}
 
-function timer.start(self, key)
-	self.set[key] = timer.optime()
+function timer.start(key)
+	timer.set[key] = timer.optime()
 end
 
 
@@ -19,16 +19,16 @@ function timer.optime()
 end
 
 
-function timer.stop(self, key, rt)
-	if self.set[key] == nil then
+function timer.stop(key, rt)
+	if timer.set[key] == nil then
 		return numeric and 0 or "ERR"
 	end
 
 	local time = timer.optime()
-	local diff = time - set[key]
+	local diff = time - timer.set[key]
 
 	if rt then
-		return self.tdiff(set[key], time)
+		return timer.tdiff(timer.set[key], time)
 	end
 
 	return diff

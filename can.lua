@@ -4,7 +4,7 @@ local can = {}
 
 
 function can.full() -- Need to check these afflictions!
-	and not affs:has("asleep")
+	return not affs:has("asleep")
 	and not affs:has("stun")
 	and not fs:check("full")
 	and not op.dead
