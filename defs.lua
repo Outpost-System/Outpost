@@ -4,6 +4,7 @@ local defs = {}
 
 -- Helper functions
 
+
 -- defs:defup() expects an indexed table of defences.
 
 function defs.defup(args)
@@ -15,6 +16,21 @@ function defs.defup(args)
 			end
 		end
 	end
+end
+
+
+-- defs:has() - Returns a boolean via passed argument,
+
+function defs.has(def)
+    for _, v in spairs(defs.tree) do
+        for _, w in spairs(v) do
+            if l == def and w.state == "up" then
+                return true
+            else
+                return false
+            end
+        end
+    end
 end
 
 
