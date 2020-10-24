@@ -1100,4 +1100,48 @@ defs.tree.music = {
         state = false
     }
 }
+
+defs.tree.illusions = {
+    changeself = {
+        raise = "weave changeself %s",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    invisibility = {
+        raise = "weave invisibility",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    reflection = {
+        raise = "weave reflection at me",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    }
+}
+
+defs.tree.glamours = {
+    illusoryself = {
+        raise = "weave illusoryself",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    }
+}
+
+
 return defs
