@@ -4,7 +4,7 @@ local utils = {}
 -- Outpost collection of random functions and associated calls
 
 
-function utils.sendToDiscordWebhook(self, discord_username, avatarurl, message)
+function utils.sendToDiscordWebhook(discord_username, avatarurl, message)
   local httpdone = registerAnonymousEventHandler('sysPostHttpDone', 
     function(event, rurl, response)
       if rurl == url then display(r) else return true end
@@ -52,13 +52,13 @@ function utils.newlineSendCheck()
 end
 
 
-function utils.round(self, num, idp)
+function utils.round(num, idp)
     local mult = 10 ^ (idp or 0)
     return math.floor(num * mult + 0.5) / mult
 end
 
 
-function utils.copyitable(self, tbl)
+function utils.copyitable(tbl)
 	local target = {}
 	if type(tbl) ~= "table" then return end
 	for i, v in ipairs(tbl) do
@@ -68,7 +68,7 @@ function utils.copyitable(self, tbl)
 end
 
 
-function utils.randomString(self, length, pattern)
+function utils.randomString(length, pattern)
     local f = ""
     for loop = 0, 255 do
         f = f .. string.char(loop)
@@ -84,7 +84,7 @@ function utils.randomString(self, length, pattern)
 end
 
 
-function utils.copyTable(self, orig)
+function utils.copyTable(orig)
 	local target = {}
 	if type(orig) ~= "table" then return end
 	for k, v in pairs(orig) do
@@ -93,7 +93,7 @@ function utils.copyTable(self, orig)
 	return target
 end
 
-function utils.shallowCopy(self, orig)
+function utils.shallowCopy(orig)
 	local orig_type = type(orig)
 	local copy
 	if orig_type == 'table' then
@@ -107,7 +107,7 @@ function utils.shallowCopy(self, orig)
 	return copy
 end
 
-function utils.deepCopy(self, orig)
+function utils.deepCopy(orig)
     local orig_type = type(orig)
     local copy
     if orig_type == 'table' then
@@ -123,7 +123,7 @@ function utils.deepCopy(self, orig)
 end
 
 
-function utils.mergeTable(self, table1, table2)
+function utils.mergeTable(table1, table2)
 	local results = utils.copyTable(table1)
 	for k, v in pairs(table2) do
 		table.insert(results, v)
@@ -143,7 +143,7 @@ function utils.countTable(tbl)
 end
 
 
-function utils.dirTree(self, dir)
+function utils.dirTree(dir)
     assert(dir and dir ~= "", "directory parameter is missing or empty")
     if string.sub(dir, -1) == "/" then
         dir = string.sub(dir, 1, -2)
@@ -177,7 +177,7 @@ function utils.gaglp()
 end
 
 
-function utils.dehex(self, h)
+function utils.dehex(h)
     local i
     local s = ""
     for i = 1, #h, 2 do
@@ -189,7 +189,7 @@ function utils.dehex(self, h)
 end
 
 
-function utils.asciiToNum(self, c)
+function utils.asciiToNum(c)
     if (c >= string.byte("0") and c <= string.byte("9")) then
         return c - string.byte("0")
     elseif (c >= string.byte("A") and c <= string.byte("F")) then
