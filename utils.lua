@@ -40,7 +40,7 @@ function utils.timeStamp()
   
   local time = h..":"..m..":"..s
 
-  return time
+  return function () cecho(" <burlywood>[<sienna>"..time.."<burlywood>]") end
 end
 
 
@@ -215,7 +215,7 @@ function utils.concatAnd(t)
 end
 
 
-function utils.truncate(txt, length)
+function utils.truncateString(txt, length)
 	if not type(txt) == "string" or #txt <= length then return txt end
 
 	return string.sub(txt, 1, length-3) .. "..."

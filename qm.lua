@@ -9,7 +9,7 @@ local qm = {}
 
 
 qm.Check = function ()
-    if not next(op.balqueue.queue) then return end
+    if not op.balqueue.queue[1] then display(op.balqueue) return end
     if utils.countTable(op.balqueue.queue) >=1 then
         if bals:has() then
             op.balqueue:act()
