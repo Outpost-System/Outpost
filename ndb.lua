@@ -1071,9 +1071,9 @@ function ndb.isally(name)
 end
 
 
-registerAnonymousEventHandler("sysLoadEvent", "ndb.loadhighlights")
-registerAnonymousEventHandler("sysLoadEvent", "ndb.loadconfigs")
-registerAnonymousEventHandler("sysLoadEvent", "ndb.setupconfigs")
+registerAnonymousEventHandler("outpost done loading", "ndb.loadhighlights")
+registerAnonymousEventHandler("outpost done loading", "ndb.loadconfigs")
+registerAnonymousEventHandler("outpost done loading", "ndb.setupconfigs")
 registerAnonymousEventHandler("NameDB got enemy list", "ndb.gotenemylist")
 registerAnonymousEventHandler("NameDB download done", "ndb.addhighlightname")
 registerAnonymousEventHandler("NameDB got name list", "ndb.gotnamelist")
