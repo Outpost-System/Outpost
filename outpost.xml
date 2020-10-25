@@ -1757,6 +1757,27 @@ end</script>
 					<string>outpost done loading</string>
 				</eventHandlerList>
 			</Script>
+			<Script isActive="yes" isFolder="no">
+				<name>DownloadMudletMapper</name>
+				<packageName></packageName>
+				<script>function downloadMudletMapper()
+  if not mmp then
+    downloadFile(getMudletHomeDir() .. "/mudlet-mapper.xml",[[http://ire-mudlet-mapping.github.io/ire-mapping-script/downloads/mudlet-mapper.xml]])
+    registerAnonymousEventHandler("sysDownloadDone", "mudletMapperDownloaded", true)
+  end
+end
+
+registerAnonymousEventHandler("sysLoadEvent", "downloadMudletMapper", true)
+
+function mudletMapperDownloaded(_, filepath)
+  if filepath:find("mudlet-mapper.xml", 1, true) then
+    installPackage(filepath)
+  else
+    return true
+  end
+end</script>
+				<eventHandlerList />
+			</Script>
 		</ScriptGroup>
 		<ScriptGroup isActive="yes" isFolder="yes">
 			<name>GMCP</name>
