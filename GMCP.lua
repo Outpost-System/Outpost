@@ -349,6 +349,7 @@ function GMCP.ChatCapture()
 	end
 
 	local text = ansi2decho(gmcp.Comm.Channel.Text.text)
+	text = text:gsub(string.char(27) .. [[.-]] .. string.char(4), "")
 	text = text:gsub("^\"", "")
 
 	ui.chat_window:decho(GMCP.chat_channels.last, text)
@@ -383,15 +384,21 @@ registerAnonymousEventHandler("gmcp.Comm.Channel.Text", "GMCP.ChatCapture")
 
 function GMCP.UpdatePlayers()
 	op.players = {}
-	for key, name in pairs(gmcp.Room.Players) do
-    	if gmcp.Room.Players[key].name ~= gmcp.Char.Status.name then
-			op.players[gmcp.Room.Players[key].name] = gmcp.Room.Players[key].fullname
+	for key, player in pairs(gmcp.Room.Players) do
+    	if player.name ~= gmcp.Char.Status.name then
+			op.players[player.name] = player.fullname
+			if not ndb.exists(player.name) then
+               ndb.addname(player.name)
+		    end
     	end
 	end
 end
 
 function GMCP.AddPlayer()
 	op.players[gmcp.Room.AddPlayer.name] = gmcp.Room.AddPlayer.fullname
+	if not ndb.exists(gmcp.Room.AddPlayer.name) then
+       ndb.addname(gmcp.Room.AddPlayer.name)
+    end
 	--ui.UpdateRoomPlayers()
 end
 

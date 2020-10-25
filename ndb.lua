@@ -139,7 +139,7 @@ function ndb.loadconfigs()
         table.load(path, ndb.conf)
     end
     
-    e:echo("Configs loaded")
+    e:echo("NDB Configs loaded")
     
     -- set defaults if necessary
     ndb.conf.defaultcolor = ndb.conf.defaultcolor or "gray" -- default colors for highlighting
@@ -188,7 +188,7 @@ end
 function ndb.saveconfigs()
     local path = getMudletHomeDir() .. "/ndb/conf"
     table.save(path, ndb.conf)
-    e:echo("Configs saved")
+    e:echo("NDB Configs saved")
 end
 
 function ndb.showconfigs()
@@ -199,7 +199,7 @@ function ndb.showconfigs()
     setUnderline(true)
     echoLink("view color list", "showColors()", "Click here to view the list of possible colors you can choose", true)
     setUnderline(false)
-    echo(":\n\n")
+    echo(":\n")
     
     local function showdivine()
         e:shortecho("Divine:")
@@ -207,7 +207,7 @@ function ndb.showconfigs()
         echo("  ")
         
         setUnderline(true)
-        echoLink(ndb.conf["highlightdivine"] and "Highlighting" or "Not highlighting",
+        echoLink("\n"..(ndb.conf["highlightdivine"] and "Highlighting" or "Not highlighting"),
             [[ndb.setconfig("highlightdivine", (ndb.conf["highlightdivine"] and "false" or "true")) ndb.showconfigs()]],
             "Click to " .. (ndb.conf["highlightdivine"] and "stop" or "start") .. " highlighting Divine.",
         true)
@@ -263,12 +263,12 @@ function ndb.showconfigs()
     end
     
     local function showorgenemies()
-        e:echo("Org enemies:")
+        e:shortecho("Org enemies:")
         fg("white")
         echo("  ")
         
         setUnderline(true)
-        echoLink(ndb.conf["highlightorgenemies"] and "Highlighting" or "Not highlighting",
+        echoLink("\n"..(ndb.conf["highlightorgenemies"] and "Highlighting" or "Not highlighting"),
             [[ndb.setconfig("highlightorgenemies", (ndb.conf["highlightorgenemies"] and "false" or "true")) ndb.showconfigs()]],
             "Click to " .. (ndb.conf["highlightorgenemies"] and "stop" or "start") .. " highlighting enemies of your org.",
         true)
@@ -324,14 +324,14 @@ function ndb.showconfigs()
     end
     
     local function showmembers()
-        e:echo("Org members:")
+        e:shortecho("Org members:")
         -- orgs
         for _, org in ipairs(ndb.valid.orgs) do
             local status = ndb.conf.orgpolitics[org]
             local shortorg = org:lower():gsub(" ", "")
             fg("white")
             echo("  ")
-            echo(string.format("%-10s is ", org))
+            echo(string.format("\n%-10s is ", org))
             local nextstatus, extraspaces
             if status == "ally" then
                 fg("green")
@@ -409,8 +409,6 @@ function ndb.showconfigs()
             true)
             setUnderline(false)
             echo(")")
-            
-            echo("\n")
         end
         
         -- rogues
@@ -476,7 +474,7 @@ function ndb.showconfigs()
     
     function showhome()
         if ndb.conf.home and table.contains(ndb.valid.orgs, ndb.conf.home) then return end
-        e:echo2("You currently have not set your home. Use '")
+        e:shortecho("You currently have not set your home. Use '")
         fg("white")
         setUnderline(true)
         echoLink("ndbc home <org>",
@@ -489,11 +487,8 @@ function ndb.showconfigs()
     end
     
     showdivine()
-    echo("\n")
     showorgenemies()
-    echo("\n")
     showmembers()
-    echo("\n")
     showhome()
     
 end
@@ -1043,6 +1038,7 @@ function ndb.addhighlightname(_, name)
 end
 
 function ndb.gotnamelist(_, checkall)
+	if not ndb.tempnamelist then return end
     local namesadded = 0
     
     for i = 1, #ndb.tempnamelist do
@@ -1076,8 +1072,9 @@ function ndb.isally(name)
 end
 
 
-registerAnonymousEventHandler("sysLoadEvent", "ndb.loadhighlights")
-registerAnonymousEventHandler("sysLoadEvent", "ndb.setupconfigs")
+registerAnonymousEventHandler("outpost done loading", "ndb.loadhighlights")
+registerAnonymousEventHandler("outpost done loading", "ndb.loadconfigs")
+registerAnonymousEventHandler("outpost done loading", "ndb.setupconfigs")
 registerAnonymousEventHandler("NameDB got enemy list", "ndb.gotenemylist")
 registerAnonymousEventHandler("NameDB download done", "ndb.addhighlightname")
 registerAnonymousEventHandler("NameDB got name list", "ndb.gotnamelist")
