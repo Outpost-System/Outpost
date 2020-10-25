@@ -1038,6 +1038,7 @@ function ndb.addhighlightname(_, name)
 end
 
 function ndb.gotnamelist(_, checkall)
+	if not ndb.tempnamelist then return end
     local namesadded = 0
     
     for i = 1, #ndb.tempnamelist do
