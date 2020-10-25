@@ -294,6 +294,56 @@ defs.tree.consumable = {
         keepup = false,
 		state = false
     },
+	dragonsblood = {
+        raise = "apply dragonsblood quicksilver",
+        lower = "",
+        required = {},
+        consumed = {},
+		replace = {{"consumable","jasmine"},{"consumable","musk"},{"consumable","sandalwood"},{"consumable","vanilla"}},
+        defup = false,
+        keepup = false,
+		state = false
+    },
+	jasmine = {
+        raise = "apply jasmine",
+        lower = "",
+        required = {},
+        consumed = {},
+		replace = {{"consumable","dragonsblood"},{"consumable","musk"},{"consumable","sandalwood"},{"consumable","vanilla"}},
+        defup = false,
+        keepup = false,
+		state = false
+    },
+	musk = {
+        raise = "apply musk",
+        lower = "",
+        required = {},
+        consumed = {},
+		replace = {{"consumable","dragonsblood"},{"consumable","jasmine"},{"consumable","sandalwood"},{"consumable","vanilla"}},
+        defup = false,
+        keepup = false,
+		state = false
+    },
+	sandalwood = {
+        raise = "apply sandalwood",
+        lower = "",
+        required = {},
+        consumed = {},
+		replace = {{"consumable","dragonsblood"},{"consumable","jasmine"},{"consumable","musk"},{"consumable","vanilla"}},
+        defup = false,
+        keepup = false,
+		state = false
+    },
+	vanilla = {
+        raise = "apply vanilla",
+        lower = "",
+        required = {},
+        consumed = {},
+		replace = {{"consumable","dragonsblood"},{"consumable","jasmine"},{"consumable","musk"},{"consumable","sandalwood"}},
+        defup = false,
+        keepup = false,
+		state = false
+    },
 }
 
 defs.tree.combat = {
