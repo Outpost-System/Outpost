@@ -349,6 +349,7 @@ function GMCP.ChatCapture()
 	end
 
 	local text = ansi2decho(gmcp.Comm.Channel.Text.text)
+	text = text:gsub(string.char(27) .. [[.-]] .. string.char(4), "")
 	text = text:gsub("^\"", "")
 
 	ui.chat_window:decho(GMCP.chat_channels.last, text)
