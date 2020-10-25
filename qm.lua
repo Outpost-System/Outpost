@@ -135,8 +135,8 @@ qm.Queue = {
                     end
                 end
 
-                if will_action and fs:check('queue') then
-                    fs:on('queue', 0.02)
+                if will_action and fs.check('queue') then
+                    fs.on('queue', 0.02)
                     local code = action.code
                     if type( code ) == "table" then
                         for _,each_code in pairs( code ) do

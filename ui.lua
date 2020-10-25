@@ -21,15 +21,19 @@ ui.bottom:attachToBorder("bottom")
 ui.left:attachToBorder("left")
 ui.right:attachToBorder("right")
 
-ui.top:connectToBorder("left")
-ui.top:connectToBorder("right")
-ui.bottom:connectToBorder("left")
-ui.bottom:connectToBorder("right")
+if Adjustable.Container.connectToBorder then
+  ui.top:connectToBorder("left")
+  ui.top:connectToBorder("right")
+  ui.bottom:connectToBorder("left")
+  ui.bottom:connectToBorder("right")
+end
 
-ui.top:changeMenuStyle("dark")
-ui.bottom:changeMenuStyle("dark")
-ui.left:changeMenuStyle("dark")
-ui.right:changeMenuStyle("dark")
+if Adjustable.Container.changeMenuStyle then
+  ui.top:changeMenuStyle("dark")
+  ui.bottom:changeMenuStyle("dark")
+  ui.left:changeMenuStyle("dark")
+  ui.right:changeMenuStyle("dark")
+end
 
 ui.top:lockContainer("full")
 ui.bottom:lockContainer("full")
