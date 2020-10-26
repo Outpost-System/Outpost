@@ -43,6 +43,23 @@ function defs.set(skillset, def, bool)
     defs.tree[skillset][def].state = bool
 end
 
+function defs.raised(skillset, def)
+  e:echo("raised " .. skillset .. ":" .. def)
+  if defs.tree[skillset][def] then
+    echo(" - valid defence!")
+	defs.tree[skillset][def].state=true
+  end
+end
+
+function defs.lowered(skillset, def)
+  e:echo("lowered " .. skillset .. ":" .. def)
+  if defs.tree[skillset][def] then
+    echo(" - valid defence!")
+	defs.tree[skillset][def].state=false
+  end
+end
+
+
 
 -- Defence trees
 
