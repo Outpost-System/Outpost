@@ -168,25 +168,29 @@ ui.chardetails_label = Geyser.Label:new({
 ui.hpgauge = Geyser.Gauge:new({
     name = "ui.hpgauge",
     x = "1%", y = "1%",
-    width = "48%", height = "48%"
+    width = "48%", height = "48%",
+    strict = true
   }, ui.bottom)
 
 ui.mpgauge = Geyser.Gauge:new({
     name = "ui.mpgauge",
     x = "51%", y = "1%",
-    width = "48%", height = "48%"
+    width = "48%", height = "48%",
+    strict = true
   }, ui.bottom)
 
 ui.egogauge = Geyser.Gauge:new({
     name = "ui.egogauge",
     x = "1%", y = "51%",
-    width = "48%", height = "48%"
+    width = "48%", height = "48%",
+    strict = true
   }, ui.bottom)
 
 ui.powergauge = Geyser.Gauge:new({
     name = "ui.powergauge",
     x = "51%", y = "51%",
-    width = "48%", height = "48%"
+    width = "48%", height = "48%",
+    strict = true
   }, ui.bottom)
 
 --[[ui.charstatus_label = Geyser.Label:new({
