@@ -1,0 +1,5 @@
+describe("gmcp", function ()
+    it("this is a test test", function ()
+        assert.truthy("This is true")
+    end)
+end)

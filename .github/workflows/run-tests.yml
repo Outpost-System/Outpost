@@ -1,0 +1,13 @@
+name: run-tests
+
+on: 
+  - push
+
+jobs:
+  tests:
+    container:
+      image: ghcr.io/outpost-system/busted:latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run busted tests
+      run: busted
