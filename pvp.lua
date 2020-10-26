@@ -73,6 +73,10 @@ function pvp.waning()
  	end
  end
 
+function pvp.pookaStatus()
+  return op.pooka_balance and "<firebrick> *[<thistle>POOKA<firebrick>]*" or ""
+end
+
 
 -- Hexes Control :)
 
