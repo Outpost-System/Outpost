@@ -6,7 +6,7 @@ local aegis = {}
 aegis.affs = {}
 
 aegis.affmap = {
-		["suffering from a collapsed lung."] = {aff = "collapsedlung", aura = "regenerate chest"},
+		["suffering from a collapsed lung."] = {aff = "collapsedlung", aura = "regenerate chest"}, -- Thanks go to Sondayga for this table.
 		["cursed with the healthleech."] = {aff = "healthleech", aura = "auric"},
 		--  ["a $(level$) aura."] = {aff = "warpedaura", aura = ""},
   		["afflicted with the curse of the Aeon."] = {aff = "aeon", aura = "phlegmatic"},
