@@ -804,7 +804,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "The spirit of squirrel grants you the ability to forage."
     },
     night = {
         raise = "spiritbond night",
@@ -813,7 +814,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "During the dark hours, the spirit of mother night will conceal you."
     },
     skunk = {
         raise = "spiritbond skunk",
@@ -822,7 +824,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "The spirit of skunk grants you the dubious gift of stink."
     },
     sun = {
         raise = "spiritbond sun",
@@ -831,7 +834,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "By the grace of the spirit of the sun, your ego shall replenish during the day."
     },
 	rock = {
 		raise = "spiritbond rock",
@@ -840,7 +844,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "The spirit of rock will help root you to the earth."
     },
     moon = {
         raise = "spiritbond moon",
@@ -849,7 +854,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "Under the night sky, your mana replenishes, a gift from the spirit of the moon."
     },
     crow = {
         raise = "spiritbond crow",
@@ -858,7 +864,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "Make others flee with the power of the spirit of crow."
     },
     tree = {
         raise = "spiritbond tree",
@@ -867,7 +874,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "In the presence of mystic trees, be healed by virtue of the spirit of tree."
     },
     groundhog = {
         raise = "spiritbond groundhog",
@@ -876,7 +884,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "Burrow through the ground with the spirit of groundhog."
     },
     trout = {
         raise = "spiritbond trout",
@@ -885,7 +894,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "You gain the ability to trueswim and breathe underwater by the spirit of trout."
     },
     wolf = {
         raise = "spiritbond wolf",
@@ -894,7 +904,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "Find courage within yourself by the spirit of wolf."
     },
     bear = {
         raise = "spiritbond bear",
@@ -903,7 +914,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "The spirit of bear grants you great strength."
     },
     stag = {
         raise = "spiritbond stag",
@@ -912,7 +924,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "Run free and fast like the spirit of stag."
     },
     monkey = {
         raise = "spiritbond monkey",
@@ -921,7 +934,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "The spirit of monkey grants you the ability to move about the trees."
     },
     horse = {
         raise = "spiritbond horse",
@@ -930,7 +944,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "Leap over obstacles by virtue of the spirit of horse."
     },
     river = {
         raise = "spiritbond river",
@@ -939,7 +954,8 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "While in the waters of a raging river, the spirit of river will heal you."
     },
     snake = {
         raise = "spiritbond snake",
@@ -948,11 +964,12 @@ defs.tree.totems = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		totemline = "Resist venoms by virtue of the spirit of snake."
     },
     nature = {
         raise = "spiritbond nature",
-        lower = "spiritrelease nature",
+        lower = "",
         required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
         consumed = {"op.bals.equilibrium"},
         power = 5,
@@ -1010,7 +1027,8 @@ defs.tree.stag = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = false
+		state = false,
+		defline = "You have the hide of the stag protecting your body."
 	},
 	greenman = {
 		raise = "paint face greenman",
@@ -1020,7 +1038,8 @@ defs.tree.stag = {
 		exclude = {{"stag","trueheart"}},
 		defup = false,
 		keepup = false,
-		state = false
+		state = false,
+		defline = "Your face is painted with the image of the greenman."
 	},
 	trueheart = {
 		raise = "paint face trueheart",
@@ -1030,7 +1049,8 @@ defs.tree.stag = {
 		exclude = {{"stag","greenman"}},
 		defup = false,
 		keepup = false,
-		state = false
+		state = false,
+		defline = "Your face is painted with yellow rays of sunshine."
 	},
 	bolting = {
 		raise = "bolting on",
@@ -1039,7 +1059,8 @@ defs.tree.stag = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = false
+		state = false,
+		defline = "You will instantly bolt when an enemy approaches."
 	},
 	lightning = {
 		raise = "paint face lightning",
@@ -1049,7 +1070,8 @@ defs.tree.stag = {
 		exclude = {{"stag","swiftstripes"}},
 		defup = false,
 		keepup = false,
-		state = false
+		state = false,
+		defline = "Your face is painted with blue bolts of lightning."
 	},
 	swiftstripes = {
 		raise = "paint face swiftstripes",
@@ -1059,7 +1081,8 @@ defs.tree.stag = {
 		exclude = {{"stag","lightning"}},
 		defup = false,
 		keepup = false,
-		state = false
+		state = false,
+		defline = "Your face is painted with red stripes."
 	},
 	stagform = {
 		raise = "stagform",
@@ -1069,7 +1092,8 @@ defs.tree.stag = {
 		power = 10,
 		defup = false,
 		keepup = false,
-		state = false
+		state = false,
+		defline = "Your body has been blessed by the stag."
 	},
 }
         
@@ -1081,7 +1105,8 @@ defs.tree.nature = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = false
+		state = false,
+		defline = "You have skin covered in treebark."
 	},
 	blend = {
 		raise = "nature blend on",
@@ -1090,7 +1115,8 @@ defs.tree.nature = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = false
+		state = false,
+		defline = "You are blended in the foliage."
 	},
 	rooting = {
 		raise = "nature rooting",
@@ -1099,7 +1125,8 @@ defs.tree.nature = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = false
+		state = false,
+		defline = "You are rooted."
 	},
 	torc = {
 		raise = "nature torc",
@@ -1120,7 +1147,8 @@ defs.tree.druidry = {
 		consumed = {"op.bals.equilibrium"},
 		defup = false,
 		keepup = false,
-		state = false
+		state = false,
+		defline = "You are an extension of the forest."
 	},
 }
 
@@ -1132,7 +1160,8 @@ defs.tree.dreamweaving = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-        state = false
+        state = false,
+		defline = "You are in complete control of your waking mind."
     },
 }
 
