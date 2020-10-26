@@ -43,6 +43,23 @@ function defs.set(skillset, def, bool)
     defs.tree[skillset][def].state = bool
 end
 
+function defs.raised(skillset, def)
+  e:echo("raised " .. skillset .. ":" .. def)
+  if defs.tree[skillset][def] then
+    echo(" - valid defence!")
+	defs.tree[skillset][def].state=true
+  end
+end
+
+function defs.lowered(skillset, def)
+  e:echo("lowered " .. skillset .. ":" .. def)
+  if defs.tree[skillset][def] then
+    echo(" - valid defence!")
+	defs.tree[skillset][def].state=false
+  end
+end
+
+
 
 -- Defence trees
 
@@ -69,7 +86,8 @@ defs.tree.enchantments = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "How gorgeous are you? Beauty replenishes your ego."
     },
     mercy = {
         raise = "rub mercy",
@@ -78,7 +96,8 @@ defs.tree.enchantments = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "So this is vitality! Mercy restores your health."
     },
     perfection = {
         raise = "rub perfection",
@@ -87,7 +106,8 @@ defs.tree.enchantments = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Perfection regenerates your paragon-like mana."
     },
     kingdom = {
         raise = "rub kingdom",
@@ -96,7 +116,8 @@ defs.tree.enchantments = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Thou shalt not bleed, majesty. Kingdom hastens your clotting."
     },
     waterwalk = {
         raise = "rub waterwalk",
@@ -105,7 +126,8 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are able to walk on water with consummate ease."
     },
     waterbreathe = {
         raise = "rub waterbreathe",
@@ -114,16 +136,18 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Water is to you as air, and you shall not drown."
     },
-    levitation = {
+    levitate = {
         raise = "rub levitate",
         lower = "",
         required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are protected by Levitate."
     },
     nimbus = {
         raise = "rub nimbus",
@@ -132,7 +156,8 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are surrounded by a cosmic nimbus."
     },
     acquisitio = {
         raise = "rub acquisitio",
@@ -141,7 +166,8 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "A lust to accumulate possesses your grubby soul."
     },
     avarice = {
         raise = "blow avaricehorn",
@@ -150,7 +176,8 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are instilled with a need to hoard gold."
     },
     truetime = {
         raise = "wind truetime",
@@ -159,7 +186,8 @@ defs.tree.enchantments = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are slightly protected against shifting time."
     },
     goldenbox = {
         raise = "crank goldenbox",
@@ -195,7 +223,8 @@ defs.tree.enchantments = {
         consumed = {"op.bals.scroll"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You have an aura of protection around you."
     },
 }
 
@@ -208,7 +237,8 @@ defs.tree.consumable = {
 		replace = {{"consumable","whitetea"},{"consumable","greentea"},{"consumable","oolongtea"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Your vivaciousness is herbally heightened."
     },
     greentea = {
         raise = "sip greentea",
@@ -218,7 +248,8 @@ defs.tree.consumable = {
 		replace = {{"consumable","whitetea"},{"consumable","blacktea"},{"consumable","oolongtea"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Your movements are herbally heightened."
     },
     oolongtea = {
         raise = "sip oolongtea",
@@ -228,7 +259,8 @@ defs.tree.consumable = {
 		replace = {{"consumable","whitetea"},{"consumable","greentea"},{"consumable","blacktea"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Your passion is herbally heightened."
     },
     whitetea = {
         raise = "sip whitetea",
@@ -238,7 +270,8 @@ defs.tree.consumable = {
 		replace = {{"consumable","blacktea"},{"consumable","greentea"},{"consumable","oolongtea"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Your insight is herbally heightened."
     },
     amberbeer = {
         raise = "sip amberbeer",
@@ -247,7 +280,8 @@ defs.tree.consumable = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Your pain is deadened by alcohol."
     },
     darkbeer = {
         raise = "sip darkbeer",
@@ -256,7 +290,8 @@ defs.tree.consumable = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Your aggression is stoked by alcohol."
     },
     kafe = {
         raise = "eat kafe",
@@ -265,7 +300,8 @@ defs.tree.consumable = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You have ingested the kafe bean and are feeling extremely energetic."
     },
     lovepotion = {
         raise = "sip love",
@@ -283,7 +319,8 @@ defs.tree.consumable = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are prepared to make use of moonwater coursing through your body."
     },
     quicksilver = {
         raise = "sip quicksilver",
@@ -292,7 +329,63 @@ defs.tree.consumable = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Your sense of time is heightened, and your reactions are speeded."
+    },
+	dragonsblood = {
+        raise = "apply dragonsblood quicksilver",
+        lower = "",
+        required = {},
+        consumed = {},
+		replace = {{"consumable","jasmine"},{"consumable","musk"},{"consumable","sandalwood"},{"consumable","vanilla"}},
+        defup = false,
+        keepup = false,
+		state = false,
+		defline = "You are lightly coated with a layer of dragonsblood."
+    },
+	jasmine = {
+        raise = "apply jasmine",
+        lower = "",
+        required = {},
+        consumed = {},
+		replace = {{"consumable","dragonsblood"},{"consumable","musk"},{"consumable","sandalwood"},{"consumable","vanilla"}},
+        defup = false,
+        keepup = false,
+		state = false,
+		defline = "You are lightly coated with a layer of jasmine."
+    },
+	musk = {
+        raise = "apply musk",
+        lower = "",
+        required = {},
+        consumed = {},
+		replace = {{"consumable","dragonsblood"},{"consumable","jasmine"},{"consumable","sandalwood"},{"consumable","vanilla"}},
+        defup = false,
+        keepup = false,
+		state = false,
+		defline = "You are lightly coated with a layer of musk."
+    },
+	sandalwood = {
+        raise = "apply sandalwood",
+        lower = "",
+        required = {},
+        consumed = {},
+		replace = {{"consumable","dragonsblood"},{"consumable","jasmine"},{"consumable","musk"},{"consumable","vanilla"}},
+        defup = false,
+        keepup = false,
+		state = false,
+		defline = "You are lightly coated with a layer of sandalwood."
+    },
+	vanilla = {
+        raise = "apply vanilla",
+        lower = "",
+        required = {},
+        consumed = {},
+		replace = {{"consumable","dragonsblood"},{"consumable","jasmine"},{"consumable","musk"},{"consumable","sandalwood"}},
+        defup = false,
+        keepup = false,
+		state = false,
+		defline = "You are lightly coated with a layer of vanilla."
     },
 }
 
@@ -304,7 +397,8 @@ defs.tree.combat = {
         consumed = {"op.bals.balance"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are observing with a keen eye."
     },
 }
 
@@ -316,7 +410,8 @@ defs.tree.discernment = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Your vision is heightened to see in the dark."
     },
     thirdeye = {
         raise = "thirdeye",
@@ -325,7 +420,8 @@ defs.tree.discernment = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are viewing the world through the third eye."
     },
     sixthsense = {
         raise = "sixthsense",
@@ -334,7 +430,8 @@ defs.tree.discernment = {
         consumed = "op.bals.dust",
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "The world is seen through your sixth sense."
     },
     deathsight = {
         raise = "deathsight on",
@@ -343,7 +440,8 @@ defs.tree.discernment = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Your mind is linked with the strings of fate, bringing news of the dead."
     },
     lipread = {
         raise = "lipread",
@@ -352,7 +450,8 @@ defs.tree.discernment = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are lipreading to overcome deafness."
     },
     powermask = {
         raise = "powermask",
@@ -362,7 +461,8 @@ defs.tree.discernment = {
         power = 10,
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You have a powermask hiding your actions."
     },
     aethersight = {
         raise = "aethersight on",
@@ -372,7 +472,8 @@ defs.tree.discernment = {
         power = 3,
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are sensing disruptions in the aether."
     },
 }
 
@@ -384,7 +485,8 @@ defs.tree.lowmagic = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are surrounded by a nearly invisible magical shield."
     },
     red = {
         raise = "invoke red",
@@ -393,7 +495,8 @@ defs.tree.lowmagic = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "The pull of the earth roots you more firmly to the ground."
     },
     orange = {
         raise = "invoke orange",
@@ -403,7 +506,8 @@ defs.tree.lowmagic = {
         power = 1,
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are protected from hunger by an orange aura."
     },
     yellow = {
         raise = "invoke yellow",
@@ -413,7 +517,8 @@ defs.tree.lowmagic = {
         power = 3,
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Your constitution is enhanced by a yellow aura."
     },
     blue = {
         raise = "invoke blue",
@@ -422,7 +527,8 @@ defs.tree.lowmagic = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You have empowered your blue chakra."
     },
     autumn = {
         raise = "invoke autumn",
@@ -431,7 +537,8 @@ defs.tree.lowmagic = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are followed by the autumn wind."
     },
     serpent = {
         raise = "invoke serpent",
@@ -453,7 +560,8 @@ defs.tree.discipline = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You have insomnia, and cannot easily go to sleep."
     },
     truehearing = {
         raise = "truehearing",
@@ -462,7 +570,8 @@ defs.tree.discipline = {
         consumed = "op.bals.steam",
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "Sounds are heard through your true hearing."
     },
     obliviousness = {
         raise = "obliviousness on",
@@ -471,7 +580,8 @@ defs.tree.discipline = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are oblivious to your surroundings."
     },
     metawake = {
         raise = "metawake on",
@@ -480,7 +590,8 @@ defs.tree.discipline = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are concentrating on maintaining distance from the dreamworld."
     },
     breathing = {
         raise = "hold breath",
@@ -489,7 +600,8 @@ defs.tree.discipline = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are holding your breath."
     },
     selfishness = {
         raise = "selfishness",
@@ -498,7 +610,8 @@ defs.tree.discipline = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are feeling quite selfish."
     },
 }
 
@@ -511,7 +624,8 @@ defs.tree.environment = {
         power = 10,
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defmatch = "You are attuned to being in the [%a%s]+ environment."
     },
 }
 
@@ -523,7 +637,8 @@ defs.tree.influence = {
         consumed = {},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are compellingly charismatic."
     },
 }
 
@@ -535,7 +650,8 @@ defs.tree.dramatics = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are in performance mode."
     },
     lawyerly = {
         raise = "attitude lawyerly",
@@ -545,7 +661,8 @@ defs.tree.dramatics = {
 		replace = {{"dramatics","saintly"},{"dramatics","zealotry"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are carrying yourself with a lawyerly demeanor."
     },
     saintly = {
         raise = "attitude saintly",
@@ -555,7 +672,8 @@ defs.tree.dramatics = {
 		replace = {{"dramatics","lawyerly"},{"dramatics","zealotry"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are carrying yourself with a saintly demeanor."
     },
     zealotry = {
         raise = "attitude zealotry",
@@ -565,7 +683,8 @@ defs.tree.dramatics = {
 		replace = {{"dramatics","saintly"},{"dramatics","lawyerly"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are carrying yourself with the demeanor of a zealot."
     },
     bully = {
         raise = "perform bully",
@@ -575,7 +694,8 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","sycophant"},{"dramatics","diplomat"},{"dramatics","bureaucrat"},{"dramatics","gorgeous"},{"dramatics","vagabond"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are performing the role of a bully."
     },
     sycophant = {
         raise = "perform sycophant",
@@ -585,7 +705,8 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","diplomat"},{"dramatics","bully"},{"dramatics","bureaucrat"},{"dramatics","gorgeous"},{"dramatics","vagabond"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are performing the role of a sycophant."
     },
     drunkard = {
         raise = "perform drunkard",
@@ -595,7 +716,8 @@ defs.tree.dramatics = {
 		replace = {{"dramatics","sober"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are acting drunker than you actually is."
     },
     bureaucrat = {
         raise = "perform bureaucrat",
@@ -605,7 +727,8 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","sycophant"},{"dramatics","bully"},{"dramatics","diplomat"},{"dramatics","gorgeous"},{"dramatics","vagabond"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are performing the role of a bureaucrat."
     },
     sober = {
         raise = "perform sober",
@@ -615,7 +738,8 @@ defs.tree.dramatics = {
 		replace = {{"dramatics","drunkard"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are acting more sober than you actually are."
     },
     gorgeous = {
         raise = "perform gorgeous",
@@ -625,7 +749,8 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","sycophant"},{"dramatics","bully"},{"dramatics","bureaucrat"},{"dramatics","diplomat"},{"dramatics","vagabond"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are performing the role of a gorgeous beauty."
     },
     wounded = {
         raise = "perform wounded",
@@ -634,7 +759,8 @@ defs.tree.dramatics = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are acting more wounded than you actually are."
     },
     vagabond = {
         raise = "perform vagabond",
@@ -644,7 +770,8 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","sycophant"},{"dramatics","bully"},{"dramatics","bureaucrat"},{"dramatics","gorgeous"},{"dramatics","diplomat"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are performing the role of a vagabond."
     },
     diplomat = {
         raise = "perform diplomat",
@@ -654,7 +781,8 @@ defs.tree.dramatics = {
 		exclude = {{"dramatics","sycophant"},{"dramatics","bully"},{"dramatics","bureaucrat"},{"dramatics","gorgeous"},{"dramatics","vagabond"}},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are performing the role of a diplomat."
     },
     review = {
         raise = "review on",
@@ -663,7 +791,8 @@ defs.tree.dramatics = {
         consumed = {"op.bals.equilibrium"},
         defup = false,
         keepup = false,
-		state = false
+		state = false,
+		defline = "You are reviewing performances of others."
     },
 }
 
