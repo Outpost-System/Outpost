@@ -18,7 +18,7 @@ function pvp.setTarget(target_array)
 		if GMCP.HasSkill("leprechaun") then
 			op.balqueue:add("order entourage kill "..op.target)
 			op.balqueue:add("order "..op.fae.leprechaun.." follow "..op.target)
-			op.balqueue:add("order "..op.beast.id.." passive") -- Need to find a better way to do this.
+			op.balqueue:add("order "..op.beast.id.." passive") -- Need to find a better way to do this. We do store fae rep numbers but pacifying them individually is spammy.
 			qm.Check()
 		else
 			-- Handle other skillset preliminaries here
@@ -47,7 +47,7 @@ end
 
 
  function pvp.succumb()
- 	if bals:has("equilibrium") and bals:has("balance") then
+ 	if bals.has() then
  		send("moondance succumb "..op.target)
  	else
  		e:warn("Hang on. Waiting on balance!")
@@ -55,9 +55,9 @@ end
  end
 
 function pvp.bluemoon()
- 	if bals:has("equilibrium") and bals:has("balance") then
- 		 if gmcp.Char.Status.fullname == "Moontouched Quixote" then
- 			send("beast order breathe scrambledwave "..op.target)
+ 	if bals.has() then
+ 		 if gmcp.Char.Status.fullname == "Moontouched Quixote" then -- Need to find a way to check for the existence of this ability. Have a few ideas, but thoughts?
+ 			send("beast order breathe scrambledwave "..op.target)   -- It does not show on BEAST INFO. Parse POWERS LIST, maybe?
  		end
  		send("moondance bluemoon "..op.target)
  	else
@@ -66,7 +66,7 @@ function pvp.bluemoon()
  end
 
 function pvp.waning()
-	if bals:has("equilibrium") and bals:has("balance") then
+	if bals.has() then
  		send("moondance waning "..op.target)
  	else
  		e:warn("Hang on. Waiting on balance!")
