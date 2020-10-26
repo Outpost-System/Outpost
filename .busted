@@ -2,6 +2,6 @@ return {
     default = {
         coverage = true,
         verbose = true,
-        ROOT = "test"
+        ROOT = {"test"}
     }
 }
