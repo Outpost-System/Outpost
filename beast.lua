@@ -9,7 +9,7 @@ function beast.heal()
 	local to_beast_ego = op.vitals.maxego * (tonumber(settings.cures.beast_ego) / 100)	
 
 	if not can:beast() 
-		or not GMCP:has_skill("beastmastery", "healing") 
+		or not GMCP.HasSkill("healing") 
 	then 
 		return 
 	end
