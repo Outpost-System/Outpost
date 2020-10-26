@@ -32,11 +32,10 @@ function affs.cured()
 	if aff == "sprawled" then aff = "prone" end
 
 	affs.current[aff] = nil
-	affs.cured(gmcp.Char.Afflictions.Remove[1])
 	raiseEvent("outpost cured aff", gmcp.Char.Afflictions.Remove[1])
 end
 
-function affs.has(self, aff)
+function affs.has(aff)
 	return affs.current[aff] and true or false
 end
 

@@ -129,7 +129,7 @@ end
 
 
 function aegis.getAura(aff)
-  return aegis.t[aff]
+  return aegis.a[aff]
 end
 
 
