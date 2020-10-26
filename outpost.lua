@@ -1,4 +1,4 @@
-module("outpost", package.seeall)
+local outpost = {}
 
 
 -- Outpost Combat System - (Lusternia).
@@ -78,3 +78,5 @@ end
 
 
 LoadModules()
+
+return outpost
