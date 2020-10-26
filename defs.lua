@@ -322,6 +322,26 @@ defs.tree.consumable = {
 		state = false,
 		defline = "You are prepared to make use of moonwater coursing through your body."
     },
+        holywater = {
+	raise = "sip holywater",
+	lower = "",
+	required = {"op.bals.orgpotion"},
+	consumed = {"op.bals.orgpotion"},
+	defup = false,
+	keepup = false,
+		state = false,
+		defline = "You are prepared to make use of holy water coursing through your body."
+    },
+    unholywater = {
+	raise = "sip unholywater",
+	lower = "",
+	required = {"op.bals.orgpotion"},
+	consumed = {"op.bals.orgpotion"},
+	defup = false,
+	keepup = false,
+		state = false,
+		defline = "You are prepared to make use of unholy water coursing through your body."
+    },
     quicksilver = {
         raise = "sip quicksilver",
         lower = "",
@@ -1327,5 +1347,407 @@ defs.tree.starhymn = {
     }
 }
 
+defs.tree.highmagic = {
+    malkuth = {
+        raise = "evoke malkuth",
+        lower = "evoke malkuth off",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "The pull of the earth roots you more firmly to the ground."
+    },
+    yesod = {
+        raise = "evoke yesod",
+        lower = "evoke yesod",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "Yesod."
+    },
+    netzach = {
+        raise = "evoke netzach",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "Netzach."
+    },
+    hod = {
+        raise = "evoke hod",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        power = 3,
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "Hod."
+    },
+    geburah = {
+        raise = "evoke geburah",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        power = 3,
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "Geburah."
+    },
+}
+
+defs.tree.rituals = {
+    fortuna = {
+        raise = "chant fortuna",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are reaping the gifts of Fortuna."
+    },
+    draconis = {
+        raise = "chant draconis",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are surrounded by numinous dragon scales."
+    },
+    populus = {
+        raise = "chant populus",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are filled with exuberance."
+    },
+    acquisitio = {
+        raise = "chant acquisitio on",
+        lower = "chant acquisitio off",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "A lust to accumulate possesses your grubby soul."
+    },
+    rubeus = {
+        raise = "chant rubeus",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are filled with the wrath of Rubeus."
+    },
+}
+
+defs.tree.cosmic = {
+    waterwalk = {
+        raise = "abjure waterwalk",
+        lower = "abjure waterwalk off",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are able to walk on water with consummate ease."
+    },
+    deathsight = {
+        raise = "abjure deathsight",
+        lower = "abjure deathsight off",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "Your mind is linked with the strings of fate, bringing news of the dead."
+    },
+    soulguard = {
+        raise = "abjure soulguard",
+        lower = "abjure soulguard off",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "Your soul is guarded against the ravages of the cosmos."
+    },
+    cloak = {
+        raise = "abjure cloak",
+        lower = "abjure cloak off",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "Your body and soul are cloaked."
+    },
+    timeslip = {
+        raise = "abjure timeslip",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are touching upon cosmic probabilities."
+    },
+    nimbus = {
+        raise = "abjure nimbus",
+        lower = "abjure nimbus off",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are surrounded by a cosmic nimbus."
+    },
+    quickening = {
+        raise = "abjure quickening",
+        lower = "",
+        require = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "Your mind has been quickened."
+    }
+}
+
+defs.tree.nihilism = {
+     wings = {
+	raise = "darkcall wings",
+	lower = "",
+	required = {"op.bals.balance", "op.bals.equilibrium"},
+	consumed = {"op.bals.equilibrium"},
+	defup = false,
+	keepup = false,
+	state = false,
+        defline = "Bat-like wings sprout out of your back."
+	 },
+    demonscales = {
+        raise = "darkcall demonscales",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are covered with demon scales."
+    },
+    channels = {
+        raise = "open channels",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        power = 10,
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You have opened your aetheric channels to other planar entities."
+    },
+    barbedtail = {
+        raise = "darkcall barbedtail",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You have a barbed tail."
+    },
+}
+
+defs.tree.necromancy = {
+     putrefaction = {
+	raise = "darkchant putrefaction",
+	lower = "solidify",
+	required = {"op.bals.balance", "op.bals.equilibrium"},
+	consumed = {"op.bals.equilibrium"},
+	defup = false,
+	keepup = false,
+	state = false,
+        defline = "You are bathed in the glorious protection of decaying flesh."
+	 },
+}
+
+defs.tree.tarot = {
+     fool = {
+	raise = "fling fool at ground",
+	lower = "",
+	required = {"op.bals.balance", "op.bals.equilibrium"},
+	consumed = {"op.bals.balance"},
+	power = 3,
+	defup = false,
+	keepup = false,
+	state = false,
+	 },
+     warrior = {
+	raise = "fling warrior at ground",
+	lower = "",
+	required = {"op.bals.balance", "op.bals.equilibrium"},
+	consumed = {"op.bals.balance"},
+	power = 2,
+	defup = false,
+	keepup = false,
+	state = false,
+        defline = "You are assisted by the Warrior."
+	 },
+    starleaper = {
+        raise = "fling starleaper at ground",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.balance"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are protected by the Starleaper."
+    },
+    princess = {
+        raise = "fling princess at ground",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.balance"},
+        power = 5,
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are able to beseech the Princess."
+    },
+    teacher = {
+        raise = "fling teacher at me",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.balance"},
+        defup = false,
+        keepup = false,
+        state = false,
+    },
+    enigma = {
+        raise = "fling enigma at ground",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.balance"},
+        power = 5,
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "The Enigma is upon you."
+    },
+    world = {
+        raise = "fling world at ground",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.balance"},
+        power = 5,
+        defup = false,
+        keepup = false,
+        state = false,
+    }
+}
+
+defs.tree.celestialism = {
+     wings = {
+	raise = "starcall wings",
+	lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+	consumed = {"op.bals.equilibrium"},
+	defup = false,
+	keepup = false,
+	state = false,
+        defline = "Angelic wings sprout out of your back.",
+	 },
+    halo = {
+        raise = "starcall halo",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are glowing with a radiant halo."
+    },
+    stigmata = {
+        raise = "starcall stigmata on",
+        lower = "starcall stigmata off",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are marked with the stigmata."
+    },
+    channels = {
+        raise = "open channels",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        power = 10,
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You have opened your aetheric channels to other planar entities.",
+    },
+}
+
+defs.tree.sacraments = {
+    benediction = {
+	raise = "starchant benediction me",
+	lower = "",
+	required = {"op.bals.balance", "op.bals.equilibrium"},
+	consumed = {"op.bals.equilibrium"},
+	power = 3,
+	defup = false,
+	keepup = false,
+	state = false,
+	 },
+    fervor = {
+        raise = "starchant fervor",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        power = 3,
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are filled with an intense religious fervor.",
+    },
+    lustration = {
+        raise = "starchant lustration",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        power = 2,
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are affected by the ritual of lustration."
+    },
+    ablution = {
+        raise = "starchant ablution",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium"},
+        consumed = {"op.bals.equilibrium"},
+        power = 2,
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "You are affected by the ritual of ablution."
+    },
+}
 
 return defs
