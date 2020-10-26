@@ -34,13 +34,14 @@ end
 
 
 function utils.timeStamp()
-  local h, m, s = getTime().hour,
+  local h, m, s, ms = getTime().hour,
     getTime().min,
-    getTime().sec
+    getTime().sec,
+    getTime().msec
   
-  local time = h..":"..m..":"..s
+  local time = h..":"..m..":"..s..":"..ms
 
-  return function () cecho(" <burlywood>[<sienna>"..time.."<burlywood>]") end
+  return cecho(" <burlywood>[<sienna>"..time.."<burlywood>]")
 end
 
 
