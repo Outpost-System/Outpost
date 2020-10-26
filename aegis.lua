@@ -95,7 +95,30 @@ for aura, afft in pairs(aegis.r) do
     elseif type(aff) == "table" then
       aegis.a[next(aff)] = {aura = aura, side = select(2, next(aff))}
     end
+  end
+end
 
+function aegis.auraShift(aff, person)
+  local aff = aff
+  local person = person
+  local aura = aegis.getAura(aff)
+  if not aura then 
+    e:error("Unknown affliction passed to aegis.auraShift()")
+    return
+  end
+
+  op.balqueue:add({
+    code = "radiate "..aura, 
+    required = {"op.bals.balance", "op.bals.equilibrium"},
+    consumed = {"op.bals.equilibrium"}
+  })
+
+  if person then
+    op.balqueue:add({
+      code = "aurashift "..aura.." "..person, 
+      required = {"op.bals.balance", "op.bals.equilibrium"},
+      consumed = {"op.bals.equilibrium"}
+    })
   end
 end
 
