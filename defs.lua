@@ -2243,7 +2243,7 @@ defs.tree.hexes = {
     hexensoles = {
         raise = string.format("hexen soles %s %s", op.fsm.hexensoles.left, op.fsm.hexensoles.right),
         gained = "",
-        lower = "string.format("hexen wipe %s foot", op.fsm.hexensoles.wipe)",
+        lower = "string.format("hexen wipe %s foot", op.fsm.hexensoles.wipe),
         required = {
             "op.bals.balance", "op.bals.equilibrium", "op.bals.psiid",
             "op.bals.psisub", "op.bals.psisuper"
