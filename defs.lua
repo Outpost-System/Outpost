@@ -2239,4 +2239,51 @@ defs.tree.acrobatics = {
     }
 }
 
+defs.tree.hexes = {
+    hexensoles = {
+        raise = string.format("hexen soles %s %s", op.fsm.hexensoles.left, op.fsm.hexensoles.right),
+        gained = "",
+        lower = "string.format("hexen wipe %s foot", op.fsm.hexensoles.wipe)",
+        required = {
+            "op.bals.balance", "op.bals.equilibrium", "op.bals.psiid",
+            "op.bals.psisub", "op.bals.psisuper"
+        },
+        consumed = {"op.bals.balance"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = ""
+    },
+    hexenpalm = {
+        raise = string.format("hexen palm %s %s %s", op.fsm.hexenpalm.hex1, op.fsm.hexenpalm.hex2, op.fsm.hexenpalm.hex3),
+        gained = "",
+        lower = "hexen wipe palm",
+        required = {
+            "op.bals.balance", "op.bals.equilibrium", "op.bals.psiid",
+            "op.bals.psisub", "op.bals.psisuper"
+        },
+        consumed = {"op.bals.balance"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "",
+        power = 10
+    },
+    hexaura = {
+        raise = "hexaura on",
+        gained = "",
+        lower = "hexaura off",
+        required = {
+            "op.bals.balance", "op.bals.equilibrium", "op.bals.psiid",
+            "op.bals.psisub", "op.bals.psisuper"
+        },
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false,
+        defline = "",
+        power = 5
+    },
+}
+
 return defs
