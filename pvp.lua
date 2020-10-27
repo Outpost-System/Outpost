@@ -80,7 +80,7 @@ end
 
 -- Hexes Control :)
 
-local function push (h, k, v)
+function pvp.pushHeap(h, k, v)
 	assert(v ~= nil, "cannot push nil")
 	local t = h.nodes
 	local h = h.heap
@@ -95,7 +95,7 @@ local function push (h, k, v)
 	end
 end
 
-local function peek (h)
+function pvp.peekHeap(h)
 	local t = h.nodes
 	local h = h.heap
 	local s = #h
@@ -105,7 +105,7 @@ local function peek (h)
 	return e, r
 end
 
-local function pop (h)
+function pvp.popHeap(h)
 	local t = h.nodes
 	local h = h.heap
 	local s = #h
