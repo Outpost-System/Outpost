@@ -27,7 +27,6 @@ end
 
 function fs.check(key)
 	local limiter = fs.limiters[key]
-	-- display(limiter)
 	if limiter == nil then return true end -- no limiter has been set
 
 	local tDelta = getEpoch() - limiter.start
