@@ -1327,6 +1327,192 @@ defs.tree.starhymn = {
     }
 }
 
+defs.tree.wondercorn = {
+    wondervitals = {
+        raise = "wondercorn activate all",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    }
+}
+
+defs.tree.wonderpipe = {
+    hardsmoke = {
+        raise = "wonderpipe activate hardsmoke",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    smokeweb = {
+        raise = "wonderpipe activate smokeweb",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    blanksmoke = {
+        raise = "wonderpipe activate blanksmoke",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    daydream = {
+        raise = "wonderpipe activate daydream",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    sweetsmoke = {
+        raise = "wonderpipe activate sweetsmoke",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    harshsmoke = {
+        raise = "wonderpipe activate harshsmoke",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    smokescreen = {
+        raise = "wonderpipe activate smokescreen",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    smokestep = {
+        raise = "wonderpipe activate smokestep",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    cuttingresist = {
+        raise = "wonderpipe toke cutting",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    bluntresist = {
+        raise = "wonderpipe toke blunt",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    magicalresist = {
+        raise = "wonderpipe toke magical",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    fireresist = {
+        raise = "wonderpipe toke fire",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    coldresist = {
+        raise = "wonderpipe toke cold",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    asphyxresist = {
+        raise = "wonderpipe toke asphyxiation",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    poisonresist = {
+        raise = "wonderpipe toke poison",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    electricityresist = {
+        raise = "wonderpipe toke electricity",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    psychicresist = {
+        raise = "wonderpipe toke psychic",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    excororesist = {
+        raise = "wonderpipe toke excorable",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    divinusresist = {
+        raise = "wonderpipe toke divinus",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+    }
+}
+
 defs.tree.curio = {
     bluegenies = {
         raise = "curio collection activate bluegenies",
