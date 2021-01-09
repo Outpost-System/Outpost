@@ -1327,5 +1327,35 @@ defs.tree.starhymn = {
     }
 }
 
+defs.tree.curio = {
+    bluegenies = {
+        raise = "curio collection activate bluegenies",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    redgenies = {
+        raise = "curio collection activate redgenies",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {},
+        defup = false,
+        keepup = false,
+        state = false
+    },
+    yellowgenies = {
+        raise = "curio collection activate yellowgenies",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {},
+        defup = false,
+        keepup = false,
+        state = false
+    }
+}
+
 
 return defs
