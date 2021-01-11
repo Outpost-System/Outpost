@@ -366,7 +366,7 @@ function ui.combatEcho(text, colour, width)
         end
     end
 
-    gaglp()
+    utils.gaglp()
 
     text = string.gsub(text, "%a", "%1 "):sub(1, -2)
     text = "+    +    +    " .. text:upper() .. "    +    +    +"
