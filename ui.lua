@@ -321,7 +321,7 @@ ui.chat_window = EMCO:new({
     inactiveTabCSS = istylesheet,
 }, ui.right)
 
-ui.chat_window:setTabFont("Saved by zero")
+ui.chat_window:setTabFont("Quicksand Regular")
 
 
 
@@ -459,7 +459,7 @@ function ui.eventLabel(text, duration)
         moveWindow(label, (width - (strLen * 25)) / 3, top_pos)
     end
 
-    echo(label, [[<p style="font-size:24px; font-family: 'Zekton Regular';"><b><center><font color="brown">]] .. text .. [[</font></center></b></p>]])
+    echo(label, [[<p style="font-size:24px; font-family: 'Quicksand Regular';"><b><center><font color="brown">]] .. text .. [[</font></center></b></p>]])
         
     if top_pos > 0 then
         showWindow(label)
