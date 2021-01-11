@@ -142,14 +142,14 @@ qm.Queue = {
                             if type( each_code ) == "function" then
                                 each_code()
                             elseif type( each_code ) == "string" then
-                                if next(each_code) then e:debug("Sending ("..each_code..") via the do queue") end
+                                --if next(each_code) then e:debug("Sending ("..each_code..") via the do queue") end
                                 send( each_code )
                             end
                         end
                     elseif type( code ) == "function" then
                         code()
                     elseif type( code ) == "string" then
-                        e:debug("Sending ("..code..") via the do queue")
+                        --e:debug("Sending ("..code..") via the do queue")
                         send( code )
                     end
 
