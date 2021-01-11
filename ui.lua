@@ -438,7 +438,7 @@ end
 
 function ui.eventLabel(text, duration)
     local width, height = getMainWindowSize()
-    local strlen = text:len()
+    local strLen = text:len()
     local label = utils.randomstring(8, "%l%d")
 
     ui.event_labels[label] = {label = label, text = text, duration = (duration or 5)}
