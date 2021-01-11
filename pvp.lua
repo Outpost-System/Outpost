@@ -48,6 +48,9 @@ end
 
  function pvp.succumb()
  	if bals.has() then
+ 		 if gmcp.Char.Status.fullname == "Moontouched Quixote Strongleaf" then -- Need to find a way to check for the existence of this ability. Have a few ideas, but thoughts?
+ 			send("beast order breathe scrambledwave "..op.target)   -- It does not show on BEAST INFO. Parse POWERS LIST, maybe?
+ 		end
  		send("moondance succumb "..op.target)
  	else
  		e:warn("Hang on. Waiting on balance!")
@@ -56,9 +59,6 @@ end
 
 function pvp.bluemoon()
  	if bals.has() then
- 		 if gmcp.Char.Status.fullname == "Moontouched Quixote" then -- Need to find a way to check for the existence of this ability. Have a few ideas, but thoughts?
- 			send("beast order breathe scrambledwave "..op.target)   -- It does not show on BEAST INFO. Parse POWERS LIST, maybe?
- 		end
  		send("moondance bluemoon "..op.target)
  	else
  		e:warn("Hang on. Waiting on balance!")

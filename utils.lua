@@ -4,7 +4,7 @@ local utils = {}
 -- Outpost collection of random functions and associated calls
 
 
-function utils.sendToDiscordWebhook(discord_username, avatarurl, message)
+function utils.sendToDiscordWebhook(discord_username, avatarurl, endpoint,  message)
   local httpdone = registerAnonymousEventHandler('sysPostHttpDone', 
     function(event, rurl, response)
       if rurl == url then display(r) else return true end
@@ -15,7 +15,7 @@ function utils.sendToDiscordWebhook(discord_username, avatarurl, message)
       if rurl == url then display(r) else return true end
     end, true)
 
-  local url = ""
+  local url = endpoint
   local data = {
     username = discord_username, 
     avatar_url = avatarurl,
@@ -23,7 +23,6 @@ function utils.sendToDiscordWebhook(discord_username, avatarurl, message)
   }
   local header = {
     ["Content-Type"] = "application/json",
-    --["Content-Length"] = data:len()
   }
   
   postHTTP(yajl.to_string(data), url, header)
