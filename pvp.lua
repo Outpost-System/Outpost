@@ -53,7 +53,7 @@ end
  		end
  		send("moondance succumb "..op.target)
  	else
- 		e:warn("Hang on. Waiting on balance!")
+ 		e.warn("Hang on. Waiting on balance!")
  	end
  end
 
@@ -61,7 +61,7 @@ function pvp.bluemoon()
  	if bals.has() then
  		send("moondance bluemoon "..op.target)
  	else
- 		e:warn("Hang on. Waiting on balance!")
+ 		e.warn("Hang on. Waiting on balance!")
  	end
  end
 
@@ -69,7 +69,7 @@ function pvp.waning()
 	if bals.has() then
  		send("moondance waning "..op.target)
  	else
- 		e:warn("Hang on. Waiting on balance!")
+ 		e.warn("Hang on. Waiting on balance!")
  	end
  end
 
