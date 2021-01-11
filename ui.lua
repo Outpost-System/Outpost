@@ -10,7 +10,7 @@ ui.label_queue = {}
 
 -- Define our containers and set properties
 
-ui.top = Adjustable.Container:new({name = "Ticker", y="0%", height = "6%", autoLoad = false})
+ui.top = Adjustable.Container:new({name = "Header", y="0%", height = "6%", autoLoad = false})
 ui.bottom = Adjustable.Container:new({name = "Character Status", height = "6%", y = "-6%", autoLoad = false})
 ui.right = Adjustable.Container:new({name = "Map & Chat", y = "0%", height = "100%", x = "-30%", width = "30%", autoLoad = false})
 ui.left = Adjustable.Container:new({name = "GMCP Data", x = "0%", y = "0%", height = "100%", width = "16%", autoLoad = false})
@@ -327,7 +327,7 @@ ui.chat_window:setTabFont("Saved by zero")
 
 -- Create our ticker.
 
-ui.ticker = chyron:new({
+--[[ui.ticker = chyron:new({
     name = "ui.ticker",
     x = "1%", y = "1%",
     width = "98%", height = "98%",
@@ -340,7 +340,7 @@ ui.ticker:setFontSize(18)
 ui.ticker:setDelimiter("---")
 ui.ticker:enableAutoWidth()
 ui.ticker:setDisplayWidth(76)
-ui.ticker:setMessage("Outpost System - Put something cool here.")
+ui.ticker:setMessage("Outpost System - Put something cool here.")]]
 
 
 
