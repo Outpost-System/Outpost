@@ -23,7 +23,7 @@ function affs.add()
 end
 
 
-function affs.cured()
+function affs.remove()
 	local aff = "none" 
 	if not gmcp.Char.Afflictions.Remove then return end
 
@@ -38,6 +38,10 @@ end
 function affs.has(aff)
 	return affs.current[aff] and true or false
 end
+
+
+registerAnonymousEventHandler("gmcp.Char.Afflictions.Add", "affs.add")
+registerAnonymousEventHandler("gmcp.Char.Afflictions.Remove", "affs.remove")
 
 
 return affs

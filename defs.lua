@@ -333,7 +333,7 @@ defs.tree.consumable = {
 		defline = "Your sense of time is heightened, and your reactions are speeded."
     },
 	dragonsblood = {
-        raise = "apply dragonsblood quicksilver",
+        raise = "apply dragonsblood",
         lower = "",
         required = {},
         consumed = {},
