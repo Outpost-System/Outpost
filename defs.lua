@@ -46,7 +46,6 @@ end
 function defs.raised(skillset, def)
   e:echo("Raised " .. string.title(def) .. " (" .. string.title(skillset) .. ")")
   if defs.tree[skillset][def] then
-    echo(" - Valid defence!")
 	defs.tree[skillset][def].state=true
   end
 end
@@ -54,7 +53,6 @@ end
 function defs.lowered(skillset, def)
   e:echo("Lowered " .. string.title(def) .. " (" .. string.title(skillset) .. ")")
   if defs.tree[skillset][def] then
-    echo(" - Valid defence!")
 	defs.tree[skillset][def].state=false
   end
 end
