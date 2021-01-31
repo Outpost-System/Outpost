@@ -250,6 +250,6 @@ op.nihitailqueue = qm.Queue:new({"op.bals.nihitail"})
 op.timeslipqueue = qm.Queue:new({"op.bals.timeslip"})
 op.hexesqueue = qm.Queue:new({"op.bals.hexes"})
 op.orgpotionqueue = qm.Queue:new({"op.bals.orgpotion"})
-
+op.aetherqueue = qm.Queue:new({"op.bals.modulebal"})
 
 return qm
