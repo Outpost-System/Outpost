@@ -1540,6 +1540,175 @@ defs.tree.curio = {
         state = false
     }
 }
+defs.tree.phantasms = {
+    phantomarmour = {
+        raise = "weave phantomarmour",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You are surrounded by phantom armour."
+    }
+}
 
+
+defs.tree.elementalism = {
+    levitate = {
+        raise = "cast levitate",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You are protected by Levitate."
+    }
+    stoneskin = {
+        raise = "cast stoneskin",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "Your skin is coated with supple granite."
+    }
+    waterbreathe = {
+        raise = "cast waterbreathe",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "Water is to you as air, and you shall not drown."
+    }
+    elementshield = {
+        raise = "cast elementshield",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You are shielded from the elements."
+    }
+}
+
+defs.tree.pyromancy = {
+    fireproof = {
+        raise = "pyrocast fireproof",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.equilibrium"},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You are protected by fireproof"
+    }
+}
+
+defs.tree.psionics = {
+        --included without the ability to raise for tracking purposes
+    biofeedbackmagic = {
+        raise = "",
+        lower = "",
+        required = {""},
+        consumed = {""},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You are psionically resisting magic damage."
+    }
+    --included without the ability to raise for tracking purposes
+    biofeedbackfire = {
+        raise = "",
+        lower = "",
+        required = {""},
+        consumed = {""},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You are psionically resisting fire damage."
+    }
+    --included without the ability to raise for tracking purposes
+    biofeedbackcold = {
+        raise = "",
+        lower = "",
+        required = {""},
+        consumed = {""},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You are psionically resisting cold damage."
+    }
+    --included without the ability to raise for tracking purposes
+    biofeedbackelectric = {
+        raise = "",
+        lower = "",
+        required = {""},
+        consumed = {""},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You are psionically resisting electric damage."
+    }
+
+    bodydensity = {
+        raise = "psi superstratus bodydensity",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.superstratus"},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You are using your mind to make your body more dense."
+    }
+    mindbar = {
+        raise = "psi id mindbar",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {"op.bals.id"},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You have raised a mental bar to shield your mind from assault."
+    }
+    --included without the ability to raise for tracking purposes
+    psiarmour = {
+        raise = "",
+        lower = "",
+        required = {""},
+        consumed = {""},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You are protected by psionic armour."
+    }
+    --gives blindness as well - REVISIT
+    secondsight = {
+        raise = "psi substratus secondsight",
+        lower = "",
+        required = {"op.bals.balance", "op.bals.equilibrium", "op.bals.psiid", "op.bals.psisub", "op.bals.psisuper"},
+        consumed = {""},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "The world is seen through your sixth sense."
+    }
+    --included without the ability to raise for tracking purposes
+    ironwill = {
+        raise = "",
+        lower = "",
+        required = {""},
+        consumed = {""},
+        defup = false,
+        keepup = false,
+        state = false
+        defline = "You are regenerating mental strength with iron will."
+    }
+}
 
 return defs
